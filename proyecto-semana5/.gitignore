@@ -1,0 +1,22 @@
+# Archivos compilados de Java
+*.class
+*.jar
+*.war
+
+# Carpetas de compilación de Apache NetBeans (Ant)
+/build/
+/dist/
+/nbproject/private/
+/nbproject/build-impl.xml
+manifest.mf
+
+# Carpetas de Maven / Gradle (por si se migra el proyecto)
+/target/
+/.gradle/
+
+# Configuración local de editores
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
