@@ -9,7 +9,7 @@ UPN, periodo 2026-2).
 | Etiqueta | Apellidos y nombres | Usuario de GitHub | Correo de `git config user.email` |
 |---|---|---|---|
 | Integrante 1 | | | |
-| Integrante 2 |Rojas Valdivia |Jhann-999 | rojasjhann7@gmail.com |
+| Integrante 2 |Rojas Valdivia Jhann Frank|Jhann-999| rojasjhann7@gmail.com |
 | Integrante 3 | | | |
 | Integrante 4 | | | |
 
