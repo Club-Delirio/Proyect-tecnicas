@@ -8,7 +8,7 @@ UPN, periodo 2026-2).
 
 | Etiqueta | Apellidos y nombres | Usuario de GitHub | Correo de `git config user.email` |
 |---|---|---|---|
-| Integrante 1 | | | |
+| Integrante 1 |Chuquimango Verastegui Jhocep Jhanpier | JhocepGab | snkje123@gmail.com |
 | Integrante 2 | | | |
 | Integrante 3 | | | |
 | Integrante 4 | | | |
