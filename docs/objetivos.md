@@ -1,7 +1,7 @@
 # Objetivos del proyecto
 
 ## Objetivo general
-PENDIENTE: redactar el objetivo general del sistema.
+Implementar un sistema informatico orientado a objetos que gestione la matricula y la asistencia de los estudiantes de la academia preuniversitaria de Cajamarca, garantizando la integridad y disponibilidad de la informacion.
 
 ## Objetivos específicos
 - PENDIENTE
