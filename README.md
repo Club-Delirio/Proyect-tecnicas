@@ -9,9 +9,9 @@ UPN, periodo 2026-2).
 | Etiqueta | Apellidos y nombres | Usuario de GitHub | Correo de `git config user.email` |
 |---|---|---|---|
 | Integrante 1 |Chuquimango Verastegui Jhocep Jhanpier | JhocepGab | snkje123@gmail.com |
-| Integrante 2 | | | |
-| Integrante 3 | | | |
-| Integrante 4 | | | |
+| Integrante 2 | CACHI TANTALEAN ANDERSON ALEXIS | Anderson-Cachi | n00461903@upn.pe |
+| Integrante 3 | ROJAS VALDIVIA JHANN FRANK | Jhann-999 | rojasjhann7@gmail.com |
+| Integrante 4 | RODRIGO ORTIZ SUMIL ARTURI | init57 | rubick042@gmail.com |
 
 ## Contenido del repositorio
 
