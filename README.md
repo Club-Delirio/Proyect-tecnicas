@@ -6,12 +6,12 @@ UPN, periodo 2026-2).
 
 ## Integrantes
 
-| Etiqueta | Apellidos y nombres | Usuario de GitHub | Correo de `git config user.email` |
-|---|---|---|---|
-| Integrante 1 |Chuquimango Verastegui Jhocep Jhanpier | JhocepGab | snkje123@gmail.com |
-| Integrante 2 | | | |
-| Integrante 3 | | | |
-| Integrante 4 | | | |
+| Integrante | Usuario GitHub | Aporte principal |
+|---|---|---|
+| Cachi, Anderson | `Anderson-Cachi` | Revisión de PR, guía de Git |
+| Chuquimango Verastegui, Jhocep Jhanpier | `JhocepGab` | Clases del paquete semana5, informe |
+| [Apellido], Jhann | `Jhann-999` | Objetivos del proyecto, diccionario de clases |
+| [Apellido], Sumil | `init57` | Requerimientos funcionales, historias de usuario |
 
 ## Contenido del repositorio
 
