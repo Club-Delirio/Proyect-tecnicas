@@ -8,16 +8,7 @@ import java.util.List;
 import java.util.Map;
 import semana5.excepciones.PersonaNoEncontradaException;
 
-/**
- * Controlador que gestiona las personas en memoria usando COLECCIONES.
- *
- *  - ArrayList: mantiene el orden de registro y permite recorrer y listar.
- *  - HashMap:   índice por número de documento para buscar en tiempo constante
- *               y para impedir documentos duplicados.
- *
- * Ambas estructuras se mantienen sincronizadas: todo lo que entra o sale de la
- * lista también entra o sale del mapa.
- */
+
 public class PersonaController {
 
     private final ArrayList<Persona> lista;
@@ -27,17 +18,6 @@ public class PersonaController {
         this.lista = new ArrayList<>();
         this.indicePorDocumento = new HashMap<>();
     }
-
-    // ------------------------------------------------------------------
-    // ALTA
-    // ------------------------------------------------------------------
-
-    /**
-     * Agrega una persona a la colección.
-     *
-     * @return true si se agregó; false si el documento ya existía o el objeto
-     *         llegó nulo o incompleto.
-     */
     public boolean agregarPersona(Persona persona) {
         if (persona == null || persona.getNroDocumento() == null) {
             System.out.println("No se puede agregar: la persona no tiene documento registrado.");
@@ -53,7 +33,7 @@ public class PersonaController {
         return true;
     }
 
-    /** Sobrecarga: agrega varias personas de una sola llamada (varargs). */
+   
     public int agregarPersona(Persona... personas) {
         int agregadas = 0;
         for (Persona p : personas) {
@@ -64,15 +44,6 @@ public class PersonaController {
         return agregadas;
     }
 
-    // ------------------------------------------------------------------
-    // CONSULTA
-    // ------------------------------------------------------------------
-
-    /**
-     * Busca una persona por su número de documento.
-     *
-     * @throws PersonaNoEncontradaException si el documento no está registrado.
-     */
     public Persona buscarPorDocumento(String nroDocumento)
             throws PersonaNoEncontradaException {
         if (nroDocumento == null || nroDocumento.trim().isEmpty()) {
@@ -86,11 +57,6 @@ public class PersonaController {
         }
         return encontrada;
     }
-
-    /**
-     * Devuelve la persona ubicada en una posición de la lista.
-     * Controla el índice para no propagar IndexOutOfBoundsException.
-     */
     public Persona obtenerPorIndice(int indice) {
         try {
             return lista.get(indice);
@@ -100,28 +66,12 @@ public class PersonaController {
             return null;
         }
     }
-
-    // ------------------------------------------------------------------
-    // BAJA
-    // ------------------------------------------------------------------
-
-    /**
-     * Elimina una persona por su número de documento.
-     *
-     * @throws PersonaNoEncontradaException si el documento no está registrado.
-     */
     public void eliminarPorDocumento(String nroDocumento)
             throws PersonaNoEncontradaException {
         Persona persona = buscarPorDocumento(nroDocumento);
         lista.remove(persona);
         indicePorDocumento.remove(persona.getNroDocumento());
     }
-
-    // ------------------------------------------------------------------
-    // LISTADOS (métodos sobrecargados)
-    // ------------------------------------------------------------------
-
-    /** Lista todas las personas registradas. */
     public void listarPersonas() {
         if (lista.isEmpty()) {
             System.out.println("No hay registros para mostrar.");
@@ -132,8 +82,6 @@ public class PersonaController {
             System.out.println("  " + (i + 1) + ". " + lista.get(i));
         }
     }
-
-    /** Sobrecarga: lista solo las personas de un tipo de documento. */
     public void listarPersonas(String tipoDocumento) {
         List<Persona> filtradas = new ArrayList<>();
         for (Persona p : lista) {
@@ -152,8 +100,6 @@ public class PersonaController {
             System.out.println("  - " + p);
         }
     }
-
-    /** Sobrecarga: lista las personas dentro de un rango de edad. */
     public void listarPersonas(int edadMinima, int edadMaxima) {
         List<Persona> filtradas = new ArrayList<>();
         for (Persona p : lista) {
@@ -173,19 +119,11 @@ public class PersonaController {
             System.out.println("  - " + p);
         }
     }
-
-    // ------------------------------------------------------------------
-    // OPERACIONES SOBRE LA COLECCIÓN
-    // ------------------------------------------------------------------
-
-    /** Ordena la lista alfabéticamente por apellido paterno y luego por nombre. */
     public void ordenarPorApellido() {
         lista.sort(Comparator
                 .comparing((Persona p) -> p.getPaterno() == null ? "" : p.getPaterno().toUpperCase())
                 .thenComparing(p -> p.getNombre() == null ? "" : p.getNombre().toUpperCase()));
     }
-
-    /** Cuenta cuántas personas hay por cada tipo de documento. */
     public Map<String, Integer> contarPorTipoDocumento() {
         Map<String, Integer> conteo = new LinkedHashMap<>();
         for (Persona p : lista) {
@@ -202,8 +140,6 @@ public class PersonaController {
     public boolean estaVacia() {
         return lista.isEmpty();
     }
-
-    /** Devuelve una copia de la lista para que nadie modifique la colección interna. */
     public List<Persona> getLista() {
         return new ArrayList<>(lista);
     }

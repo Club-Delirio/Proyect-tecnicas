@@ -1,211 +1,81 @@
 package semana5;
 
 import java.time.LocalDate;
+
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import semana5.excepciones.DocumentoInvalidoException;
 
 /**
- * Modelo de una persona.
  *
- * Demuestra los temas de la semana 3 y 4 del sílabo:
- *  - Sobrecarga de constructores (4 firmas distintas).
- *  - Sobrecarga de métodos: verDatos, getNombreCompleto y calcularEdad.
- *  - Modificador estático: constantes y método utilitario validarDocumento.
- *  - Manejo de errores: lanza DocumentoInvalidoException ante datos incorrectos.
- *
- * @author Equipo - Técnicas de Programación Orientada a Objetos (SIST1202A)
+ * @author jhose
  */
 public class Persona {
-
-    // Tipos de documento aceptados (constantes estáticas)
-    public static final String DNI = "DNI";
-    public static final String CARNET_EXTRANJERIA = "CE";
-    public static final String PASAPORTE = "PASAPORTE";
-    public static final String RUC = "RUC";
-
-    private static final DateTimeFormatter FORMATO_FECHA =
-            DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-    // Contador estático: cuántos objetos Persona se han creado
-    private static int totalCreadas = 0;
-
-    private String tipoDocumento;
-    private String nroDocumento;
+    private String tipo_doc;
+    private String nro_documento;
     private String nombre;
-    private String paterno;
-    private String materno;
-    private LocalDate fechaNacimiento;
+    private String ape_paterno;
+    private String ape_materno;
+    private LocalDate fecha_nacimiento;
 
-    // ------------------------------------------------------------------
-    // SOBRECARGA DE CONSTRUCTORES
-    // ------------------------------------------------------------------
-
-    /** Constructor vacío. Deja la persona sin datos, lista para usar los setters. */
     public Persona() {
-        totalCreadas++;
+
     }
 
-    /** Constructor con un solo parámetro: solo el tipo de documento. */
-    public Persona(String tipoDocumento) throws DocumentoInvalidoException {
-        this();
-        setTipoDocumento(tipoDocumento);
+    public Persona(String tipo_doc) {
+        this.setTipo_doc(tipo_doc);
     }
 
-    /** Constructor con dos parámetros: tipo y número de documento. */
-    public Persona(String tipoDocumento, String nroDocumento)
-            throws DocumentoInvalidoException {
-        this(tipoDocumento);
-        setNroDocumento(nroDocumento);
+    public Persona(String tipo_doc, String nro_documento) {
+        this.setTipo_doc(tipo_doc);
+        this.setNro_documento(nro_documento);
     }
 
-    /** Constructor completo. */
-    public Persona(String tipoDocumento, String nroDocumento, String nombre,
-                   String paterno, String materno, LocalDate fechaNacimiento)
-            throws DocumentoInvalidoException {
-        this(tipoDocumento, nroDocumento);
-        setNombre(nombre);
-        setPaterno(paterno);
-        setMaterno(materno);
-        setFechaNacimiento(fechaNacimiento);
+    public Persona(String tipo_doc, String nro_documento, String nombre,
+            String ape_paterno, String ape_materno, LocalDate fecha_nacimiento) {
+        this.setTipo_doc(tipo_doc);
+        this.setNro_documento(nro_documento);
+        this.nombre = nombre;
+        this.ape_paterno = ape_paterno;
+        this.ape_materno = ape_materno;
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    // ------------------------------------------------------------------
-    // VALIDACIONES (método estático)
-    // ------------------------------------------------------------------
+    public String getTipo_doc() {
+        return tipo_doc;
+    }
 
-    /** Devuelve la cantidad de dígitos o caracteres que exige cada tipo de documento. */
-    public static int longitudEsperada(String tipoDocumento) {
-        if (tipoDocumento == null) {
-            return 0;
+    public void setTipo_doc(String tipo_doc) {
+        if (tipo_doc == null) {
+            System.out.println("Error: el tipo de documento no puede estar vacio");
+            return;
         }
-        switch (tipoDocumento.toUpperCase()) {
-            case DNI:                return 8;
-            case CARNET_EXTRANJERIA: return 9;
-            case RUC:                return 11;
-            case PASAPORTE:          return 12;
-            default:                 return 0;
+        if (tipo_doc.equals("DNI") || tipo_doc.equals("CE")) {
+            this.tipo_doc = tipo_doc;
+        } else {
+            System.out.println("Error: tipo de documento invalido. Use DNI o CE");
         }
     }
 
-    /**
-     * Valida el número de documento según su tipo.
-     *
-     * @throws DocumentoInvalidoException si el número es nulo, vacío, tiene una
-     *         longitud incorrecta o contiene caracteres no numéricos cuando no debe.
-     */
-    public static void validarDocumento(String tipoDocumento, String nroDocumento)
-            throws DocumentoInvalidoException {
+    public String getNro_documento() {
+        return nro_documento;
+    }
 
-        int esperado = longitudEsperada(tipoDocumento);
-        if (esperado == 0) {
-            throw new DocumentoInvalidoException(
-                    "Tipo de documento no reconocido: " + tipoDocumento
-                    + ". Use DNI, CE, RUC o PASAPORTE.");
+    public void setNro_documento(String nro_documento) {
+        if (this.tipo_doc == null) {
+            System.out.println("Primero debe de ingresar el tipo de documento");
+            return;
         }
-        if (nroDocumento == null || nroDocumento.trim().isEmpty()) {
-            throw new DocumentoInvalidoException(
-                    "El número de documento no puede estar vacío.");
+        if (nro_documento == null || nro_documento.trim().isEmpty()) {
+            System.out.println("Error: el numero de documento no puede estar vacio");
+            return;
         }
-        String numero = nroDocumento.trim();
-        if (numero.length() != esperado) {
-            throw new DocumentoInvalidoException(
-                    "Para " + tipoDocumento + " el número debe tener "
-                    + esperado + " caracteres. Se recibieron " + numero.length() + ".");
+        if (this.tipo_doc.equals("DNI") && nro_documento.length() == 8) {
+            this.nro_documento = nro_documento;
+        } else if (this.tipo_doc.equals("CE") && nro_documento.length() == 10) {
+            this.nro_documento = nro_documento;
+        } else {
+            System.out.println("Error: Para " + this.tipo_doc + " el numero debe tener "
+                    + (this.tipo_doc.equals("DNI") ? "8" : "10") + " digitos.");
         }
-        // El pasaporte admite letras; los demás documentos solo dígitos.
-        if (!PASAPORTE.equalsIgnoreCase(tipoDocumento) && !numero.matches("\\d+")) {
-            throw new DocumentoInvalidoException(
-                    "El número de " + tipoDocumento + " solo debe contener dígitos.");
-        }
-    }
-
-    // ------------------------------------------------------------------
-    // SOBRECARGA DE MÉTODOS
-    // ------------------------------------------------------------------
-
-    /** Muestra los datos de la persona con el encabezado por defecto. */
-    public void verDatos() {
-        verDatos("PERSONA");
-    }
-
-    /** Muestra los datos de la persona con un encabezado personalizado. */
-    public void verDatos(String titulo) {
-        System.out.println("---------- " + titulo + " ----------");
-        System.out.println("Documento : " + tipoDocumento + " " + nroDocumento);
-        System.out.println("Nombre    : " + getNombreCompleto());
-        System.out.println("Nacimiento: "
-                + (fechaNacimiento == null ? "(sin registrar)"
-                                           : fechaNacimiento.format(FORMATO_FECHA)));
-        System.out.println("Edad      : " + calcularEdad() + " años");
-    }
-
-    /** Nombre completo en el formato "Nombre Paterno Materno". */
-    public String getNombreCompleto() {
-        return getNombreCompleto(false);
-    }
-
-    /**
-     * Nombre completo.
-     *
-     * @param apellidosPrimero true devuelve "Paterno Materno, Nombre";
-     *                         false devuelve "Nombre Paterno Materno".
-     */
-    public String getNombreCompleto(boolean apellidosPrimero) {
-        String n = nombre  == null ? "" : nombre.trim();
-        String p = paterno == null ? "" : paterno.trim();
-        String m = materno == null ? "" : materno.trim();
-
-        String completo = apellidosPrimero
-                ? (p + " " + m + ", " + n)
-                : (n + " " + p + " " + m);
-
-        completo = completo.replaceAll("\\s+", " ").trim();
-        return completo.isEmpty() || completo.equals(",") ? "(sin nombre)" : completo;
-    }
-
-    /** Edad calculada a la fecha actual. */
-    public int calcularEdad() {
-        return calcularEdad(LocalDate.now());
-    }
-
-    /** Edad calculada a una fecha de referencia (por ejemplo, al cierre del ciclo). */
-    public int calcularEdad(LocalDate fechaReferencia) {
-        if (fechaNacimiento == null || fechaReferencia == null
-                || fechaNacimiento.isAfter(fechaReferencia)) {
-            return 0;
-        }
-        return Period.between(fechaNacimiento, fechaReferencia).getYears();
-    }
-
-    // ------------------------------------------------------------------
-    // GETTERS Y SETTERS
-    // ------------------------------------------------------------------
-
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) throws DocumentoInvalidoException {
-        if (longitudEsperada(tipoDocumento) == 0) {
-            throw new DocumentoInvalidoException(
-                    "Tipo de documento no reconocido: " + tipoDocumento
-                    + ". Use DNI, CE, RUC o PASAPORTE.");
-        }
-        this.tipoDocumento = tipoDocumento.toUpperCase();
-    }
-
-    public String getNroDocumento() {
-        return nroDocumento;
-    }
-
-    public void setNroDocumento(String nroDocumento) throws DocumentoInvalidoException {
-        if (this.tipoDocumento == null) {
-            throw new DocumentoInvalidoException(
-                    "Primero debe ingresar el tipo de documento.");
-        }
-        validarDocumento(this.tipoDocumento, nroDocumento);
-        this.nroDocumento = nroDocumento.trim();
     }
 
     public String getNombre() {
@@ -216,37 +86,69 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getPaterno() {
-        return paterno;
+    public String getApe_paterno() {
+        return ape_paterno;
     }
 
-    public void setPaterno(String paterno) {
-        this.paterno = paterno;
+    public void setApe_paterno(String ape_paterno) {
+        this.ape_paterno = ape_paterno;
     }
 
-    public String getMaterno() {
-        return materno;
+    public String getApe_materno() {
+        return ape_materno;
     }
 
-    public void setMaterno(String materno) {
-        this.materno = materno;
+    public void setApe_materno(String ape_materno) {
+        this.ape_materno = ape_materno;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        if (fecha_nacimiento == null) {
+            System.out.println("Error: la fecha de nacimiento no puede estar vacia");
+            return;
+        }
+        if (fecha_nacimiento.isAfter(LocalDate.now())) {
+            System.out.println("Error: la fecha de nacimiento no puede ser futura");
+            return;
+        }
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public static int getTotalCreadas() {
-        return totalCreadas;
+    public void VerDatos() {
+        System.out.println(" Persona TIPO DOC: " + this.tipo_doc
+                + " nro documento : " + this.nro_documento + " NOMBRE: " + this.nombre
+                + " apellido : " + this.ape_paterno + " apellido materno: " + this.ape_materno
+                + " FECHA DE NACIMIENTO: " + this.fecha_nacimiento);
     }
 
-    @Override
-    public String toString() {
-        return String.format("%-9s %-12s %-35s %3d años",
-                tipoDocumento, nroDocumento, getNombreCompleto(), calcularEdad());
+    public void VerDatos(String titulo) {
+        System.out.println("---------- " + titulo + " ----------");
+        this.VerDatos();
+    }
+
+    public String NombreCompleto() {
+        return this.nombre + " " + this.ape_paterno + " " + this.ape_materno;
+    }
+
+    public String NombreCompleto(boolean apellidos_primero) {
+        if (apellidos_primero) {
+            return this.ape_paterno + " " + this.ape_materno + ", " + this.nombre;
+        }
+        return this.NombreCompleto();
+    }
+
+    public int CalcularEdad() {
+        return this.CalcularEdad(LocalDate.now());
+    }
+
+    public int CalcularEdad(LocalDate fecha_referencia) {
+        if (this.fecha_nacimiento == null || fecha_referencia == null) {
+            return 0;
+        }
+        return Period.between(this.fecha_nacimiento, fecha_referencia).getYears();
     }
 }
