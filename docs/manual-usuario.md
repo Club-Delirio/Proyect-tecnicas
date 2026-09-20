@@ -1,13 +1,13 @@
 # Manual de usuario
 
-Sistema de gestión de matrícula y control de asistencia — módulo de la semana 5.
+Sistema de gestión de matrícula y control de asistencia — paquete `semana5`.
 
 ---
 
 ## 1. Requisitos previos
 
-- JDK 17 o superior instalado
-- El código fuente del repositorio descargado
+- JDK 17 o superior
+- Apache NetBeans 21 o superior, si se desea abrir el proyecto en el entorno
 
 Para comprobar que Java está disponible, abrir una terminal y escribir:
 
@@ -19,41 +19,33 @@ Debe responder con el número de versión. Si dice que el comando no se reconoce
 
 ---
 
-## 2. Compilar el programa
+## 2. Abrir el proyecto en NetBeans
+
+1. Abrir Apache NetBeans
+2. Menú **File** → **Open Project**
+3. Seleccionar la carpeta del proyecto
+4. Clic derecho sobre el proyecto → **Run**
+
+El programa se ejecuta en la ventana Output del propio NetBeans.
+
+---
+
+## 3. Compilar y ejecutar desde la terminal
 
 Desde la carpeta raíz del proyecto:
 
 ```
 javac -encoding UTF-8 -d build $(find src -name "*.java")
-```
-
-El parámetro `-encoding UTF-8` es necesario para que las tildes y la letra ñ se muestren correctamente. Si la compilación termina sin mensajes, todo está correcto.
-
----
-
-## 3. Ejecutar el programa
-
-### Modo interactivo
-
-```
 java -cp build semana5.Semana5
 ```
 
-Abre el menú principal y espera las indicaciones del usuario.
-
-### Modo demostración
-
-```
-java -cp build semana5.Semana5 demo
-```
-
-Ejecuta un recorrido automático por los tres temas del módulo, sin pedir datos. Es el modo recomendado para mostrar el funcionamiento en clase o capturar evidencias.
+El parámetro `-encoding UTF-8` es necesario para que las tildes y la letra ñ se muestren correctamente.
 
 ---
 
 ## 4. El menú principal
 
-Al iniciar en modo interactivo se muestra este menú:
+Al iniciar se muestra:
 
 ```
 =========================================
@@ -62,15 +54,18 @@ Al iniciar en modo interactivo se muestra este menú:
  1. Registrar persona
  2. Listar todas las personas
  3. Listar por tipo de documento
- 4. Buscar por número de documento
- 5. Eliminar por número de documento
- 6. Ordenar por apellido paterno
- 7. Resumen por tipo de documento
- 8. Probar sobrecarga (Calculadora)
+ 4. Listar por rango de edad
+ 5. Buscar por numero de documento
+ 6. Eliminar por numero de documento
+ 7. Ordenar por apellido paterno
+ 8. Contar por tipo de documento
  0. Salir
+Elija una opcion:
 ```
 
-Se elige escribiendo el número y pulsando Enter. Si se escribe una letra o un símbolo, el sistema avisa que debe ingresarse un número y vuelve a mostrar el menú, sin cerrarse.
+Se elige escribiendo el número y pulsando Enter. Si se escribe una opción fuera del rango, el sistema avisa y vuelve a mostrar el menú sin cerrarse.
+
+Después de cada operación aparece el mensaje `[Operacion finalizada]`, que confirma que el bloque `finally` se ejecutó.
 
 ---
 
@@ -78,93 +73,81 @@ Se elige escribiendo el número y pulsando Enter. Si se escribe una letra o un s
 
 ### Opción 1 — Registrar persona
 
-Solicita, uno por uno:
+Solicita los datos uno por uno:
 
 | Dato | Qué aceptar |
 |---|---|
-| Tipo de documento | DNI, CE, RUC o PASAPORTE |
-| Número de documento | 8 dígitos para DNI, 9 para CE, 11 para RUC, 12 caracteres para pasaporte |
+| Tipo de documento | `DNI` o `CE`, en mayúsculas |
+| Número de documento | 8 dígitos para DNI, 10 para CE |
 | Nombre | Texto libre |
 | Apellido paterno | Texto libre |
 | Apellido materno | Texto libre |
-| Fecha de nacimiento | Formato dd/MM/yyyy, por ejemplo 15/03/2004 |
+| Fecha de nacimiento | Formato `aaaa-mm-dd`, por ejemplo `2004-03-15` |
 
-Si todo es correcto, el registro se guarda y se muestran los datos bajo el encabezado REGISTRO NUEVO.
+Si todo es correcto, el registro se guarda y se muestran los datos bajo el encabezado `REGISTRO NUEVO`.
 
 **Mensajes de error posibles:**
 
 | Situación | Mensaje |
 |---|---|
-| Documento con longitud incorrecta | "Para DNI el número debe tener 8 caracteres. Se recibieron 3." |
-| Tipo de documento no reconocido | "Tipo de documento no reconocido: LICENCIA. Use DNI, CE, RUC o PASAPORTE." |
-| Documento ya registrado | "El documento 70123456 ya está registrado." |
-| Fecha mal escrita | "Fecha inválida. Use el formato dd/MM/yyyy, por ejemplo 15/03/2004." |
+| Tipo distinto de DNI o CE | `Error: tipo de documento invalido. Use DNI o CE` |
+| Número con longitud incorrecta | `Error: Para DNI el numero debe tener 8 digitos.` |
+| Número ingresado antes del tipo | `Primero debe de ingresar el tipo de documento` |
+| Fecha posterior a hoy | `Error: la fecha de nacimiento no puede ser futura` |
+| Fecha mal escrita | `Error: la fecha debe tener el formato aaaa-mm-dd` |
+| Documento ya registrado | `Error: el documento 70123456 ya esta registrado` |
 
-Tras cualquiera de estos mensajes el programa continúa; no se cierra ni pierde los registros previos.
+Tras cualquiera de estos mensajes el programa continúa y no pierde los registros anteriores. Si el documento o la fecha quedaron sin asignar, la persona no se registra y se informa con `No se registro la persona por datos invalidos`.
 
 ### Opción 2 — Listar todas las personas
 
-Muestra todos los registros numerados, con el total al inicio. Si no hay ninguno, responde "No hay registros para mostrar."
+Recorre la lista y muestra los datos de cada persona. Si no hay ninguna, responde `No hay personas registradas`.
 
 ### Opción 3 — Listar por tipo de documento
 
-Pide un tipo (DNI, CE, RUC o PASAPORTE) y lista solo los registros de ese tipo, con la cantidad encontrada. Si no hay ninguno de ese tipo, lo informa.
+Pide un tipo (`DNI` o `CE`) y muestra solo los registros de ese tipo. Si no hay ninguno, lo informa.
 
-### Opción 4 — Buscar por número de documento
+### Opción 4 — Listar por rango de edad
 
-Pide el número y, si existe, muestra los datos completos bajo el encabezado RESULTADO DE BÚSQUEDA.
+Pide una edad mínima y una máxima, y muestra las personas cuya edad calculada está dentro del rango.
 
-Si el documento no está registrado, responde "No se encontró ninguna persona con el documento 99999999." Si se pulsa Enter sin escribir nada, pide que se indique un número.
+Si se escribe texto en lugar de un número, responde `Error: debe ingresar solo numeros` y vuelve al menú.
 
-### Opción 5 — Eliminar por número de documento
+### Opción 5 — Buscar por número de documento
 
-Pide el número y elimina el registro. Confirma con "Registro eliminado. Quedan 3 persona(s)."
+Pide el número. Si existe, muestra los datos bajo el encabezado `RESULTADO DE BUSQUEDA`, más el nombre completo con los apellidos primero y la edad calculada.
 
-Si el documento no existe, lo informa y no modifica nada.
+Si no existe, responde `No se encontro esa persona`.
 
-### Opción 6 — Ordenar por apellido paterno
+### Opción 6 — Eliminar por número de documento
 
-Reordena la lista alfabéticamente por apellido paterno y, cuando dos personas comparten apellido, por nombre. Tras ordenar, muestra la lista ya ordenada.
+Pide el número y elimina el registro. Confirma con `Persona eliminada. Quedan 3 persona(s)`.
 
-El orden se conserva para las siguientes consultas.
+Si el documento no existe, responde `Error: no se encontro el documento 99999999` y no modifica nada.
 
-### Opción 7 — Resumen por tipo de documento
+### Opción 7 — Ordenar por apellido paterno
 
-Muestra cuántas personas hay por cada tipo de documento y el total de objetos Persona creados durante la sesión. Ejemplo:
+Reordena la lista alfabéticamente por apellido paterno y a continuación la muestra ya ordenada. El orden se conserva para las siguientes consultas.
 
-```
-Resumen por tipo de documento:
-  DNI: 2
-  CE: 1
-  RUC: 1
-Total de objetos Persona creados: 6
-```
+### Opción 8 — Contar por tipo de documento
 
-Si no hay registros, responde "No hay registros para resumir."
-
-### Opción 8 — Probar sobrecarga (Calculadora)
-
-Ejecuta las cinco versiones sobrecargadas del método `calcular()` y muestra sus resultados:
+Muestra el total de personas registradas y cuántas hay de cada tipo:
 
 ```
-calcular(5, 3)            = 8
-calcular(5, 3, 2)         = 10
-calcular(5.5, 3.2)        = 8.7
-calcular("Hola", "UPN")   = Hola UPN
-calcular(1,2,3,4,5)       = 15
+Total de personas: 4
+Con DNI: 3
+Con CE: 1
 ```
-
-Luego pide un divisor para el número 10. Si se ingresa 0, responde "No es posible dividir entre cero." Si se ingresa texto, responde "Ingrese solo números." En ambos casos el programa continúa.
 
 ### Opción 0 — Salir
 
-Cierra el programa con el mensaje "Programa finalizado."
+Cierra el programa con el mensaje `Programa finalizado`.
 
 ---
 
 ## 6. Advertencia sobre los datos
 
-Esta versión del sistema **guarda la información en memoria**. Al cerrar el programa, todos los registros se pierden.
+Esta versión guarda la información **en memoria**. Al cerrar el programa, todos los registros se pierden.
 
 La persistencia en archivos está prevista para la semana 9 del curso, y el almacenamiento en base de datos para la semana 14.
 
@@ -175,6 +158,7 @@ La persistencia en archivos está prevista para la semana 9 del curso, y el alma
 | Problema | Causa | Solución |
 |---|---|---|
 | `javac: command not found` | El JDK no está en el PATH | Agregar la carpeta `bin` del JDK al PATH del sistema |
-| `Error: no se ha encontrado la clase principal` | El proyecto no se compiló, o falta algún archivo | Volver a ejecutar el comando de compilación y revisar que no haya errores |
+| `Error: no se ha encontrado la clase principal` | El proyecto no se compiló o faltan archivos | Volver a ejecutar el comando de compilación y revisar que no haya errores |
 | Las tildes se ven como símbolos raros | Falta el parámetro de codificación | Compilar con `-encoding UTF-8` |
 | El menú se repite sin hacer nada | Se ingresó una opción fuera del rango 0-8 | Elegir un número del menú |
+| Dice que primero se ingrese el tipo de documento | Se intentó asignar el número antes que el tipo | Ingresar primero DNI o CE |
