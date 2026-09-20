@@ -4,7 +4,7 @@ Paquete `semana5` — Sistema de gestión de matrícula y control de asistencia.
 
 Cada historia sigue el formato «Como [rol], quiero [funcionalidad], para [beneficio]», con sus criterios de aceptación expresados en contexto, evento y resultado esperado.
 
-La versión en hoja de cálculo, con la trazabilidad completa hacia las clases Java, se encuentra en `docs/Historias_Usuario_Semana5_Completadas.xlsx`.
+La versión en hoja de cálculo, con la trazabilidad completa hacia las clases Java, se encuentra en `docs/Historias_Usuario.xlsx`.
 
 ---
 
