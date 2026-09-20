@@ -5,20 +5,10 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import semana5.excepciones.DocumentoInvalidoException;
 
-/**
- * Modelo de una persona.
- *
- * Demuestra los temas de la semana 3 y 4 del sílabo:
- *  - Sobrecarga de constructores (4 firmas distintas).
- *  - Sobrecarga de métodos: verDatos, getNombreCompleto y calcularEdad.
- *  - Modificador estático: constantes y método utilitario validarDocumento.
- *  - Manejo de errores: lanza DocumentoInvalidoException ante datos incorrectos.
- *
- * @author Equipo - Técnicas de Programación Orientada a Objetos (SIST1202A)
- */
+
 public class Persona {
 
-    // Tipos de documento aceptados (constantes estáticas)
+  
     public static final String DNI = "DNI";
     public static final String CARNET_EXTRANJERIA = "CE";
     public static final String PASAPORTE = "PASAPORTE";
@@ -27,7 +17,7 @@ public class Persona {
     private static final DateTimeFormatter FORMATO_FECHA =
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    // Contador estático: cuántos objetos Persona se han creado
+    
     private static int totalCreadas = 0;
 
     private String tipoDocumento;
@@ -37,29 +27,25 @@ public class Persona {
     private String materno;
     private LocalDate fechaNacimiento;
 
-    // ------------------------------------------------------------------
-    // SOBRECARGA DE CONSTRUCTORES
-    // ------------------------------------------------------------------
-
-    /** Constructor vacío. Deja la persona sin datos, lista para usar los setters. */
+   
     public Persona() {
         totalCreadas++;
     }
 
-    /** Constructor con un solo parámetro: solo el tipo de documento. */
+    
     public Persona(String tipoDocumento) throws DocumentoInvalidoException {
         this();
         setTipoDocumento(tipoDocumento);
     }
 
-    /** Constructor con dos parámetros: tipo y número de documento. */
+    
     public Persona(String tipoDocumento, String nroDocumento)
             throws DocumentoInvalidoException {
         this(tipoDocumento);
         setNroDocumento(nroDocumento);
     }
 
-    /** Constructor completo. */
+   
     public Persona(String tipoDocumento, String nroDocumento, String nombre,
                    String paterno, String materno, LocalDate fechaNacimiento)
             throws DocumentoInvalidoException {
@@ -70,11 +56,7 @@ public class Persona {
         setFechaNacimiento(fechaNacimiento);
     }
 
-    // ------------------------------------------------------------------
-    // VALIDACIONES (método estático)
-    // ------------------------------------------------------------------
-
-    /** Devuelve la cantidad de dígitos o caracteres que exige cada tipo de documento. */
+   
     public static int longitudEsperada(String tipoDocumento) {
         if (tipoDocumento == null) {
             return 0;
@@ -88,12 +70,7 @@ public class Persona {
         }
     }
 
-    /**
-     * Valida el número de documento según su tipo.
-     *
-     * @throws DocumentoInvalidoException si el número es nulo, vacío, tiene una
-     *         longitud incorrecta o contiene caracteres no numéricos cuando no debe.
-     */
+    
     public static void validarDocumento(String tipoDocumento, String nroDocumento)
             throws DocumentoInvalidoException {
 
@@ -113,23 +90,19 @@ public class Persona {
                     "Para " + tipoDocumento + " el número debe tener "
                     + esperado + " caracteres. Se recibieron " + numero.length() + ".");
         }
-        // El pasaporte admite letras; los demás documentos solo dígitos.
+        
         if (!PASAPORTE.equalsIgnoreCase(tipoDocumento) && !numero.matches("\\d+")) {
             throw new DocumentoInvalidoException(
                     "El número de " + tipoDocumento + " solo debe contener dígitos.");
         }
     }
 
-    // ------------------------------------------------------------------
-    // SOBRECARGA DE MÉTODOS
-    // ------------------------------------------------------------------
-
-    /** Muestra los datos de la persona con el encabezado por defecto. */
+    
     public void verDatos() {
         verDatos("PERSONA");
     }
 
-    /** Muestra los datos de la persona con un encabezado personalizado. */
+    
     public void verDatos(String titulo) {
         System.out.println("---------- " + titulo + " ----------");
         System.out.println("Documento : " + tipoDocumento + " " + nroDocumento);
@@ -140,17 +113,12 @@ public class Persona {
         System.out.println("Edad      : " + calcularEdad() + " años");
     }
 
-    /** Nombre completo en el formato "Nombre Paterno Materno". */
+    
     public String getNombreCompleto() {
         return getNombreCompleto(false);
     }
 
-    /**
-     * Nombre completo.
-     *
-     * @param apellidosPrimero true devuelve "Paterno Materno, Nombre";
-     *                         false devuelve "Nombre Paterno Materno".
-     */
+    
     public String getNombreCompleto(boolean apellidosPrimero) {
         String n = nombre  == null ? "" : nombre.trim();
         String p = paterno == null ? "" : paterno.trim();
@@ -164,12 +132,12 @@ public class Persona {
         return completo.isEmpty() || completo.equals(",") ? "(sin nombre)" : completo;
     }
 
-    /** Edad calculada a la fecha actual. */
+    
     public int calcularEdad() {
         return calcularEdad(LocalDate.now());
     }
 
-    /** Edad calculada a una fecha de referencia (por ejemplo, al cierre del ciclo). */
+    
     public int calcularEdad(LocalDate fechaReferencia) {
         if (fechaNacimiento == null || fechaReferencia == null
                 || fechaNacimiento.isAfter(fechaReferencia)) {
@@ -178,10 +146,7 @@ public class Persona {
         return Period.between(fechaNacimiento, fechaReferencia).getYears();
     }
 
-    // ------------------------------------------------------------------
-    // GETTERS Y SETTERS
-    // ------------------------------------------------------------------
-
+    
     public String getTipoDocumento() {
         return tipoDocumento;
     }
