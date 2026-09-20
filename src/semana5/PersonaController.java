@@ -1,210 +1,129 @@
 package semana5;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import semana5.excepciones.PersonaNoEncontradaException;
 
 /**
- * Controlador que gestiona las personas en memoria usando COLECCIONES.
  *
- *  - ArrayList: mantiene el orden de registro y permite recorrer y listar.
- *  - HashMap:   índice por número de documento para buscar en tiempo constante
- *               y para impedir documentos duplicados.
- *
- * Ambas estructuras se mantienen sincronizadas: todo lo que entra o sale de la
- * lista también entra o sale del mapa.
+ * @author jhose
  */
 public class PersonaController {
+    ArrayList<Persona> lista = new ArrayList();
 
-    private final ArrayList<Persona> lista;
-    private final HashMap<String, Persona> indicePorDocumento;
-
-    public PersonaController() {
-        this.lista = new ArrayList<>();
-        this.indicePorDocumento = new HashMap<>();
-    }
-
-    // ------------------------------------------------------------------
-    // ALTA
-    // ------------------------------------------------------------------
-
-    /**
-     * Agrega una persona a la colección.
-     *
-     * @return true si se agregó; false si el documento ya existía o el objeto
-     *         llegó nulo o incompleto.
-     */
-    public boolean agregarPersona(Persona persona) {
-        if (persona == null || persona.getNroDocumento() == null) {
-            System.out.println("No se puede agregar: la persona no tiene documento registrado.");
+    public boolean AgregarPersona(Persona nuevapersona) {
+        if (nuevapersona.getNro_documento() == null) {
+            System.out.println("Error: la persona no tiene numero de documento");
             return false;
         }
-        String clave = persona.getNroDocumento();
-        if (indicePorDocumento.containsKey(clave)) {
-            System.out.println("El documento " + clave + " ya está registrado.");
+        if (this.buscarPersona(nuevapersona.getNro_documento()) != null) {
+            System.out.println("Error: el documento " + nuevapersona.getNro_documento()
+                    + " ya esta registrado");
             return false;
         }
-        lista.add(persona);
-        indicePorDocumento.put(clave, persona);
+        lista.add(nuevapersona);
         return true;
     }
 
-    /** Sobrecarga: agrega varias personas de una sola llamada (varargs). */
-    public int agregarPersona(Persona... personas) {
-        int agregadas = 0;
-        for (Persona p : personas) {
-            if (agregarPersona(p)) {
-                agregadas++;
+    public void listarPersonas() {
+        if (lista.isEmpty()) {
+            System.out.println("No hay personas registradas");
+            return;
+        }
+        System.out.println("La lista contiene las siguientes personas es: ");
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p = lista.get(i);
+            p.VerDatos();
+        }
+    }
+
+    public void listarPersonas(String tipo_doc) {
+        int encontrados = 0;
+        System.out.println("Personas con tipo de documento " + tipo_doc + ":");
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p = lista.get(i);
+            if (p.getTipo_doc() != null && p.getTipo_doc().equals(tipo_doc)) {
+                p.VerDatos();
+                encontrados++;
             }
         }
-        return agregadas;
+        if (encontrados == 0) {
+            System.out.println("No hay personas con ese tipo de documento");
+        }
     }
 
-    // ------------------------------------------------------------------
-    // CONSULTA
-    // ------------------------------------------------------------------
-
-    /**
-     * Busca una persona por su número de documento.
-     *
-     * @throws PersonaNoEncontradaException si el documento no está registrado.
-     */
-    public Persona buscarPorDocumento(String nroDocumento)
-            throws PersonaNoEncontradaException {
-        if (nroDocumento == null || nroDocumento.trim().isEmpty()) {
-            throw new PersonaNoEncontradaException(
-                    "Debe indicar un número de documento para buscar.");
+    public void listarPersonas(int edad_minima, int edad_maxima) {
+        int encontrados = 0;
+        System.out.println("Personas entre " + edad_minima + " y " + edad_maxima + " años:");
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p = lista.get(i);
+            int edad = p.CalcularEdad();
+            if (edad >= edad_minima && edad <= edad_maxima) {
+                p.VerDatos();
+                encontrados++;
+            }
         }
-        Persona encontrada = indicePorDocumento.get(nroDocumento.trim());
-        if (encontrada == null) {
-            throw new PersonaNoEncontradaException(
-                    "No se encontró ninguna persona con el documento " + nroDocumento + ".");
+        if (encontrados == 0) {
+            System.out.println("No hay personas en ese rango de edad");
         }
-        return encontrada;
     }
 
-    /**
-     * Devuelve la persona ubicada en una posición de la lista.
-     * Controla el índice para no propagar IndexOutOfBoundsException.
-     */
-    public Persona obtenerPorIndice(int indice) {
+    public Persona buscarPersona(String nro_documento) {
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p = lista.get(i);
+            if (p.getNro_documento() != null && p.getNro_documento().equals(nro_documento)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public Persona obtenerPersona(int posicion) {
         try {
-            return lista.get(indice);
+            return lista.get(posicion);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("El registro solicitado no existe. "
-                    + "La lista tiene " + lista.size() + " elemento(s).");
+            System.out.println("Error: la posicion " + posicion + " no existe. La lista tiene "
+                    + lista.size() + " persona(s)");
             return null;
         }
     }
 
-    // ------------------------------------------------------------------
-    // BAJA
-    // ------------------------------------------------------------------
-
-    /**
-     * Elimina una persona por su número de documento.
-     *
-     * @throws PersonaNoEncontradaException si el documento no está registrado.
-     */
-    public void eliminarPorDocumento(String nroDocumento)
-            throws PersonaNoEncontradaException {
-        Persona persona = buscarPorDocumento(nroDocumento);
-        lista.remove(persona);
-        indicePorDocumento.remove(persona.getNroDocumento());
-    }
-
-    // ------------------------------------------------------------------
-    // LISTADOS (métodos sobrecargados)
-    // ------------------------------------------------------------------
-
-    /** Lista todas las personas registradas. */
-    public void listarPersonas() {
-        if (lista.isEmpty()) {
-            System.out.println("No hay registros para mostrar.");
+    public void eliminarPersona(String nro_documento) {
+        Persona p = this.buscarPersona(nro_documento);
+        if (p == null) {
+            System.out.println("Error: no se encontro el documento " + nro_documento);
             return;
         }
-        System.out.println("Lista de personas registradas (" + lista.size() + "):");
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println("  " + (i + 1) + ". " + lista.get(i));
-        }
+        lista.remove(p);
+        System.out.println("Persona eliminada. Quedan " + lista.size() + " persona(s)");
     }
 
-    /** Sobrecarga: lista solo las personas de un tipo de documento. */
-    public void listarPersonas(String tipoDocumento) {
-        List<Persona> filtradas = new ArrayList<>();
-        for (Persona p : lista) {
-            if (p.getTipoDocumento() != null
-                    && p.getTipoDocumento().equalsIgnoreCase(tipoDocumento)) {
-                filtradas.add(p);
-            }
-        }
-        if (filtradas.isEmpty()) {
-            System.out.println("No hay registros con tipo de documento " + tipoDocumento + ".");
-            return;
-        }
-        System.out.println("Personas con " + tipoDocumento.toUpperCase()
-                + " (" + filtradas.size() + "):");
-        for (Persona p : filtradas) {
-            System.out.println("  - " + p);
-        }
-    }
-
-    /** Sobrecarga: lista las personas dentro de un rango de edad. */
-    public void listarPersonas(int edadMinima, int edadMaxima) {
-        List<Persona> filtradas = new ArrayList<>();
-        for (Persona p : lista) {
-            int edad = p.calcularEdad();
-            if (edad >= edadMinima && edad <= edadMaxima) {
-                filtradas.add(p);
-            }
-        }
-        if (filtradas.isEmpty()) {
-            System.out.println("No hay personas entre " + edadMinima
-                    + " y " + edadMaxima + " años.");
-            return;
-        }
-        System.out.println("Personas entre " + edadMinima + " y " + edadMaxima
-                + " años (" + filtradas.size() + "):");
-        for (Persona p : filtradas) {
-            System.out.println("  - " + p);
-        }
-    }
-
-    // ------------------------------------------------------------------
-    // OPERACIONES SOBRE LA COLECCIÓN
-    // ------------------------------------------------------------------
-
-    /** Ordena la lista alfabéticamente por apellido paterno y luego por nombre. */
     public void ordenarPorApellido() {
-        lista.sort(Comparator
-                .comparing((Persona p) -> p.getPaterno() == null ? "" : p.getPaterno().toUpperCase())
-                .thenComparing(p -> p.getNombre() == null ? "" : p.getNombre().toUpperCase()));
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = i + 1; j < lista.size(); j++) {
+                String a = lista.get(i).getApe_paterno();
+                String b = lista.get(j).getApe_paterno();
+                if (a != null && b != null && a.compareToIgnoreCase(b) > 0) {
+                    Persona temporal = lista.get(i);
+                    lista.set(i, lista.get(j));
+                    lista.set(j, temporal);
+                }
+            }
+        }
+        System.out.println("Lista ordenada por apellido paterno");
     }
 
-    /** Cuenta cuántas personas hay por cada tipo de documento. */
-    public Map<String, Integer> contarPorTipoDocumento() {
-        Map<String, Integer> conteo = new LinkedHashMap<>();
-        for (Persona p : lista) {
-            String tipo = p.getTipoDocumento() == null ? "SIN TIPO" : p.getTipoDocumento();
-            conteo.put(tipo, conteo.getOrDefault(tipo, 0) + 1);
+    public int contarPorTipo(String tipo_doc) {
+        int contador = 0;
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p = lista.get(i);
+            if (p.getTipo_doc() != null && p.getTipo_doc().equals(tipo_doc)) {
+                contador++;
+            }
         }
-        return conteo;
+        return contador;
     }
 
     public int getCantidad() {
         return lista.size();
     }
-
-    public boolean estaVacia() {
-        return lista.isEmpty();
-    }
-
-    /** Devuelve una copia de la lista para que nadie modifique la colección interna. */
-    public List<Persona> getLista() {
-        return new ArrayList<>(lista);
-    }
 }
+
