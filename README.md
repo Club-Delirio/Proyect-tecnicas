@@ -18,7 +18,6 @@ UPN, periodo 2026-2).
 | Carpeta / archivo | Descripción |
 |---|---|
 | `src/semana5/` | Práctica de sobrecarga de métodos, manejo de errores y colecciones |
-| `src/semana5/excepciones/` | Excepciones propias del proyecto |
 | `docs/GUIA_GIT_GITHUB.md` | Guía documentada de Git y GitHub (semanas 1 a 4) |
 | `docs/` | Informes y formatos de práctica de campo |
 | `.gitignore` | Excluye del control de versiones los archivos compilados |
