@@ -1,131 +1,88 @@
 digraph UML {
-  graph [rankdir=TB, splines=polyline, bgcolor="white", fontname="Helvetica", nodesep=0.7, ranksep=1.0];
+  graph [rankdir=TB, splines=polyline, bgcolor="white", fontname="Helvetica",
+         nodesep=0.5, ranksep=0.7, compound=true, pad=0.3];
   node  [shape=plaintext, fontname="Helvetica", fontsize=10];
   edge  [fontname="Helvetica", fontsize=9];
 
-  Persona [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#2c3e50"><FONT COLOR="white"><B>Persona</B></FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-   + &lt;&lt;static final&gt;&gt; DNI : String = "DNI"<BR/>
-   + &lt;&lt;static final&gt;&gt; CARNET_EXTRANJERIA : String = "CE"<BR/>
-   + &lt;&lt;static final&gt;&gt; PASAPORTE : String = "PASAPORTE"<BR/>
-   + &lt;&lt;static final&gt;&gt; RUC : String = "RUC"<BR/>
-   - &lt;&lt;static final&gt;&gt; FORMATO_FECHA : DateTimeFormatter<BR/>
-   - &lt;&lt;static&gt;&gt; totalCreadas : int<BR/>
-   - tipoDocumento : String<BR/>
-   - nroDocumento : String<BR/>
-   - nombre : String<BR/>
-   - paterno : String<BR/>
-   - materno : String<BR/>
-   - fechaNacimiento : LocalDate
-   </TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
-   + Persona()<BR/>
-   + Persona(tipoDocumento : String)<BR/>
-   + Persona(tipoDocumento : String, nroDocumento : String)<BR/>
-   + Persona(tipoDocumento, nroDocumento, nombre, paterno, materno, fechaNacimiento)<BR/>
-   + &lt;&lt;static&gt;&gt; longitudEsperada(tipoDocumento : String) : int<BR/>
-   + &lt;&lt;static&gt;&gt; validarDocumento(tipoDocumento : String, nroDocumento : String) : void<BR/>
-   + verDatos() : void<BR/>
-   + verDatos(titulo : String) : void<BR/>
-   + getNombreCompleto() : String<BR/>
-   + getNombreCompleto(apellidosPrimero : boolean) : String<BR/>
-   + calcularEdad() : int<BR/>
-   + calcularEdad(fechaReferencia : LocalDate) : int<BR/>
-   + get/set TipoDocumento, NroDocumento, Nombre, Paterno, Materno, FechaNacimiento<BR/>
-   + &lt;&lt;static&gt;&gt; getTotalCreadas() : int<BR/>
-   + toString() : String
-   </TD></TR>
-  </TABLE>>];
+  subgraph cluster_semana5 {
+    label = <<B>Diagrama de clases — paquete semana5</B><BR/><FONT POINT-SIZE="9">Sistema de gestión de matrícula y control de asistencia</FONT>>;
+    labelloc = "t";
+    fontname = "Helvetica";
+    fontsize = 13;
+    style = "rounded";
+    color = "#7f8c8d";
+    penwidth = 1.2;
+    margin = 18;
 
-  PersonaController [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#2c3e50"><FONT COLOR="white"><B>PersonaController</B></FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-   - &lt;&lt;final&gt;&gt; lista : ArrayList&lt;Persona&gt;<BR/>
-   - &lt;&lt;final&gt;&gt; indicePorDocumento : HashMap&lt;String, Persona&gt;
-   </TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
-   + PersonaController()<BR/>
-   + agregarPersona(persona : Persona) : boolean<BR/>
-   + agregarPersona(personas : Persona...) : int<BR/>
-   + buscarPorDocumento(nroDocumento : String) : Persona<BR/>
-   + obtenerPorIndice(indice : int) : Persona<BR/>
-   + eliminarPorDocumento(nroDocumento : String) : void<BR/>
-   + listarPersonas() : void<BR/>
-   + listarPersonas(tipoDocumento : String) : void<BR/>
-   + listarPersonas(edadMinima : int, edadMaxima : int) : void<BR/>
-   + ordenarPorApellido() : void<BR/>
-   + contarPorTipoDocumento() : Map&lt;String, Integer&gt;<BR/>
-   + getCantidad() : int<BR/>
-   + estaVacia() : boolean<BR/>
-   + getLista() : List&lt;Persona&gt;
-   </TD></TR>
-  </TABLE>>];
+    Semana5 [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
+     <TR><TD BGCOLOR="#8e44ad"><FONT COLOR="white"><B>Semana5</B></FONT></TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT">(sin atributos de instancia)</TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
+     + main(args : String[]) : void<BR/>
+     + registrarPersona(sc : Scanner, controla : PersonaController) : void
+     </TD></TR>
+    </TABLE>>];
 
-  Calculadora [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#2c3e50"><FONT COLOR="white"><B>Calculadora</B></FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT">(sin atributos de instancia)</TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
-   + calcular(a : int, b : int) : int<BR/>
-   + calcular(a : int, b : int, c : int) : int<BR/>
-   + calcular(a : double, b : double) : double<BR/>
-   + calcular(a : String, b : String) : String<BR/>
-   + calcular(numeros : int...) : int<BR/>
-   + dividir(a : int, b : int) : double<BR/>
-   + &lt;&lt;static&gt;&gt; convertirAEntero(texto : String) : int
-   </TD></TR>
-  </TABLE>>];
+    PersonaController [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
+     <TR><TD BGCOLOR="#2c3e50"><FONT COLOR="white"><B>PersonaController</B></FONT></TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT">
+     ~ lista : ArrayList&lt;Persona&gt;
+     </TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
+     + AgregarPersona(nuevapersona : Persona) : boolean<BR/>
+     + listarPersonas() : void<BR/>
+     + listarPersonas(tipo_doc : String) : void<BR/>
+     + listarPersonas(edad_minima : int, edad_maxima : int) : void<BR/>
+     + buscarPersona(nro_documento : String) : Persona<BR/>
+     + obtenerPersona(posicion : int) : Persona<BR/>
+     + eliminarPersona(nro_documento : String) : void<BR/>
+     + ordenarPorApellido() : void<BR/>
+     + contarPorTipo(tipo_doc : String) : int<BR/>
+     + getCantidad() : int
+     </TD></TR>
+    </TABLE>>];
 
-  Semana5 [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#8e44ad"><FONT COLOR="white"><B>Semana5</B><BR/>&lt;&lt;main&gt;&gt;</FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-   - &lt;&lt;static final&gt;&gt; FORMATO : DateTimeFormatter<BR/>
-   - &lt;&lt;static final&gt;&gt; controlador : PersonaController<BR/>
-   - &lt;&lt;static final&gt;&gt; sc : Scanner
-   </TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
-   + &lt;&lt;static&gt;&gt; main(args : String[]) : void<BR/>
-   - menuPrincipal() : void<BR/>
-   - registrarPersona() : void<BR/>
-   - listarPorTipo() : void<BR/>
-   - buscarPersona() : void<BR/>
-   - eliminarPersona() : void<BR/>
-   - mostrarResumen() : void<BR/>
-   - probarCalculadora() : void<BR/>
-   - ejecutarDemostracion() : void
-   </TD></TR>
-  </TABLE>>];
+    Persona [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
+     <TR><TD BGCOLOR="#2c3e50"><FONT COLOR="white"><B>Persona</B></FONT></TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT">
+     - tipo_doc : String<BR/>
+     - nro_documento : String<BR/>
+     - nombre : String<BR/>
+     - ape_paterno : String<BR/>
+     - ape_materno : String<BR/>
+     - fecha_nacimiento : LocalDate
+     </TD></TR>
+     <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">
+     + Persona()<BR/>
+     + Persona(tipo_doc : String)<BR/>
+     + Persona(tipo_doc : String, nro_documento : String)<BR/>
+     + Persona(tipo_doc, nro_documento, nombre, ape_paterno, ape_materno, fecha_nacimiento)<BR/>
+     + getTipo_doc() : String<BR/>
+     + setTipo_doc(tipo_doc : String) : void<BR/>
+     + getNro_documento() : String<BR/>
+     + setNro_documento(nro_documento : String) : void<BR/>
+     + getNombre() : String<BR/>
+     + setNombre(nombre : String) : void<BR/>
+     + getApe_paterno() : String<BR/>
+     + setApe_paterno(ape_paterno : String) : void<BR/>
+     + getApe_materno() : String<BR/>
+     + setApe_materno(ape_materno : String) : void<BR/>
+     + getFecha_nacimiento() : LocalDate<BR/>
+     + setFecha_nacimiento(fecha_nacimiento : LocalDate) : void<BR/>
+     + VerDatos() : void<BR/>
+     + VerDatos(titulo : String) : void<BR/>
+     + NombreCompleto() : String<BR/>
+     + NombreCompleto(apellidos_primero : boolean) : String<BR/>
+     + CalcularEdad() : int<BR/>
+     + CalcularEdad(fecha_referencia : LocalDate) : int
+     </TD></TR>
+    </TABLE>>];
 
-  DocInv [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white"><B>DocumentoInvalidoException</B></FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">+ DocumentoInvalidoException(mensaje : String)</TD></TR>
-  </TABLE>>];
-
-  PersNoEnc [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
-   <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white"><B>PersonaNoEncontradaException</B></FONT></TD></TR>
-   <TR><TD ALIGN="LEFT" BALIGN="LEFT" BGCOLOR="#ecf0f1">+ PersonaNoEncontradaException(mensaje : String)</TD></TR>
-  </TABLE>>];
-
-  Exception [label=<
-  <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#f5f5f5">
-   <TR><TD><I>java.lang.Exception</I></TD></TR>
-  </TABLE>>];
-
-  DocInv    -> Exception [arrowhead=onormal, style=solid];
-  PersNoEnc -> Exception [arrowhead=onormal, style=solid];
-
-  PersonaController -> Persona [arrowhead=odiamond, dir=back, taillabel="1", headlabel="0..*", label="agrega"];
-
-  Semana5 -> PersonaController [arrowhead=vee, style=dashed, label="usa"];
-  Semana5 -> Calculadora       [arrowhead=vee, style=dashed, label="usa"];
-  Semana5 -> Persona           [arrowhead=vee, style=dashed, label="crea"];
-
-  Persona           -> DocInv    [arrowhead=vee, style=dashed, label="throws"];
-  PersonaController -> PersNoEnc [arrowhead=vee, style=dashed, label="throws"];
+    Semana5 -> PersonaController [arrowhead=vee, style=dashed, label=" usa"];
+    Semana5 -> Persona [arrowhead=vee, style=dashed, label=" crea"];
+    PersonaController -> Persona [arrowhead=odiamond, dir=back, taillabel="1 ", headlabel=" 0..*", label=" almacena"];
+  }
 }
