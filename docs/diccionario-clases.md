@@ -94,36 +94,3 @@ Clase principal del módulo. Contiene el método `main` y el menú de consola de
 | `main(String[] args)` | `void` | Punto de entrada. Muestra el menú dentro de un ciclo `while` que se repite hasta que el usuario elige la opción 0. Las operaciones se ejecutan dentro de un bloque `try/catch/finally`. |
 | `registrarPersona(Scanner, PersonaController)` | `void` | Solicita los datos al usuario, construye el objeto Persona y lo entrega al controlador. Verifica que los datos críticos se hayan asignado antes de registrar. |
 
-### Manejo de errores
-
-| Excepción capturada | Situación | Respuesta del sistema |
-|---|---|---|
-| `NumberFormatException` | El usuario escribe texto donde se espera un número, por ejemplo en el rango de edad | "Error: debe ingresar solo numeros" |
-| `DateTimeParseException` | La fecha de nacimiento no tiene el formato aaaa-mm-dd | "Error: la fecha debe tener el formato aaaa-mm-dd" |
-| `IndexOutOfBoundsException` | Se solicita un registro en una posición inexistente | Se informa el tamaño real de la lista. Capturada dentro de `PersonaController`. |
-
-El bloque `finally` del menú garantiza que cada operación cierre con el mensaje "[Operacion finalizada]", se haya producido un error o no.
-
----
-
-## Relaciones entre clases
-
-| Origen | Destino | Tipo de relación | Multiplicidad |
-|---|---|---|---|
-| `PersonaController` | `Persona` | Agregación | 1 a 0..* |
-| `Semana5` | `PersonaController` | Dependencia de uso | — |
-| `Semana5` | `Persona` | Dependencia de creación | — |
-
-El diagrama de clases correspondiente se encuentra en `docs/diagrama_clases.png`.
-
----
-
-## Temas de la práctica cubiertos por el módulo
-
-| Tema | Dónde se demuestra |
-|---|---|
-| Sobrecarga de métodos | Cuatro constructores de `Persona`; métodos `VerDatos`, `NombreCompleto` y `CalcularEdad`; tres versiones de `listarPersonas` en `PersonaController` |
-| Manejo de errores | Validaciones en los setters de `Persona`; `try/catch/finally` en `Semana5`; captura de `IndexOutOfBoundsException` en `PersonaController` |
-| Colecciones | `ArrayList<Persona>` en `PersonaController`, con las operaciones `add`, `get`, `set`, `remove`, `size` e `isEmpty` |
-
-
