@@ -32,10 +32,14 @@ public class AcademiaSanFernando {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Persona> personas = new ArrayList();      // estudiantes y docentes (upcasting)
-        ArrayList<Ciclo> ciclos = new ArrayList();          // ciclos regulares y cursos intensivos (upcasting)
-        ArrayList<Matricula> matriculas = new ArrayList();
-        ArrayList<Asistencia> asistencias = new ArrayList();
+        // Cada coleccion se maneja a traves de su controlador. El flujo no
+        // toca nunca el ArrayList de forma directa: las reglas de negocio
+        // (no duplicar un codigo, no pasarse del aforo) viven en una sola
+        // clase y no repartidas por el main.
+        PersonaController personas = new PersonaController();          // estudiantes y docentes (upcasting)
+        CicloController ciclos = new CicloController();                // ciclos y cursos (upcasting)
+        MatriculaController matriculas = new MatriculaController();
+        AsistenciaController asistencias = new AsistenciaController();
         ArchivoUtil archivo = new ArchivoUtil("datos");
         String rpta;
         String nombre_campana = "SIN CAMPANA";
@@ -55,10 +59,10 @@ public class AcademiaSanFernando {
             cargarPersonas(archivo, personas);
             cargarMatriculas(archivo, personas, ciclos, matriculas);
             cargarAsistencias(archivo, personas, ciclos, asistencias);
-            System.out.println("Se recuperaron " + personas.size() + " personas, " + ciclos.size()
-                    + " ciclos, " + matriculas.size() + " matriculas y " + asistencias.size()
+            System.out.println("Se recuperaron " + personas.getCantidad() + " personas, " + ciclos.getCantidad()
+                    + " ciclos, " + matriculas.getCantidad() + " matriculas y " + asistencias.getCantidad()
                     + " asistencias de los archivos");
-            if (personas.size() > 0 || ciclos.size() > 0) {
+            if (personas.getCantidad() > 0 || ciclos.getCantidad() > 0) {
                 hay_datos = true;
             }
         }
@@ -77,8 +81,8 @@ public class AcademiaSanFernando {
                     "DOC-002", "COMUNICACION", 28, 2.5);
             raul.registrarHoras(80);
             carmen.registrarHoras(64);
-            personas.add(raul);
-            personas.add(carmen);
+            personas.agregarPersona(raul);
+            personas.agregarPersona(carmen);
 
             Estudiante lucia = new Estudiante("DNI", "72581496", "Lucia Fernanda", "Quispe", "Tanta",
                     "987654321", "EST-001", LocalDate.parse("2008-05-20"), "San Ramon",
@@ -98,12 +102,12 @@ public class AcademiaSanFernando {
             Estudiante marco = new Estudiante("DNI", "76398521", "Marco Antonio", "Llanos", "Saldana",
                     "932147856", "EST-006", LocalDate.parse("2005-09-25"), "San Marcelino",
                     "Ingenieria Civil", "-");
-            personas.add(lucia);
-            personas.add(diego);
-            personas.add(ana);
-            personas.add(bruno);
-            personas.add(karla);
-            personas.add(marco);
+            personas.agregarPersona(lucia);
+            personas.agregarPersona(diego);
+            personas.agregarPersona(ana);
+            personas.agregarPersona(bruno);
+            personas.agregarPersona(karla);
+            personas.agregarPersona(marco);
 
             Ciclo anual = new CicloRegular("CIC-001", "Ciclo Anual 2026-II",
                     LocalDate.parse("2026-08-03"), LocalDate.parse("2026-12-18"),
@@ -117,10 +121,10 @@ public class AcademiaSanFernando {
             Ciclo vacacional = new CursoIntensivo("CUR-002", "Vacacional Letras",
                     LocalDate.parse("2026-12-28"), LocalDate.parse("2027-01-22"),
                     380, "PRESENCIAL", 20, "LETRAS", 4, 4);
-            ciclos.add(anual);
-            ciclos.add(semestral);
-            ciclos.add(repaso);
-            ciclos.add(vacacional);
+            ciclos.agregarCiclo(anual);
+            ciclos.agregarCiclo(semestral);
+            ciclos.agregarCiclo(repaso);
+            ciclos.agregarCiclo(vacacional);
 
             // Seis matriculas de prueba: tres al contado y tres fraccionadas
             Estudiante[] quien = {lucia, bruno, karla, diego, ana, marco};
@@ -136,11 +140,7 @@ public class AcademiaSanFernando {
                     m.setNro_cuotas(cuotas[i]);
                 }
                 m.calcularPrecioFinal();
-                m.setCodigo("MAT-" + (matriculas.size() + 1));
-                en_que[i].registrarMatriculado();
-                quien[i].agregarMatricula(en_que[i]);
-                quien_tutor[i].registrarMatricula(m.getPrecio_final());
-                matriculas.add(m);
+                matriculas.agregarMatricula(m);
             }
 
             // Nueve registros de asistencia de tres estudiantes
@@ -153,13 +153,12 @@ public class AcademiaSanFernando {
                 Asistencia a = new Asistencia(quienes[i], donde[i],
                         LocalDate.now().minusDays(9 - i));
                 a.setEstado(estados[i]);
-                a.setCodigo("ASI-" + (asistencias.size() + 1));
-                asistencias.add(a);
+                asistencias.agregarAsistencia(a);
             }
 
-            System.out.println("Datos de prueba cargados: " + personas.size() + " personas, "
-                    + ciclos.size() + " ciclos, " + matriculas.size() + " matriculas y "
-                    + asistencias.size() + " asistencias");
+            System.out.println("Datos de prueba cargados: " + personas.getCantidad() + " personas, "
+                    + ciclos.getCantidad() + " ciclos, " + matriculas.getCantidad() + " matriculas y "
+                    + asistencias.getCantidad() + " asistencias");
         }
 
         // ================== 1. REGISTRO DE CICLOS Y CURSOS ==================
@@ -180,15 +179,13 @@ public class AcademiaSanFernando {
             } else {
                 c = new CursoIntensivo();
             }
-            // Se recorre la lista para no registrar dos veces el mismo codigo
+            // El controlador es quien sabe si el codigo ya esta usado
             boolean repetido = false;
             while (c.getCodigo() == null && repetido == false) {
                 System.out.println("Ingrese el codigo (CIC-000 para ciclo regular, CUR-000 para curso)");
                 String codigo = sc.nextLine();
-                for (Ciclo otro : ciclos) {
-                    if (otro.getCodigo().equalsIgnoreCase(codigo)) {
-                        repetido = true;
-                    }
+                if (ciclos.buscarCiclo(codigo) != null) {
+                    repetido = true;
                 }
                 if (repetido) {
                     System.out.println("Error: ya existe un ciclo con el codigo " + codigo.toUpperCase()
@@ -252,7 +249,7 @@ public class AcademiaSanFernando {
                         ci.setHoras_diarias(leerEntero(sc));
                     }
                 }
-                ciclos.add(c);
+                ciclos.agregarCiclo(c);
                 System.out.println("Registrado. Categoria asignada automaticamente: " + c.calcularCategoria()
                         + "  Descuento propio: " + c.calcularDescuento() + "%");
             }
@@ -268,7 +265,7 @@ public class AcademiaSanFernando {
         String[] categorias = {"BASICO", "INTERMEDIO", "PREMIUM"};
         for (int i = 0; i < categorias.length; i++) {
             System.out.println("[" + categorias[i] + "]");
-            for (Ciclo c : ciclos) {
+            for (Ciclo c : ciclos.getLista()) {
                 if (c.calcularCategoria().equals(categorias[i])) {
                     System.out.println("   " + c.getTipo() + "  " + c.getCodigo() + "  " + c.getNombre()
                             + "  " + c.getModalidad() + "  S/ " + String.format("%.2f", c.getCosto_base())
@@ -294,7 +291,7 @@ public class AcademiaSanFernando {
                 d.setNro_doc(sc.nextLine());
             }
             boolean existe = false;
-            for (Persona p : personas) {
+            for (Persona p : personas.getLista()) {
                 if (p.getNro_doc().equals(d.getNro_doc())) {
                     existe = true;
                 }
@@ -336,7 +333,7 @@ public class AcademiaSanFernando {
                 }
                 System.out.println("Ingrese las horas que dicto este mes");
                 d.registrarHoras(leerEntero(sc));
-                personas.add(d); // upcasting: el Docente se guarda en la lista de Persona
+                personas.agregarPersona(d); // upcasting: el Docente se guarda en la lista de Persona
                 System.out.println("Docente registrado correctamente");
             }
             System.out.println("Desea ingresar otro docente s/n");
@@ -360,7 +357,7 @@ public class AcademiaSanFernando {
             }
             // Si el estudiante ya existe no se vuelve a registrar, solo se actualiza su ultima visita
             Persona encontrada = null;
-            for (Persona p : personas) {
+            for (Persona p : personas.getLista()) {
                 if (p.getNro_doc().equals(e.getNro_doc())) {
                     encontrada = p;
                 }
@@ -415,7 +412,7 @@ public class AcademiaSanFernando {
                     }
                     e.setApoderado(sc.nextLine());
                 }
-                personas.add(e); // upcasting
+                personas.agregarPersona(e); // upcasting
                 System.out.println("Estudiante registrado correctamente");
             }
             System.out.println("Desea ingresar otro estudiante s/n");
@@ -448,7 +445,7 @@ public class AcademiaSanFernando {
         rpta = sc.nextLine();
         while (rpta.equalsIgnoreCase("s")) {
             System.out.println("Ingrese el codigo del estudiante (EST-000)");
-            Estudiante e = buscarEstudiante(personas, sc.nextLine());
+            Estudiante e = personas.buscarEstudiante(sc.nextLine());
             Docente tutor = null;
             if (e == null) {
                 System.out.println("Error: no existe un estudiante con ese codigo. Primero debe registrarlo");
@@ -456,7 +453,7 @@ public class AcademiaSanFernando {
                 System.out.println("Estudiante: " + e.getNombreCompleto() + "  Edad: " + e.calcularEdad()
                         + (e.esMenorDeEdad() ? "  MENOR DE EDAD, apoderado: " + e.getApoderado() : ""));
                 System.out.println("Ingrese el codigo del docente tutor (DOC-000)");
-                tutor = buscarDocente(personas, sc.nextLine());
+                tutor = personas.buscarDocente(sc.nextLine());
                 if (tutor == null) {
                     System.out.println("Error: no existe un docente con ese codigo");
                 }
@@ -465,7 +462,7 @@ public class AcademiaSanFernando {
             if (e != null && tutor != null) {
                 System.out.println("Tutor: " + tutor.getNombreCompleto() + " (" + tutor.getEspecialidad() + ")");
                 System.out.println("Ingrese el codigo del ciclo o curso");
-                c = buscarCiclo(ciclos, sc.nextLine());
+                c = ciclos.buscarCiclo(sc.nextLine());
                 if (c == null) {
                     System.out.println("Error: no existe un ciclo con ese codigo");
                 } else {
@@ -475,13 +472,8 @@ public class AcademiaSanFernando {
                                 + c.getEstado() + ", no se puede matricular a nadie mas");
                         c = null;
                     } else {
-                        boolean ya_matriculado = false;
-                        for (Ciclo otro : e.getMatriculas()) {
-                            if (otro.getCodigo().equals(c.getCodigo())) {
-                                ya_matriculado = true;
-                            }
-                        }
-                        if (ya_matriculado) {
+                        // El controlador es quien sabe si ya existe esa matricula
+                        if (matriculas.existeMatricula(e, c)) {
                             System.out.println("Error: el estudiante ya esta matriculado en ese ciclo");
                             c = null;
                         }
@@ -506,13 +498,13 @@ public class AcademiaSanFernando {
                 System.out.println("Confirmar la matricula s/n");
                 String confirma = sc.nextLine();
                 if (confirma.equalsIgnoreCase("s")) {
-                    mat.setCodigo("MAT-" + (matriculas.size() + 1));
-                    c.registrarMatriculado();
-                    e.agregarMatricula(c);
-                    tutor.registrarMatricula(mat.getPrecio_final());
-                    matriculas.add(mat);
-                    System.out.println("Matricula " + mat.getCodigo() + " registrada. El ciclo tiene ahora "
-                            + c.vacantesDisponibles() + " vacante(s) y esta " + c.getEstado());
+                    // El controlador asigna el codigo, descuenta la vacante,
+                    // guarda el ciclo en el historial del estudiante y acumula
+                    // el monto gestionado al docente tutor.
+                    if (matriculas.agregarMatricula(mat)) {
+                        System.out.println("Matricula " + mat.getCodigo() + " registrada. El ciclo tiene ahora "
+                                + c.vacantesDisponibles() + " vacante(s) y esta " + c.getEstado());
+                    }
                 } else {
                     System.out.println("Matricula cancelada, la vacante sigue disponible");
                 }
@@ -528,7 +520,7 @@ public class AcademiaSanFernando {
         rpta = sc.nextLine();
         while (rpta.equalsIgnoreCase("s")) {
             System.out.println("Ingrese el codigo del estudiante (EST-000)");
-            Estudiante e = buscarEstudiante(personas, sc.nextLine());
+            Estudiante e = personas.buscarEstudiante(sc.nextLine());
             Ciclo c = null;
             if (e == null) {
                 System.out.println("Error: no existe un estudiante con ese codigo");
@@ -553,15 +545,8 @@ public class AcademiaSanFernando {
             if (c != null) {
                 System.out.println("Ingrese la fecha de la sesion (aaaa-mm-dd)");
                 LocalDate fecha = leerFecha(sc);
-                boolean duplicada = false;
-                for (Asistencia a : asistencias) {
-                    if (a.getEstudiante().getCodigo().equals(e.getCodigo())
-                            && a.getCiclo().getCodigo().equals(c.getCodigo())
-                            && a.getFecha() != null && a.getFecha().equals(fecha)) {
-                        duplicada = true;
-                    }
-                }
-                if (duplicada) {
+                // El controlador es quien sabe si esa sesion ya se registro
+                if (asistencias.existeRegistro(e, c, fecha)) {
                     System.out.println("Error: ya existe la asistencia de ese estudiante en ese ciclo y fecha");
                 } else {
                     Asistencia a = new Asistencia(e, c, fecha);
@@ -574,9 +559,9 @@ public class AcademiaSanFernando {
                         }
                         System.out.println("Ingrese una observacion (puede dejarla vacia)");
                         a.setObservacion(sc.nextLine());
-                        a.setCodigo("ASI-" + (asistencias.size() + 1));
-                        asistencias.add(a);
-                        System.out.println("Asistencia " + a.getCodigo() + " registrada");
+                        if (asistencias.agregarAsistencia(a)) {
+                            System.out.println("Asistencia " + a.getCodigo() + " registrada");
+                        }
                     }
                 }
             }
@@ -587,22 +572,19 @@ public class AcademiaSanFernando {
         // ================== 7. LISTAS Y REPORTES ==================
         System.out.println();
         System.out.println("===== LISTA DE CICLOS Y CURSOS =====");
-        for (Ciclo c : ciclos) {
-            c.verDatos(); // polimorfismo
-        }
+        ciclos.listarCiclos(); // polimorfismo: verDatos() de CicloRegular o de CursoIntensivo
 
         System.out.println();
         System.out.println("===== LISTA DE ESTUDIANTES Y DOCENTES =====");
-        for (Persona p : personas) {
-            p.verDatos(); // polimorfismo: verDatos() de Estudiante o de Docente
-        }
+        personas.ordenarPorApellido();
+        personas.listarPersonas(); // polimorfismo: verDatos() de Estudiante o de Docente
 
         System.out.println();
         System.out.println("===== HISTORIAL DE MATRICULAS =====");
-        if (matriculas.size() == 0) {
+        if (matriculas.getCantidad() == 0) {
             System.out.println("Aun no hay matriculas registradas");
         } else {
-            for (Matricula mat : matriculas) {
+            for (Matricula mat : matriculas.getLista()) {
                 System.out.println(mat.getCodigo() + "  " + mat.getFecha() + "  "
                         + mat.getEstudiante().getNombreEnNomina() + "  "
                         + mat.getCiclo().getNombre() + "  " + mat.getForma_pago()
@@ -610,36 +592,26 @@ public class AcademiaSanFernando {
             }
 
             // Estadisticas: se acumulan los montos y se cuentan las matriculas por tipo y categoria
-            int regulares = 0, intensivos = 0, basico = 0, intermedio = 0, premium = 0, fraccionadas = 0;
-            double total = 0, campana = 0, descuentos = 0, recargos = 0;
-            for (Matricula mat : matriculas) {
-                total = total + mat.getPrecio_final();
+            int regulares   = matriculas.contarPorTipo("CICLO REGULAR");
+            int intensivos  = matriculas.contarPorTipo("CURSO INTENSIVO");
+            int basico      = matriculas.contarPorCategoria("BASICO");
+            int intermedio  = matriculas.contarPorCategoria("INTERMEDIO");
+            int premium     = matriculas.contarPorCategoria("PREMIUM");
+            int fraccionadas = matriculas.contarPorFormaPago("FRACCIONADO");
+            double total      = matriculas.calcularIngresoTotal();
+            double descuentos = matriculas.calcularTotalDescuentos();
+            double recargos   = matriculas.calcularTotalRecargos();
+            double campana = 0;
+            for (Matricula mat : matriculas.getLista()) {
                 campana = campana + mat.getMonto_campana();
-                descuentos = descuentos + mat.getMonto_descuento();
-                recargos = recargos + mat.getRecargo();
-                if (mat.getCiclo() instanceof CicloRegular) {
-                    regulares++;
-                } else {
-                    intensivos++;
-                }
-                if (mat.getCiclo().calcularCategoria().equals("BASICO")) {
-                    basico++;
-                } else if (mat.getCiclo().calcularCategoria().equals("INTERMEDIO")) {
-                    intermedio++;
-                } else {
-                    premium++;
-                }
-                if (mat.getForma_pago().equals("FRACCIONADO")) {
-                    fraccionadas++;
-                }
             }
             System.out.println();
             System.out.println("===== ESTADISTICAS DE MATRICULA =====");
-            System.out.println("Matriculas registradas : " + matriculas.size());
+            System.out.println("Matriculas registradas : " + matriculas.getCantidad());
             System.out.println("Por tipo               : " + regulares + " ciclos regulares, " + intensivos + " cursos intensivos");
             System.out.println("Por categoria          : BASICO " + basico + " | INTERMEDIO " + intermedio + " | PREMIUM " + premium);
-            System.out.println("Forma de pago          : " + (matriculas.size() - fraccionadas) + " al contado, " + fraccionadas + " fraccionadas");
-            System.out.println("Matricula promedio     : S/ " + String.format("%.2f", total / matriculas.size()));
+            System.out.println("Forma de pago          : " + (matriculas.getCantidad() - fraccionadas) + " al contado, " + fraccionadas + " fraccionadas");
+            System.out.println("Matricula promedio     : S/ " + String.format("%.2f", total / matriculas.getCantidad()));
 
             System.out.println();
             System.out.println("===== REPORTE FINANCIERO =====");
@@ -647,28 +619,27 @@ public class AcademiaSanFernando {
             System.out.println("(-) Descuentos del ciclo  : S/ " + String.format("%.2f", descuentos));
             System.out.println("(+) Recargos por cuotas   : S/ " + String.format("%.2f", recargos));
             System.out.println("INGRESO TOTAL             : S/ " + String.format("%.2f", total));
-            double planilla = 0;
-            for (Persona p : personas) {
+            for (Persona p : personas.getLista()) {
                 if (p instanceof Docente) {
                     Docente d = (Docente) p; // downcasting
                     System.out.println("Pago de " + d.getNombreCompleto() + ": S/ "
                             + String.format("%.2f", d.calcularPagoTotal())
                             + "  (dictado S/ " + String.format("%.2f", d.calcularPagoHoras())
                             + " + bonificacion S/ " + String.format("%.2f", d.calcularBonificacion()) + ")");
-                    planilla = planilla + d.calcularPagoTotal();
                 }
             }
+            double planilla = personas.calcularPlanillaDocente();
             System.out.println("Planilla docente          : S/ " + String.format("%.2f", planilla));
             System.out.println("Ingreso neto              : S/ " + String.format("%.2f", total - planilla));
         }
 
         System.out.println();
         System.out.println("===== REPORTE DE ASISTENCIA =====");
-        if (asistencias.size() == 0) {
+        if (asistencias.getCantidad() == 0) {
             System.out.println("Aun no hay asistencias registradas");
         } else {
             int presentes = 0, tardanzas = 0, ausentes = 0, justificados = 0;
-            for (Asistencia a : asistencias) {
+            for (Asistencia a : asistencias.getLista()) {
                 if (a.getEstado().equals("PRESENTE")) {
                     presentes++;
                 } else if (a.getEstado().equals("TARDANZA")) {
@@ -679,11 +650,11 @@ public class AcademiaSanFernando {
                     justificados++;
                 }
             }
-            for (Persona p : personas) {
+            for (Persona p : personas.getLista()) {
                 if (p instanceof Estudiante) {
                     Estudiante e = (Estudiante) p; // downcasting
                     int registros = 0, asistio = 0;
-                    for (Asistencia a : asistencias) {
+                    for (Asistencia a : asistencias.getLista()) {
                         if (a.getEstudiante().getCodigo().equals(e.getCodigo())) {
                             registros++;
                             if (a.cuentaComoAsistio()) {
@@ -765,29 +736,29 @@ public class AcademiaSanFernando {
      * convierte en una linea con convertirALinea(): el metodo que se ejecuta
      * depende del objeto real, por polimorfismo.
      */
-    public static void guardarTodo(ArchivoUtil archivo, ArrayList<Persona> personas,
-            ArrayList<Ciclo> ciclos, ArrayList<Matricula> matriculas,
-            ArrayList<Asistencia> asistencias) {
+    public static void guardarTodo(ArchivoUtil archivo, PersonaController personas,
+            CicloController ciclos, MatriculaController matriculas,
+            AsistenciaController asistencias) {
         ArrayList<String> lineas = new ArrayList();
-        for (Ciclo c : ciclos) {
+        for (Ciclo c : ciclos.getLista()) {
             lineas.add(c.convertirALinea());
         }
         archivo.guardarLineas("ciclos.txt", lineas);
 
         lineas = new ArrayList();
-        for (Persona p : personas) {
+        for (Persona p : personas.getLista()) {
             lineas.add(p.convertirALinea());
         }
         archivo.guardarLineas("personas.txt", lineas);
 
         lineas = new ArrayList();
-        for (Matricula m : matriculas) {
+        for (Matricula m : matriculas.getLista()) {
             lineas.add(m.convertirALinea());
         }
         archivo.guardarLineas("matriculas.txt", lineas);
 
         lineas = new ArrayList();
-        for (Asistencia a : asistencias) {
+        for (Asistencia a : asistencias.getLista()) {
             lineas.add(a.convertirALinea());
         }
         archivo.guardarLineas("asistencias.txt", lineas);
@@ -797,10 +768,10 @@ public class AcademiaSanFernando {
      * Exporta el historial de matriculas a un archivo CSV con fila de
      * encabezados, para que la administracion lo abra en una hoja de calculo.
      */
-    public static void exportarReporteMatriculas(ArchivoUtil archivo, ArrayList<Matricula> matriculas) {
+    public static void exportarReporteMatriculas(ArchivoUtil archivo, MatriculaController matriculas) {
         ArrayList<String> lineas = new ArrayList();
         lineas.add("CODIGO;FECHA;ESTUDIANTE;TUTOR;CICLO;TIPO;CATEGORIA;FORMA_PAGO;PRECIO_FINAL");
-        for (Matricula m : matriculas) {
+        for (Matricula m : matriculas.getLista()) {
             lineas.add(m.getCodigo() + ";" + m.getFecha() + ";"
                     + m.getEstudiante().getNombreCompleto() + ";"
                     + m.getTutor().getNombreCompleto() + ";"
@@ -815,7 +786,7 @@ public class AcademiaSanFernando {
      * Lee ciclos.txt y vuelve a crear los objetos CicloRegular o
      * CursoIntensivo segun el primer campo de la linea.
      */
-    public static void cargarCiclos(ArchivoUtil archivo, ArrayList<Ciclo> ciclos) {
+    public static void cargarCiclos(ArchivoUtil archivo, CicloController ciclos) {
         ArrayList<String> lineas = archivo.leerLineas("ciclos.txt");
         int cargados = 0;
         for (int i = 0; i < lineas.size(); i++) {
@@ -840,7 +811,7 @@ public class AcademiaSanFernando {
                 c.setMatriculados(Integer.parseInt(campo[8]));
                 c.setEstado(campo[9]);
                 if (c.getCodigo() != null) {
-                    ciclos.add(c);
+                    ciclos.agregarCiclo(c);
                     cargados = cargados + 1;
                 }
             } catch (Exception e) {
@@ -854,7 +825,7 @@ public class AcademiaSanFernando {
      * Lee personas.txt y vuelve a crear los objetos Estudiante o Docente
      * segun el primer campo de la linea (upcasting a la lista de Persona).
      */
-    public static void cargarPersonas(ArchivoUtil archivo, ArrayList<Persona> personas) {
+    public static void cargarPersonas(ArchivoUtil archivo, PersonaController personas) {
         ArrayList<String> lineas = archivo.leerLineas("personas.txt");
         int cargados = 0;
         for (int i = 0; i < lineas.size(); i++) {
@@ -875,7 +846,7 @@ public class AcademiaSanFernando {
                     p = d;
                 }
                 if (p.getNro_doc() != null) {
-                    personas.add(p);
+                    personas.agregarPersona(p);
                     cargados = cargados + 1;
                 }
             } catch (Exception e) {
@@ -892,8 +863,8 @@ public class AcademiaSanFernando {
      * docente. El contador de matriculados del ciclo ya viene del archivo, de
      * modo que aqui no se vuelve a sumar.
      */
-    public static void cargarMatriculas(ArchivoUtil archivo, ArrayList<Persona> personas,
-            ArrayList<Ciclo> ciclos, ArrayList<Matricula> matriculas) {
+    public static void cargarMatriculas(ArchivoUtil archivo, PersonaController personas,
+            CicloController ciclos, MatriculaController matriculas) {
         ArrayList<String> lineas = archivo.leerLineas("matriculas.txt");
         int cargadas = 0;
         for (int i = 0; i < lineas.size(); i++) {
@@ -903,9 +874,9 @@ public class AcademiaSanFernando {
                 continue;
             }
             try {
-                Estudiante e = buscarEstudiante(personas, campo[2]);
-                Docente d = buscarDocente(personas, campo[3]);
-                Ciclo c = buscarCiclo(ciclos, campo[4]);
+                Estudiante e = personas.buscarEstudiante(campo[2]);
+                Docente d = personas.buscarDocente(campo[3]);
+                Ciclo c = ciclos.buscarCiclo(campo[4]);
                 if (e == null || d == null || c == null) {
                     System.out.println("Aviso: la matricula " + campo[0]
                             + " referencia datos que ya no existen y se omite");
@@ -921,7 +892,9 @@ public class AcademiaSanFernando {
                 m.setCodigo(campo[0]);
                 e.agregarMatricula(c);
                 d.registrarMatricula(m.getPrecio_final());
-                matriculas.add(m);
+                // Se agrega sin volver a descontar la vacante: el contador de
+                // matriculados ya viene guardado en ciclos.txt.
+                matriculas.agregarDesdeArchivo(m);
                 cargadas = cargadas + 1;
             } catch (Exception e) {
                 System.out.println("Aviso: no se pudo leer la linea " + (i + 1) + " de matriculas.txt");
@@ -934,8 +907,8 @@ public class AcademiaSanFernando {
      * Lee asistencias.txt y vuelve a armar cada registro buscando al
      * estudiante y al ciclo que la linea referencia.
      */
-    public static void cargarAsistencias(ArchivoUtil archivo, ArrayList<Persona> personas,
-            ArrayList<Ciclo> ciclos, ArrayList<Asistencia> asistencias) {
+    public static void cargarAsistencias(ArchivoUtil archivo, PersonaController personas,
+            CicloController ciclos, AsistenciaController asistencias) {
         ArrayList<String> lineas = archivo.leerLineas("asistencias.txt");
         int cargadas = 0;
         for (int i = 0; i < lineas.size(); i++) {
@@ -945,8 +918,8 @@ public class AcademiaSanFernando {
                 continue;
             }
             try {
-                Estudiante e = buscarEstudiante(personas, campo[1]);
-                Ciclo c = buscarCiclo(ciclos, campo[2]);
+                Estudiante e = personas.buscarEstudiante(campo[1]);
+                Ciclo c = ciclos.buscarCiclo(campo[2]);
                 if (e == null || c == null) {
                     System.out.println("Aviso: la asistencia " + campo[0]
                             + " referencia datos que ya no existen y se omite");
@@ -959,7 +932,7 @@ public class AcademiaSanFernando {
                 }
                 a.setCodigo(campo[0]);
                 if (a.getEstado() != null) {
-                    asistencias.add(a);
+                    asistencias.agregarDesdeArchivo(a);
                     cargadas = cargadas + 1;
                 }
             } catch (Exception e) {
@@ -967,43 +940,5 @@ public class AcademiaSanFernando {
             }
         }
         System.out.println("Asistencias recuperadas: " + cargadas);
-    }
-
-    // ================== METODOS DE BUSQUEDA ==================
-
-    // Busca un estudiante por su codigo EST-000 (downcasting desde Persona)
-    public static Estudiante buscarEstudiante(ArrayList<Persona> personas, String codigo) {
-        for (Persona p : personas) {
-            if (p instanceof Estudiante) {
-                Estudiante e = (Estudiante) p;
-                if (e.getCodigo().equalsIgnoreCase(codigo)) {
-                    return e;
-                }
-            }
-        }
-        return null;
-    }
-
-    // Busca un docente por su codigo DOC-000 (downcasting desde Persona)
-    public static Docente buscarDocente(ArrayList<Persona> personas, String codigo) {
-        for (Persona p : personas) {
-            if (p instanceof Docente) {
-                Docente d = (Docente) p;
-                if (d.getCodigo().equalsIgnoreCase(codigo)) {
-                    return d;
-                }
-            }
-        }
-        return null;
-    }
-
-    // Busca un ciclo o curso por su codigo
-    public static Ciclo buscarCiclo(ArrayList<Ciclo> ciclos, String codigo) {
-        for (Ciclo c : ciclos) {
-            if (c.getCodigo().equalsIgnoreCase(codigo)) {
-                return c;
-            }
-        }
-        return null;
     }
 }
