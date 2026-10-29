@@ -216,10 +216,15 @@ git config --global user.email "snkje123@gmail.com"
 git config --global init.defaultBranch main
 git config --global core.autocrlf true        # solo en Windows
 git config --global pull.rebase false
+git config --global core.editor nano         # evita que se abra Vim
 
 # Comprobar
 git config --list | grep -E "user|credential"
 ```
+
+> ⚠️ **La línea del editor importa.** Sin ella, cuando Git necesite que escriban un mensaje —al fusionar, o al hacer `git commit` sin `-m`— se abre **Vim**, que llena la pantalla de tildes `~` y no responde a lo que uno espera. Si ya les pasó: pulsen `Esc`, escriban el mensaje tras pulsar `i`, luego `Esc` otra vez y `:wq` + Enter para guardar, o `:q!` + Enter para salir sin guardar.
+>
+> Otra forma de no toparse nunca con el editor es pasar siempre el mensaje en el propio comando: `git merge origin/main -m "merge: integra main en develop"`.
 
 Cada uno con lo suyo:
 
@@ -290,8 +295,8 @@ Primero **descomprimir los dos zips**: `AcademiaSanFernando_NetBeans.zip` y `ENT
 Después, **cada uno define dos variables** cada vez que abre la terminal. En vez de escribir la ruta a mano, conviene que la terminal la busque sola:
 
 ```bash
-BASE=$(find ~ -type d -path "*/src/academia" 2>/dev/null | head -1)
-DOCS=$(dirname "$(find ~ -name "requerimientos-funcionales.md" 2>/dev/null | head -1)")
+BASE=$(find ~ -type d -path "*/src/academia" -not -path "*Proyect-tecnicas*" 2>/dev/null | head -1)
+DOCS=$(dirname "$(find ~ -name "requerimientos-funcionales.md" -not -path "*Proyect-tecnicas*" 2>/dev/null | head -1)")
 
 echo "BASE = $BASE"
 echo "DOCS = $DOCS"
@@ -305,7 +310,37 @@ Los dos `echo` deben imprimir una ruta, y los dos `ls` deben listar archivos: ca
 
 ### Si sale «No such file or directory» o el `echo` sale vacío
 
-Son tres causas, en orden de frecuencia:
+Lo primero es averiguar **cuál de los dos comandos falla**: si el `echo` sale vacío, el que no encontró nada es el `find`; si el `echo` muestra una ruta pero el `ls` falla, la ruta existe pero está mal.
+
+```bash
+echo "BASE = $BASE"
+```
+
+Son cuatro causas, en orden de frecuencia:
+
+**0. El `find` encontró el propio repositorio.** El repositorio **también** tiene una carpeta `src/academia`, con las clases que el equipo ya fusionó. Si `$BASE` apunta ahí, el `cp` copia un archivo sobre sí mismo y `git status` no muestra nada. Por eso los comandos de arriba llevan `-not -path "*Proyect-tecnicas*"`. Para comprobar que la ruta es la correcta:
+
+```bash
+echo "BASE = $BASE"       # NO debe contener Proyect-tecnicas
+ls "$BASE" | wc -l        # debe decir 14
+```
+
+Si `$BASE` queda vacío al excluir el repositorio, es que el zip **no está extraído**: hay que hacer clic derecho sobre `AcademiaSanFernando_NetBeans.zip` → **Extraer todo**, y repetir.
+
+**0b. Windows tiene su propio `find` y a veces gana.** Windows trae un `find.exe` que no tiene nada que ver con el de Git Bash: solo busca texto dentro de archivos. Si el `PATH` lo pone primero, el comando de arriba no devuelve nada o da un error raro. Para comprobarlo:
+
+```bash
+type -a find
+```
+
+Si la **primera** línea dice `/c/Windows/System32/find`, ese es el problema. La solución es llamar al de Git Bash por su ruta completa:
+
+```bash
+BASE=$(/usr/bin/find ~ -type d -path "*/src/academia" -not -path "*Proyect-tecnicas*" 2>/dev/null | head -1)
+DOCS=$(dirname "$(/usr/bin/find ~ -name "requerimientos-funcionales.md" -not -path "*Proyect-tecnicas*" 2>/dev/null | head -1)")
+echo "BASE = $BASE"
+echo "DOCS = $DOCS"
+```
 
 **1. La carpeta no se llama `Downloads`.** En Windows en español es **`Descargas`**, y si la cuenta usa OneDrive puede estar en `~/OneDrive/Descargas` o `~/OneDrive/Documentos`. Por eso el `find` de arriba busca en toda la carpeta del usuario en vez de dar por hecho el nombre. Para ver cómo se llama la suya:
 
@@ -324,9 +359,30 @@ El `find` lo resuelve solo, porque busca la carpeta `src/academia` esté donde e
 **3. Los archivos están en otro disco.** Si los descargaron a `D:` o a un USB, el `find ~` no los encuentra porque solo mira la carpeta del usuario. En Git Bash los discos se escriben `/d/` y `/e/`:
 
 ```bash
-BASE=$(find /d /e -type d -path "*/src/academia" 2>/dev/null | head -1)
+BASE=$(find /d /e -type d -path "*/src/academia" -not -path "*Proyect-tecnicas*" 2>/dev/null | head -1)
 echo "BASE = $BASE"
 ```
+
+**4. El zip es el viejo, el de diez clases.** Si `ls "$BASE" | wc -l` dice **10** en vez de **14**, están usando la versión anterior del proyecto: hay que borrar esa carpeta y volver a extraer `AcademiaSanFernando_NetBeans.zip`.
+
+### Si nada de lo anterior funciona: copiar los archivos con el explorador
+
+La terminal no es obligatoria para mover archivos. Este camino funciona siempre y no depende de ninguna variable:
+
+1. Abrir en el explorador de Windows la carpeta donde se extrajo `AcademiaSanFernando`, y entrar a `src\academia`. Ahí están los catorce `.java`.
+2. Abrir en otra ventana la carpeta del repositorio, `Documents\Proyect-tecnicas`. Crear dentro `src` y, dentro de esa, `academia`, si todavía no existen.
+3. Copiar y pegar ahí el archivo que a cada uno le toque.
+4. Volver a Git Bash, en la carpeta del repositorio, y seguir desde el `git status`:
+
+```bash
+cd ~/Documents/Proyect-tecnicas
+git status                       # debe mostrar src/academia/ en rojo
+git add src/academia/Persona.java
+git commit -m "feat: agrega la clase abstracta Persona con sus validaciones de documento"
+git push -u origin $(git branch --show-current)
+```
+
+Los bloques de la parte 4 siguen sirviendo igual: lo único que se saltan es la línea del `cp`.
 
 ### Comprobación antes de seguir
 
@@ -1004,7 +1060,7 @@ java -cp build academia.AcademiaSanFernando
 ```bash
 git checkout main
 git pull origin main
-git merge develop
+git merge develop -m "merge: integra develop en main para la entrega"
 git push origin main
 git log --oneline --graph -15
 ```
@@ -1054,9 +1110,13 @@ git branch -a
 | `fatal: not a git repository` | No está dentro de la carpeta del repositorio | `cd ~/Documents/Proyect-tecnicas` |
 | `cp: cannot create regular file 'src/academia/': Not a directory` o `No such file or directory` | La carpeta `src/academia` no existe. Suele pasar después de un `git reset --hard`: al quedar vacía, Git la borra | `mkdir -p src/academia` antes del `cp`. Comprobar con `ls -ld src/academia`: debe empezar con `d` |
 | `cp: No such file or directory` | La variable `BASE` o `DOCS` está vacía o mal, o la ruta tiene espacios y se escribió sin comillas | Rehacer las dos variables con el `find` de la sección 2.3 y comprobar con `echo "$BASE"`. Usar siempre `cp "$BASE/Archivo.java" src/academia/` |
+| `$BASE` apunta a `Documents/Proyect-tecnicas/src/academia` | El `find` encontró el propio repositorio, que también tiene esa carpeta | Repetir el `find` con `-not -path "*Proyect-tecnicas*"` |
+| El `find` no devuelve nada y `type -a find` muestra `/c/Windows/System32/find` primero | Windows tiene su propio `find.exe`, que no sirve para buscar carpetas | Usar `/usr/bin/find` en vez de `find` |
+| `ls "$BASE" \| wc -l` dice 10 y no 14 | Están usando el zip anterior, el de diez clases | Borrar esa carpeta y volver a extraer el zip nuevo |
 | `ls: ~/Downloads: No such file or directory` | En Windows en español la carpeta se llama `Descargas`, o está dentro de OneDrive | `ls ~` para ver su nombre real, y usar el `find` de la sección 2.3 en vez de escribir la ruta |
 | La rama se subió vacía | No se copió el archivo antes del commit | `git status` antes de cada `add`. Si ya pasó: copiar el archivo, `git add`, `git commit --amend --no-edit`, `git push -f` |
 | Commité en `develop` en vez de en mi rama | Se olvidó el `git checkout -b` | `git log -1` para copiar el hash → `git checkout -b <nombre-de-la-rama>` → `git cherry-pick <hash>` → `git checkout develop` → `git reset --hard origin/develop` |
+| Se abre una pantalla azul llena de `~` y el teclado no responde | Git abrió Vim para pedir el mensaje del commit o de la fusión | `Esc`, luego `gg`, `O`, escribir el mensaje, `Esc` y `:wq` + Enter. Para que no vuelva a pasar: `git config --global core.editor nano` |
 | `cannot lock ref ... File exists` | Quedó un archivo de bloqueo | `rm -f .git/refs/heads/<rama>.lock` |
 | El PR salió con base `main` | GitHub lo pone por defecto | En el PR, lápiz ✏️ junto al título → cambiar base a `develop` |
 | `This branch has conflicts` | Dos personas editaron lo mismo | Parte 5.3 |

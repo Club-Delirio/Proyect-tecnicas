@@ -42,7 +42,7 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 | B. Java con interfaz gráfica Swing desde el inicio | Interfaz más cercana a la de un sistema real | El diseño de ventanas consume el tiempo que debe dedicarse al modelado de clases |
 | C. Java con un marco de trabajo web | Resultado vistoso y accesible desde cualquier equipo | Exige conocimientos que el curso todavía no ha cubierto |
 
-**Decisión.** Alternativa A. El sistema se construye como aplicación de consola con diez clases propias en el paquete `academia`, organizadas en dos jerarquías de herencia que parten de las clases abstractas `Persona` y `Ciclo`. La interfaz gráfica queda documentada como RF-43 para una entrega posterior.
+**Decisión.** Alternativa A. El sistema se construye como aplicación de consola con catorce clases propias en el paquete `academia`: nueve de dominio organizadas en dos jerarquías de herencia que parten de las clases abstractas `Persona` y `Ciclo`. La interfaz gráfica queda documentada como RF-43 para una entrega posterior.
 
 **Consecuencia.** El esfuerzo se concentra en el modelo de clases, que es lo que el curso evalúa. La usabilidad se compensa con secciones guiadas, validación dato por dato dentro de los métodos `set` y un juego de datos de prueba cargable al iniciar.
 
@@ -62,7 +62,7 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 
 **Decisión.** Alternativa B. Se implementa la clase `ArchivoUtil`, única del proyecto que importa `java.io`, y cada entidad expone un método `convertirALinea()` que la serializa en una línea con campos separados por punto y coma.
 
-**Consecuencia.** La oferta académica, el padrón, las matrículas y la asistencia sobreviven al cierre del programa, con las vacantes ya ocupadas de cada ciclo y la bonificación acumulada de cada docente. Cuando se disponga de base de datos, bastará con sustituir `ArchivoUtil` sin tocar las nueve clases restantes. Esa migración está documentada como RF-42.
+**Consecuencia.** La oferta académica, el padrón, las matrículas y la asistencia sobreviven al cierre del programa, con las vacantes ya ocupadas de cada ciclo y la bonificación acumulada de cada docente. Cuando se disponga de base de datos, bastará con sustituir `ArchivoUtil` sin tocar las trece clases restantes. Esa migración está documentada como RF-42.
 
 ---
 
@@ -236,7 +236,7 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 
 | Restricción | Decisión adoptada | Requerimiento pendiente que genera |
 |---|---|---|
-| R-01 Lenguaje y paradigma fijados | Aplicación de consola con diez clases y dos jerarquías de herencia | RF-43 |
+| R-01 Lenguaje y paradigma fijados | Aplicación de consola con catorce clases, dos jerarquías de herencia y cuatro controladores | RF-43 |
 | R-02 Sin base de datos | Persistencia en archivos de texto mediante `ArchivoUtil` | RF-42 |
 | R-03 Equipo en formación | Dominio en clases abstractas, flujo en la clase principal | — |
 | R-04 Plazo del curso | 45 requerimientos documentados, 15 implementados | RF-04 a RF-45 según prioridad |
