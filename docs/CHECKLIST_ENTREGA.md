@@ -12,7 +12,7 @@ Eso son cuatro cosas. Aquí está cada una con el archivo que la cubre y el esta
 
 | Archivo | Qué contiene | Estado |
 |---|---|---|
-| `Informe_Academia_APA7.docx` | 40 páginas en APA 7, solo sobre el proyecto de la academia: planteamiento del problema, 12 restricciones con sus alternativas, objetivos, alcance, los 45 requerimientos, las 15 historias, el diseño, el manejo de archivos, los 60 criterios de aceptación, la implementación, el control de versiones y las conclusiones. El diagrama de clases va en página horizontal al final. | ✅ Listo |
+| `Informe_Academia_APA7.docx` | 43 páginas en APA 7, solo sobre el proyecto de la academia: planteamiento del problema, 12 restricciones con sus alternativas, objetivos, alcance, los 45 requerimientos, las 15 historias, el diseño, el manejo de archivos, los 60 criterios de aceptación, la implementación con los cuatro controladores, el control de versiones y las conclusiones. El diagrama de clases va en página horizontal al final. | ✅ Listo |
 
 **Falta:** reemplazar los porcentajes de participación de la carátula (están en 25 % cada uno) por los reales, que arroja `git log origin/main --pretty="%an" | sort | uniq -c | sort -rn`.
 
@@ -134,6 +134,7 @@ Al correr con los datos de prueba, los números que deben salir son:
 
 | Reporte | Valor esperado |
 |---|---|
+| Clases en `src/academia/` | 14 |
 | Ciclos en la oferta | 4 |
 | Personas registradas | 8 (2 docentes y 6 estudiantes) |
 | Matrículas registradas | 6 |
