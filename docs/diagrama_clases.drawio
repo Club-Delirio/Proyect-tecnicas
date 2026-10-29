@@ -1,0 +1,876 @@
+<mxfile host="app.diagrams.net" agent="UML academic verified">
+  <diagram id="ASF_MODELO_01" name="01 · Modelo de dominio completo (8 clases)">
+    <mxGraphModel dx="2289" dy="1473" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5760" pageHeight="5500" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_inherit_Estudiante" edge="1" parent="1" source="Estudiante" style="endArrow=block;endFill=0;dashed=0;strokeColor=#334C78;strokeWidth=3;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="Persona" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inherit_Docente" edge="1" parent="1" source="Docente" style="endArrow=block;endFill=0;dashed=0;strokeColor=#334C78;strokeWidth=3;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;" target="Persona" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inherit_CicloRegular" edge="1" parent="1" source="CicloRegular" style="endArrow=block;endFill=0;dashed=0;strokeColor=#334C78;strokeWidth=3;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.35;entryY=1;entryDx=0;entryDy=0;" target="Ciclo" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inherit_CursoIntensivo" edge="1" parent="1" source="CursoIntensivo" style="endArrow=block;endFill=0;dashed=0;strokeColor=#334C78;strokeWidth=3;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="Ciclo" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_est_ciclo" edge="1" parent="1" source="Estudiante" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.36;entryX=0;entryY=0.84;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Ciclo" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="2630" />
+              <mxPoint x="1340" y="1850" />
+              <mxPoint x="3700" y="1850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_est_ciclo/target" connectable="0" parent="e_est_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_est_ciclo/role" connectable="0" parent="e_est_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="matriculas" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_est" edge="1" parent="1" source="Matricula" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.12;exitY=0;entryX=0.88;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Estudiante" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1290" y="3570" />
+              <mxPoint x="1070" y="3570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_est/source" connectable="0" parent="e_m_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_est/target" connectable="0" parent="e_m_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_est/role" connectable="0" parent="e_m_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="estudiante" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_doc" edge="1" parent="1" source="Matricula" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.48;exitY=0;entryX=0.48;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Docente" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_doc/source" connectable="0" parent="e_m_doc" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_doc/target" connectable="0" parent="e_m_doc" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_doc/role" connectable="0" parent="e_m_doc" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="tutor" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_ciclo" edge="1" parent="1" source="Matricula" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.92;exitY=0;entryX=0.25;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Ciclo" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2865" y="3580" />
+              <mxPoint x="2865" y="1910" />
+              <mxPoint x="4000" y="1910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_ciclo/source" connectable="0" parent="e_m_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_ciclo/target" connectable="0" parent="e_m_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_m_ciclo/role" connectable="0" parent="e_m_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="ciclo" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_est" edge="1" parent="1" source="Asistencia" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.13;exitY=0;entryX=0.60;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Estudiante" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3490" y="3500" />
+              <mxPoint x="750" y="3500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_est/source" connectable="0" parent="e_a_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_est/target" connectable="0" parent="e_a_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_est/role" connectable="0" parent="e_a_est" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="estudiante" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_ciclo" edge="1" parent="1" source="Asistencia" style="endArrow=open;endFill=0;dashed=0;strokeColor=#176A87;strokeWidth=2.7;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;fontFamily=Arial;fontSize=21;fontColor=#2C4C5F;labelBackgroundColor=#FFFFFF;exitX=0.91;exitY=0;entryX=0.88;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="Ciclo" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4330" y="3500" />
+              <mxPoint x="4330" y="1820" />
+              <mxPoint x="4710" y="1820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_ciclo/source" connectable="0" parent="e_a_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_ciclo/target" connectable="0" parent="e_a_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=25;fontStyle=1;fontFamily=Arial;" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.92" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_a_ciclo/role" connectable="0" parent="e_a_ciclo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#FFFFFF;fontColor=#16435B;fontSize=22;fontStyle=0;fontFamily=Arial;" value="ciclo" vertex="1">
+          <mxGeometry relative="1" x="0.7" y="16" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Persona" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="923" width="1140" x="980" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/head" parent="Persona" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#EEF5FE;strokeColor=#5A8AC5;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;i&gt;Persona&lt;/i&gt;&lt;font style=&quot;font-size:17px;&quot;&gt; &amp;nbsp; {abstract}&lt;/font&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/attrs-bg" parent="Persona" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="198" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-0" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# tipo_doc: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-1" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# nro_doc: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-2" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# nombres: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-3" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# ape_paterno: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-4" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# ape_materno: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/field-5" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# telefono: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/ops-bg" parent="Persona" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="661" width="1140" y="262" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-0" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Persona()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="274" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-1" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Persona(tipo_doc: String, nro_doc: String, nombres: String, ape_paterno: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ape_materno: String, telefono: String)" vertex="1">
+          <mxGeometry height="61" width="1102" x="19" y="306" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-2" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;verDatos&lt;/i&gt;()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="367" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-3" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;convertirALinea&lt;/i&gt;() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="399" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-4" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# datosComunesEnLinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="431" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-5" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNombreCompleto() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="463" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-6" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNombreEnNomina() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-7" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTipo_doc() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="527" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-8" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setTipo_doc(tipo_doc: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-9" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNro_doc() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="591" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-10" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setNro_doc(nro_doc: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="623" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-11" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNombres() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="655" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-12" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setNombres(nombres: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="687" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-13" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getApe_paterno() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="719" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-14" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setApe_paterno(ape_paterno: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="751" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-15" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getApe_materno() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="783" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-16" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setApe_materno(ape_materno: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-17" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTelefono() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="847" as="geometry" />
+        </mxCell>
+        <mxCell id="Persona/operation-18" parent="Persona" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setTelefono(telefono: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="879" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="1312" width="1140" x="1450" y="3840" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/head" parent="Matricula" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#FFF6E9;strokeColor=#D19A47;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;Matricula&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/attrs-bg" parent="Matricula" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#D19A47;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="459" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-0" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- codigo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-1" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- fecha: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-2" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- estudiante: Estudiante" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-3" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- tutor: Docente" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-4" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- ciclo: Ciclo" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-5" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- forma_pago: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-6" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- nro_cuotas: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-7" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- nombre_campana: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-8" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- desc_campana: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-9" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- monto_campana: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-10" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- monto_descuento: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="366" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-11" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- subtotal: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-12" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- recargo: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="424" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-13" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- precio_final: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="453" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/field-14" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- cuota_mensual: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="482" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/ops-bg" parent="Matricula" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#D19A47;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="789" width="1140" y="523" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-0" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Matricula(estudiante: Estudiante, tutor: Docente, ciclo: Ciclo, nombre_campana: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;desc_campana: Real)" vertex="1">
+          <mxGeometry height="61" width="1102" x="19" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-1" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularPorcentajeRecargo() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="596" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-2" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularPrecioFinal()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-3" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- redondear(numero: Real) : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-4" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDetallePrecio()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="692" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-5" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-6" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="756" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-7" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCodigo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="788" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-8" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCodigo(codigo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-9" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFecha() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="852" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-10" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setFecha(fecha: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="884" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-11" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getForma_pago() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="916" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-12" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setForma_pago(forma_pago: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="948" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-13" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNro_cuotas() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-14" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setNro_cuotas(nro_cuotas: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1012" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-15" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getEstudiante() : Estudiante" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1044" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-16" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTutor() : Docente" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1076" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-17" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCiclo() : Ciclo" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1108" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-18" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMonto_campana() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-19" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMonto_descuento() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1172" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-20" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getRecargo() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1204" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-21" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getPrecio_final() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1236" as="geometry" />
+        </mxCell>
+        <mxCell id="Matricula/operation-22" parent="Matricula" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCuota_mensual() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1268" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="1394" width="1140" x="3720" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/head" parent="Ciclo" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#F1F2FF;strokeColor=#7269B7;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;i&gt;Ciclo&lt;/i&gt;&lt;font style=&quot;font-size:17px;&quot;&gt; &amp;nbsp; {abstract}&lt;/font&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/attrs-bg" parent="Ciclo" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="285" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-0" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# codigo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-1" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# nombre: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-2" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# fec_inicio: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-3" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# fec_fin: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-4" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# costo_base: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-5" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# modalidad: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-6" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# vacantes: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-7" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# matriculados: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/field-8" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# estado: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/ops-bg" parent="Ciclo" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="1045" width="1140" y="349" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-0" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Ciclo()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-1" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Ciclo(codigo: String, nombre: String, fec_inicio: LocalDate, fec_fin: LocalDate,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;costo_base: Real, modalidad: String, vacantes: Integer)" vertex="1">
+          <mxGeometry height="61" width="1102" x="19" y="393" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-2" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;verDatos&lt;/i&gt;()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="454" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-3" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;calcularCategoria&lt;/i&gt;() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="486" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-4" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;calcularDescuento&lt;/i&gt;() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="518" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-5" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;getTipo&lt;/i&gt;() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-6" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ &lt;i&gt;convertirALinea&lt;/i&gt;() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="582" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-7" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# datosComunesEnLinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="614" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-8" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ hayVacantes() : Boolean" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-9" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ vacantesDisponibles() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="678" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-10" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ registrarMatriculado()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-11" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ estaVigente() : Boolean" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="742" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-12" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="# verDatosGenerales()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="774" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-13" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCodigo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="806" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-14" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCodigo(codigo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="838" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-15" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNombre() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-16" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setNombre(nombre: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="902" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-17" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFec_inicio() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="934" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-18" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setFec_inicio(fec_inicio: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="966" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-19" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFec_fin() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="998" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-20" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setFec_fin(fec_fin: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-21" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCosto_base() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1062" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-22" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCosto_base(costo_base: Real)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1094" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-23" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getModalidad() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1126" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-24" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setModalidad(modalidad: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1158" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-25" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getVacantes() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-26" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setVacantes(vacantes: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1222" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-27" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMatriculados() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1254" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-28" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getEstado() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1286" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-29" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setEstado(estado: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1318" as="geometry" />
+        </mxCell>
+        <mxCell id="Ciclo/operation-30" parent="Ciclo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setMatriculados(matriculados: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="1350" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="734" width="1140" x="3350" y="3840" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/head" parent="Asistencia" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#FFF6E9;strokeColor=#D19A47;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;Asistencia&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/attrs-bg" parent="Asistencia" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#D19A47;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="198" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-0" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- codigo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-1" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- estudiante: Estudiante" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-2" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- ciclo: Ciclo" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-3" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- fecha: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-4" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- estado: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/field-5" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- observacion: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/ops-bg" parent="Asistencia" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#D19A47;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="472" width="1140" y="262" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-0" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Asistencia(estudiante: Estudiante, ciclo: Ciclo, fecha: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="274" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-1" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ cuentaComoAsistio() : Boolean" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="306" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-2" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-3" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-4" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCodigo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="402" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-5" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCodigo(codigo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-6" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getEstudiante() : Estudiante" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="466" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-7" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCiclo() : Ciclo" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="498" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-8" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFecha() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-9" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setFecha(fecha: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="562" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-10" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getEstado() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="594" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-11" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setEstado(estado: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="626" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-12" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getObservacion() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="658" as="geometry" />
+        </mxCell>
+        <mxCell id="Asistencia/operation-13" parent="Asistencia" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setObservacion(observacion: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="1013" width="1140" x="95" y="2230" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/head" parent="Estudiante" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#EEF5FE;strokeColor=#5A8AC5;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;Estudiante&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/attrs-bg" parent="Estudiante" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="227" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-0" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- codigo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-1" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- fec_nacimiento: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-2" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- colegio: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-3" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- carrera_objetivo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-4" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- apoderado: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-5" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- fec_ultima_visita: LocalDate" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/field-6" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- matriculas: Ciclo [0..*] {ordered, nonunique}" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/ops-bg" parent="Estudiante" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="722" width="1140" y="291" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-0" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Estudiante()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="303" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-1" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Estudiante(tipo_doc: String, nro_doc: String, nombres: String, ape_paterno: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ape_materno: String, telefono: String, codigo: String, fec_nacimiento: LocalDate,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;colegio: String, carrera_objetivo: String, apoderado: String)" vertex="1">
+          <mxGeometry height="90" width="1102" x="19" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-2" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCodigo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-3" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCodigo(codigo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-4" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFec_nacimiento() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="489" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-5" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setFec_nacimiento(fec_nacimiento: LocalDate)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="521" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-6" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularEdad() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="553" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-7" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ esMenorDeEdad() : Boolean" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-8" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getColegio() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="617" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-9" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setColegio(colegio: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="649" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-10" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCarrera_objetivo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="681" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-11" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCarrera_objetivo(carrera_objetivo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="713" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-12" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getApoderado() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-13" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setApoderado(apoderado: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="777" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-14" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getFec_ultima_visita() : LocalDate" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="809" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-15" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ registrarVisita()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="841" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-16" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMatriculas() : Ciclo [0..*] {ordered, nonunique}" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="873" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-17" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ agregarMatricula(ciclo: Ciclo)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="905" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-18" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="937" as="geometry" />
+        </mxCell>
+        <mxCell id="Estudiante/operation-19" parent="Estudiante" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="969" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="1013" width="1140" x="1450" y="2230" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/head" parent="Docente" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#EEF5FE;strokeColor=#5A8AC5;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;Docente&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/attrs-bg" parent="Docente" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="227" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-0" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- codigo: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-1" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- especialidad: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-2" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- tarifa_hora: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-3" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- bonificacion: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-4" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- horas_dictadas: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="192" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-5" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- cant_matriculas: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="221" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/field-6" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- monto_gestionado: Real" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/ops-bg" parent="Docente" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#5A8AC5;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="722" width="1140" y="291" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-0" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Docente()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="303" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-1" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ Docente(tipo_doc: String, nro_doc: String, nombres: String, ape_paterno: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ape_materno: String, telefono: String, codigo: String, especialidad: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tarifa_hora: Real, bonificacion: Real)" vertex="1">
+          <mxGeometry height="90" width="1102" x="19" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-2" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCodigo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-3" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setCodigo(codigo: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-4" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getEspecialidad() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="489" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-5" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setEspecialidad(especialidad: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="521" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-6" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTarifa_hora() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="553" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-7" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setTarifa_hora(tarifa_hora: Real)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-8" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getBonificacion() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="617" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-9" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setBonificacion(bonificacion: Real)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="649" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-10" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getHoras_dictadas() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="681" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-11" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getCant_matriculas() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="713" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-12" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMonto_gestionado() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-13" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ registrarHoras(horas: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="777" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-14" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ registrarMatricula(precio_final: Real)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="809" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-15" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularPagoHoras() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="841" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-16" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularBonificacion() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="873" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-17" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularPagoTotal() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="905" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-18" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="937" as="geometry" />
+        </mxCell>
+        <mxCell id="Docente/operation-19" parent="Docente" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="969" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="673" width="1140" x="3025" y="2230" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/head" parent="CicloRegular" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#F1F2FF;strokeColor=#7269B7;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;CicloRegular&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/attrs-bg" parent="CicloRegular" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="111" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/field-0" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- turno: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/field-1" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- meses_duracion: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/field-2" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- nro_simulacros: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/ops-bg" parent="CicloRegular" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="498" width="1140" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-0" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ CicloRegular()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="187" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-1" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ CicloRegular(codigo: String, nombre: String, fec_inicio: LocalDate, fec_fin: LocalDate,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;costo_base: Real, modalidad: String, vacantes: Integer, turno: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;meses_duracion: Integer, nro_simulacros: Integer)" vertex="1">
+          <mxGeometry height="90" width="1102" x="19" y="219" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-2" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTipo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="309" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-3" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularCategoria() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="341" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-4" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularDescuento() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="373" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-5" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-6" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="437" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-7" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTurno() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="469" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-8" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setTurno(turno: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="501" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-9" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getMeses_duracion() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="533" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-10" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setMeses_duracion(meses_duracion: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-11" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getNro_simulacros() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="597" as="geometry" />
+        </mxCell>
+        <mxCell id="CicloRegular/operation-12" parent="CicloRegular" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setNro_simulacros(nro_simulacros: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="629" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo" parent="1" style="group;html=1;container=1;collapsible=0;" value="" vertex="1">
+          <mxGeometry height="673" width="1140" x="4420" y="2230" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/head" parent="CursoIntensivo" style="rounded=0;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fillColor=#F1F2FF;strokeColor=#7269B7;strokeWidth=2.1;fontFamily=Arial;fontSize=26;fontColor=#19394F;fontStyle=1;" value="&lt;b&gt;CursoIntensivo&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/attrs-bg" parent="CursoIntensivo" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="111" width="1140" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/field-0" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- area: String" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/field-1" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- semanas_duracion: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/field-2" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=middle;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="- horas_diarias: Integer" vertex="1">
+          <mxGeometry height="29" width="1102" x="19" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/ops-bg" parent="CursoIntensivo" style="rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#7269B7;strokeWidth=1.6;" value="" vertex="1">
+          <mxGeometry height="498" width="1140" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-0" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ CursoIntensivo()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="187" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-1" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ CursoIntensivo(codigo: String, nombre: String, fec_inicio: LocalDate, fec_fin: LocalDate,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;costo_base: Real, modalidad: String, vacantes: Integer, area: String,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;semanas_duracion: Integer, horas_diarias: Integer)" vertex="1">
+          <mxGeometry height="90" width="1102" x="19" y="219" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-2" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getTipo() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="309" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-3" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularCategoria() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="341" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-4" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ calcularDescuento() : Real" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="373" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-5" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ verDatos()" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-6" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ convertirALinea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="437" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-7" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getArea() : String" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="469" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-8" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setArea(area: String)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="501" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-9" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getSemanas_duracion() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="533" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-10" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setSemanas_duracion(semanas_duracion: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-11" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ getHoras_diarias() : Integer" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="597" as="geometry" />
+        </mxCell>
+        <mxCell id="CursoIntensivo/operation-12" parent="CursoIntensivo" style="text;html=1;whiteSpace=wrap;overflow=fill;verticalAlign=top;align=left;fontFamily=Arial;fontColor=#1F3446;fontSize=18;spacing=0;" value="+ setHoras_diarias(horas_diarias: Integer)" vertex="1">
+          <mxGeometry height="32" width="1102" x="19" y="629" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
