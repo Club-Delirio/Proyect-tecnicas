@@ -20,3 +20,6 @@ manifest.mf
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Carpeta que crea el programa al guardar en archivos
+datos/
