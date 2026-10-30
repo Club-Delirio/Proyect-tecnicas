@@ -27,15 +27,14 @@ UPN Cajamarca, periodo 2026-2).
 | `docs/historias-usuario.md` | 15 historias de usuario con sus escenarios (semana 8) |
 | `docs/Historias_Usuario_Academia.xlsx` | Matriz de historias de usuario en la plantilla del curso |
 | `docs/manejo-archivos-java.md` | Investigación y práctica de manejo de archivos en Java (semana 9) |
-| `docs/diagrama_clases.png` | Diagrama de clases UML del sistema (semana 9) |
-| `docs/clases.dot` | Código fuente del diagrama, en formato Graphviz |
-| `docs/diagrama_clases.drawio` | El mismo diagrama en formato draw.io, para abrirlo y editarlo en app.diagrams.net |
+| `docs/diagrama_clases.png` | Diagrama de clases UML del dominio, en imagen (semana 9) |
+| `docs/diagrama_clases.svg` | El mismo diagrama en vectorial, para imprimir o ampliar sin perder nitidez |
+| `docs/diagrama_clases.drawio` | El mismo diagrama en formato draw.io, para abrirlo y editarlo en app.diagrams.net. Muestra las ocho clases de dominio; la Figura 1 del informe incluye además los cuatro controladores, `ArchivoUtil` y la clase principal |
 | `docs/Informe_Academia_APA7.docx` | Informe del proyecto en formato APA 7 |
 | `docs/Informe_Responsabilidad_Social.docx` | Informe de la actividad de responsabilidad social (semana 11) |
 | `docs/reparto-de-tareas.md` | Qué hizo cada integrante en esta entrega |
 | `docs/GUIA_GIT_SEMANAS7-11.md` | Comandos de Git y GitHub que ejecuta cada integrante |
 | `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar |
-| `evidencias/` | Capturas de la ejecución del sistema en NetBeans |
 | `.gitignore` | Excluye los compilados y la carpeta de datos generada en ejecución |
 
 ## Requisitos
