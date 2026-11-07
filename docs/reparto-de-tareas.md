@@ -219,3 +219,33 @@ En la sustentación de la T3 cada integrante explica, además de lo suyo de las 
 | Rojas Valdivia, Jhann Frank | HU-20, HU-22 | RF-40, RF-43 | `VentanaPrincipal` (menú, escritorio y carga automática), `FormularioBase`, `FrmCiclos` y `FrmDocentes` |
 
 La interfaz `Registrable` y la relación de agregación entre `Estudiante` y `Ciclo` las explican los cuatro: son las preguntas de relaciones entre clases que la rúbrica de la T3 evalúa a todos.
+
+## Qué sube cada uno y en qué orden
+
+Cada integrante sube su parte desde su propia cuenta, en la rama `feat/semanas-12-13`, para que GitHub registre el aporte de cada uno. Los archivos salen del paquete `SEMANAS_12_13.zip`, que ya trae todo revisado: nadie tiene que modificar nada, solo copiarlo y subirlo.
+
+| Turno | Integrante | Archivos que sube |
+|---|---|---|
+| 1 | Chuquimango Verástegui, Jhocep Jhanpier | `Registrable.java`, `Persona.java`, `Estudiante.java`, `ArchivoUtil.java`, `FrmEstudiantes.java`; `docs/requerimientos-funcionales.md`, `docs/historias-usuario.md`, `docs/Historias_Usuario_Academia.xlsx`, `docs/reparto-de-tareas.md`, `docs/objetivos-y-alcance.md`, `docs/restricciones-y-alternativas.md`, `docs/ishikawa.png`, `docs/ishikawa.svg`, `README.md`, `evidencias/README.md`, `evidencias/log_consola.txt`, `evidencias/log_interfaz.txt`, `evidencias/log_pruebas_dominio.txt`; 7 capturas (07, 08, 09, 09b, 17, 17b, 29) |
+| 2 | Rodrigo Ortiz, Sumil Arturi | `Cuota.java`, `Matricula.java`, `MatriculaController.java`, `Ciclo.java`, `Docente.java`, `FrmMatricula.java`, `FrmPagos.java`; 14 capturas (11, 12, 13, 14, 14b, 15, 16, 18, 19, 20, 21, 22, 23, 24) |
+| 3 | Cachi Tantaleán, Anderson Alexis | `Asistencia.java`, `AsistenciaController.java`, `FrmAsistencia.java`, `FrmTablero.java`; `docs/diagrama_clases.drawio`, `docs/diagrama_clases.png`, `docs/diagrama_clases.svg`; 4 capturas (25, 26, 27, 28) |
+| 4 | Rojas Valdivia, Jhann Frank | `FormularioBase.java`, `VentanaPrincipal.java`, `FrmCiclos.java`, `FrmDocentes.java`, `AcademiaSanFernando.java`; 13 capturas (00, 00b, 01, 02, 03, 04, 05, 06, 10, 10b, 30, 31, 32) |
+
+El turno 1 crea la rama, así que va primero. Los turnos 2 y 3 pueden ir en cualquier orden. El turno 4 va al final porque `VentanaPrincipal` abre todas las ventanas: hasta que esté, la rama no compila, y por eso se trabaja en una rama aparte y no directamente en `develop`.
+
+Las clases `CicloController`, `CicloRegular`, `CursoIntensivo` y `PersonaController` no cambiaron en estas semanas y no se vuelven a subir.
+
+Cuando el turno 4 confirme que la ventana abre, se crea el pull request de `feat/semanas-12-13` hacia `develop`, se fusiona, y `develop` se fusiona en `main`.
+
+## Verificación final de las semanas 12 y 13
+
+```bash
+git checkout main
+git pull origin main
+ls src/academia/*.java | wc -l
+javac -encoding UTF-8 -d build $(find src -name "*.java")
+java -cp build academia.AcademiaSanFernando
+java -cp build academia.VentanaPrincipal
+```
+
+El `ls` debe contar **25 archivos** y el `javac` no debe devolver ningún error. La versión de consola debe mostrar los mismos resultados de la verificación de las semanas 7 a 11. Para la interfaz gráfica, ejecutar en una carpeta sin `datos/`, aceptar los datos de prueba y abrir **Reportes → Tablero del periodo**; los valores que debe mostrar están en `docs/CHECKLIST_ENTREGA.md`, parte 1.

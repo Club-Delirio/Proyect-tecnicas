@@ -20,7 +20,6 @@ UPN Cajamarca, periodo 2026-2).
 | Carpeta / archivo | Descripción |
 |---|---|
 | `src/academia/` | Sistema de matrícula y asistencia: 25 archivos con el dominio, los controladores, la versión de consola y la interfaz gráfica Swing (semanas 7 a 13) |
-| `src/semana5/` | Práctica de sobrecarga, manejo de errores y colecciones. Semanas 1 a 6 |
 | `docs/restricciones-y-alternativas.md` | 12 restricciones del proyecto y sus alternativas de solución (semana 7) |
 | `docs/objetivos-y-alcance.md` | Objetivos del proyecto y alcance de la solución (semana 7) |
 | `docs/requerimientos-funcionales.md` | 45 requerimientos funcionales, 22 implementados, con 192 criterios de aceptación y la evidencia de cada uno (semanas 8, 10 y 13) |
@@ -35,7 +34,8 @@ UPN Cajamarca, periodo 2026-2).
 | `docs/Informe_Responsabilidad_Social.docx` | Informe de la actividad de responsabilidad social (semana 11) |
 | `docs/reparto-de-tareas.md` | Qué hizo cada integrante |
 | `docs/GUIA_GIT_SEMANAS7-11.md` | Comandos de Git y GitHub que ejecuta cada integrante |
-| `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar |
+| `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar: la T3 de las semanas 12 y 13, con la rúbrica y los valores que debe mostrar el programa, y la entrega de las semanas 7 a 11 |
+| `docs/` de las semanas 1 a 6 | `objetivos.md`, `restricciones-alternativas.md`, `diccionario-clases.md`, `manual-usuario.md`, `Historias_Usuario_Semana5.xlsx`, `Informe_Secciones_1y2_APA7.docx`, `GUIA_GIT_GITHUB.md` y `evidencias.zip`: los documentos de la primera versión del sistema (paquete `semana5`) y las primeras versiones de los objetivos y las restricciones, que se conservan como registro |
 | `evidencias/` | Capturas que prueban cada criterio de aceptación y registros de ejecución (semana 13). El índice está en `evidencias/README.md` |
 | `.gitignore` | Excluye los compilados y la carpeta de datos generada en ejecución |
 
@@ -66,8 +66,6 @@ javac -encoding UTF-8 -d build $(find src -name "*.java")
 java -cp build academia.VentanaPrincipal
 java -cp build academia.AcademiaSanFernando
 ```
-
-Para la entrega de las semanas 1 a 6, la clase principal es `semana5.Semana5`.
 
 ### Primer paso recomendado
 
@@ -146,6 +144,18 @@ internas, como en la clase 12.
 | Asociación | `Matricula` guarda referencias a `Estudiante`, `Docente` y `Ciclo`; `Asistencia`, a `Estudiante` y `Ciclo` |
 | Agregación | `Estudiante` agrega a su historial ciclos que ya existían (`agregarMatricula(ciclo)`); cada controlador agrega a su lista objetos creados fuera |
 | Composición | `Matricula` crea sus `Cuota` dentro de `generarCronograma()`; si la matrícula se anula, sus cuotas desaparecen con ella |
+
+## La primera versión del sistema (semanas 1 a 6)
+
+En las semanas 1 a 6 el sistema estaba en el paquete `semana5`: una clase `Persona`, su `PersonaController` y un menú de consola. Ese mismo código creció hasta lo que hoy es `academia`:
+
+| En `semana5` (semanas 1 a 6) | En `academia` (semanas 7 a 13) |
+|---|---|
+| `Persona`, clase simple | `Persona` abstracta, con las hijas `Estudiante` y `Docente`, que implementa `Registrable` |
+| `PersonaController`: agregar, listar con tres sobrecargas, buscar, obtener, eliminar, ordenar por apellido y contar | `PersonaController` con las mismas operaciones, más la búsqueda por código y la planilla docente |
+| `Semana5`, menú de consola | `AcademiaSanFernando` (consola) y `VentanaPrincipal` (interfaz gráfica) |
+
+Como `academia` ya contiene todo lo de `semana5`, en la semana 13 se retiró ese paquete para que el sistema quede en un solo lugar y sin clases repetidas. Su código sigue en el historial del repositorio y se puede ver con `git log -- src/semana5`.
 
 ## Persistencia
 
