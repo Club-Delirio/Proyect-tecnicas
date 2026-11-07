@@ -133,10 +133,24 @@ public class Estudiante extends Persona {
         return matriculas;
     }
 
-    // Guarda el ciclo en el historial del estudiante (relacion 1 a muchos)
+    // AGREGACION: el ciclo ya existia y solo se agrega al historial del estudiante.
+    // Si el estudiante se elimina, el ciclo sigue existiendo (como el Chip del SmartPhone).
     public void agregarMatricula(Ciclo ciclo) {
         this.matriculas.add(ciclo);
         this.registrarVisita();
+    }
+
+    // Saca el ciclo del historial cuando se anula la matricula (RF-28)
+    public void quitarMatricula(Ciclo ciclo) {
+        this.matriculas.remove(ciclo);
+    }
+
+    // RF-21: NUEVO si lleva un solo ciclo (o ninguno), RECURRENTE si ya llevo dos o mas
+    public String calcularTipoEstudiante() {
+        if (this.matriculas.size() >= 2) {
+            return "RECURRENTE";
+        }
+        return "NUEVO";
     }
 
     @Override

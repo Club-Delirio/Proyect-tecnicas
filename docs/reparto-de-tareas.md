@@ -204,3 +204,18 @@ Los porcentajes de la carátula del informe están puestos en **25 % para cada u
 ## Los comandos exactos
 
 Están en `docs/GUIA_GIT_SEMANAS7-11.md`, bloque por bloque para copiar y pegar, junto con la configuración de la conexión a GitHub, la sesión de conflicto provocado y los comandos de inspección que cada uno debe ejecutar y capturar.
+
+---
+
+# Semanas 12 y 13 — interfaz gráfica, composición e interfaz `Registrable`
+
+En la sustentación de la T3 cada integrante explica, además de lo suyo de las semanas 7 a 11, las ventanas y las clases que extienden su parte del modelo. El reparto sigue al de las semanas anteriores: cada uno toma la ventana de las clases que ya conoce.
+
+| Integrante | Historias | Requerimientos | Clases y ventanas que explica |
+|---|---|---|---|
+| Cachi Tantaleán, Anderson Alexis | HU-19 | RF-37 | `FrmAsistencia`, `FrmTablero` y los métodos de conteo de `AsistenciaController` y `MatriculaController` |
+| Chuquimango Verástegui, Jhocep Jhanpier | HU-16, HU-21 | RF-21, RF-41 | `FrmEstudiantes`, `Estudiante.calcularTipoEstudiante()`, `ArchivoUtil.crearRespaldo()` y `guardarRegistros()` |
+| Rodrigo Ortiz, Sumil Arturi | HU-17, HU-18 | RF-27, RF-28 | `Cuota`, la composición dentro de `Matricula`, `FrmMatricula`, `FrmPagos` y `MatriculaController.eliminarMatricula()` |
+| Rojas Valdivia, Jhann Frank | HU-20, HU-22 | RF-40, RF-43 | `VentanaPrincipal` (menú, escritorio y carga automática), `FormularioBase`, `FrmCiclos` y `FrmDocentes` |
+
+La interfaz `Registrable` y la relación de agregación entre `Estudiante` y `Ciclo` las explican los cuatro: son las preguntas de relaciones entre clases que la rúbrica de la T3 evalúa a todos.

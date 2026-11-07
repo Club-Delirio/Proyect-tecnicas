@@ -5,12 +5,14 @@ package academia;
  * docente. Obliga a las clases hijas a implementar verDatos() y
  * convertirALinea().
  *
+ * Implementa la interfaz Registrable: Estudiante y Docente la heredan.
+ *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
  * @author Rodrigo Ortiz, Sumil Arturi
  * @author Rojas Valdivia, Jhann Frank
  */
-public abstract class Persona {
+public abstract class Persona implements Registrable {
     protected String tipo_doc;
     protected String nro_doc;
     protected String nombres;

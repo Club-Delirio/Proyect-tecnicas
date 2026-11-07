@@ -1,0 +1,129 @@
+===== ACADEMIA PREUNIVERSITARIA SAN FERNANDO =====
+      Sistema de matricula y control de asistencia
+
+----- RECUPERAR LOS DATOS GUARDADOS -----
+Desea recuperar los datos guardados en los archivos s/n
+Desea cargar datos de prueba s/n
+Datos de prueba cargados: 8 personas, 4 ciclos, 6 matriculas y 9 asistencias
+
+----- REGISTRO DE CICLOS Y CURSOS -----
+Desea ingresar un ciclo o curso s/n
+
+----- CATALOGO POR CATEGORIA -----
+Ciclo regular: menos de S/ 600 BASICO, hasta S/ 1200 INTERMEDIO, mas PREMIUM
+Curso intensivo: 6 horas diarias o mas PREMIUM; si no: menos de S/ 400 BASICO, hasta S/ 900 INTERMEDIO
+[BASICO]
+   CURSO INTENSIVO  CUR-002  Vacacional Letras  PRESENCIAL  S/ 380.00  Vacantes 0/20  ABIERTO
+[INTERMEDIO]
+   CICLO REGULAR  CIC-002  Ciclo Semestral Virtual  VIRTUAL  S/ 850.00  Vacantes 2/120  ABIERTO
+   CURSO INTENSIVO  CUR-001  Repaso Intensivo Ciencias  PRESENCIAL  S/ 620.00  Vacantes 1/25  ABIERTO
+[PREMIUM]
+   CICLO REGULAR  CIC-001  Ciclo Anual 2026-II  PRESENCIAL  S/ 1450.00  Vacantes 3/30  ABIERTO
+
+----- REGISTRO DE DOCENTES -----
+Desea ingresar un docente s/n
+
+----- REGISTRO DE ESTUDIANTES -----
+Desea ingresar un estudiante s/n
+
+----- CAMPANA DE DESCUENTO -----
+Hay alguna campana de descuento vigente s/n
+Campana vigente: SIN CAMPANA (0.0%)
+
+----- REGISTRO DE MATRICULAS -----
+Desea registrar una matricula s/n
+
+----- CONTROL DE ASISTENCIA -----
+Desea registrar una asistencia s/n
+
+===== LISTA DE CICLOS Y CURSOS =====
+CICLO REGULAR
+   Codigo: CIC-001  Nombre: Ciclo Anual 2026-II  Modalidad: PRESENCIAL
+   Del FECHA al FECHA  Costo base: S/ 1450.00  Categoria: PREMIUM  Vacantes: 3/30  Estado: ABIERTO
+   Turno: MANANA  Duracion: 5 meses  Simulacros incluidos: 10
+CICLO REGULAR
+   Codigo: CIC-002  Nombre: Ciclo Semestral Virtual  Modalidad: VIRTUAL
+   Del FECHA al FECHA  Costo base: S/ 850.00  Categoria: INTERMEDIO  Vacantes: 2/120  Estado: ABIERTO
+   Turno: NOCHE  Duracion: 4 meses  Simulacros incluidos: 8
+CURSO INTENSIVO
+   Codigo: CUR-001  Nombre: Repaso Intensivo Ciencias  Modalidad: PRESENCIAL
+   Del FECHA al FECHA  Costo base: S/ 620.00  Categoria: INTERMEDIO  Vacantes: 1/25  Estado: ABIERTO
+   Area: CIENCIAS  Duracion: 8 semanas  Horas diarias: 5
+CURSO INTENSIVO
+   Codigo: CUR-002  Nombre: Vacacional Letras  Modalidad: PRESENCIAL
+   Del FECHA al FECHA  Costo base: S/ 380.00  Categoria: BASICO  Vacantes: 0/20  Estado: ABIERTO
+   Area: LETRAS  Duracion: 4 semanas  Horas diarias: 4
+
+===== LISTA DE ESTUDIANTES Y DOCENTES =====
+ESTUDIANTE  Codigo: EST-005  Documento: DNI 75236914  Nombre: Chilon Bautista, Karla Yamile
+   Edad: 18 anios  Telefono: 941258963  Colegio: Cristo Rey  Postula a: Contabilidad
+   Apoderado: Pedro Chilon Mego  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CICLO REGULAR CIC-001 Ciclo Anual 2026-II  (PREMIUM)
+ESTUDIANTE  Codigo: EST-003  Documento: CE 001245789  Nombre: Cruz Marin, Ana Sofia
+   Edad: 19 anios  Telefono: 933221144  Colegio: Santa Teresita  Postula a: Derecho
+   Apoderado: Rosa Marin Flores  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CICLO REGULAR CIC-002 Ciclo Semestral Virtual  (INTERMEDIO)
+ESTUDIANTE  Codigo: EST-002  Documento: DNI 73695214  Nombre: Huaman Paredes, Diego Alonso
+   Edad: 19 anios  Telefono: 912345678  Colegio: Juan XXIII  Postula a: Ingenieria de Sistemas
+   Apoderado: Jose Huaman Diaz  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CICLO REGULAR CIC-002 Ciclo Semestral Virtual  (INTERMEDIO)
+ESTUDIANTE  Codigo: EST-006  Documento: DNI 76398521  Nombre: Llanos Saldana, Marco Antonio
+   Edad: 21 anios  Telefono: 932147856  Colegio: San Marcelino  Postula a: Ingenieria Civil
+   Apoderado: -  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CURSO INTENSIVO CUR-001 Repaso Intensivo Ciencias  (INTERMEDIO)
+DOCENTE  Codigo: DOC-001  Documento: DNI 41258963  Nombre: Mendoza Chavez, Raul
+   Especialidad: MATEMATICA  Tarifa: S/ 35.00 por hora  Bonificacion: 3.0%  Telefono: 976543210
+   Horas dictadas: 80  Pago por dictado: S/ 2800.00  Tutorias: 4  Bonificacion ganada: S/ 152.89  TOTAL: S/ 2952.89
+ESTUDIANTE  Codigo: EST-001  Documento: DNI 72581496  Nombre: Quispe Tanta, Lucia Fernanda
+   Edad: 18 anios  Telefono: 987654321  Colegio: San Ramon  Postula a: Medicina
+   Apoderado: Maria Tanta Lopez  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CICLO REGULAR CIC-001 Ciclo Anual 2026-II  (PREMIUM)
+ESTUDIANTE  Codigo: EST-004  Documento: DNI 74125896  Nombre: Terrones Vigo, Bruno Cesar
+   Edad: 17 anios (MENOR DE EDAD)  Telefono: 956871234  Colegio: Dos de Mayo  Postula a: Medicina
+   Apoderado: Elena Vigo Alcantara  Ultima visita: FECHA
+   Sus matriculas son: 
+   - CICLO REGULAR CIC-001 Ciclo Anual 2026-II  (PREMIUM)
+DOCENTE  Codigo: DOC-002  Documento: DNI 43698521  Nombre: Vasquez Rojas, Carmen Rosa
+   Especialidad: COMUNICACION  Tarifa: S/ 28.00 por hora  Bonificacion: 2.5%  Telefono: 965321478
+   Horas dictadas: 64  Pago por dictado: S/ 1792.00  Tutorias: 2  Bonificacion ganada: S/ 40.47  TOTAL: S/ 1832.47
+
+===== HISTORIAL DE MATRICULAS =====
+MAT-1  FECHA  Quispe Tanta, Lucia Fernanda  Ciclo Anual 2026-II  CONTADO  S/ 1450.00
+MAT-2  FECHA  Terrones Vigo, Bruno Cesar  Ciclo Anual 2026-II  FRACCIONADO  S/ 1551.50
+MAT-3  FECHA  Chilon Bautista, Karla Yamile  Ciclo Anual 2026-II  CONTADO  S/ 1450.00
+MAT-4  FECHA  Huaman Paredes, Diego Alonso  Ciclo Semestral Virtual  FRACCIONADO  S/ 836.74
+MAT-5  FECHA  Cruz Marin, Ana Sofia  Ciclo Semestral Virtual  CONTADO  S/ 782.00
+MAT-6  FECHA  Llanos Saldana, Marco Antonio  Repaso Intensivo Ciencias  FRACCIONADO  S/ 644.80
+
+===== ESTADISTICAS DE MATRICULA =====
+Matriculas registradas : 6
+Por tipo               : 5 ciclos regulares, 1 cursos intensivos
+Por categoria          : BASICO 0 | INTERMEDIO 3 | PREMIUM 3
+Forma de pago          : 3 al contado, 3 fraccionadas
+Matricula promedio     : S/ 1119.17
+
+===== REPORTE FINANCIERO =====
+(-) Descuentos de campana : S/ 0.00
+(-) Descuentos del ciclo  : S/ 136.00
+(+) Recargos por cuotas   : S/ 181.04
+INGRESO TOTAL             : S/ 6715.04
+Pago de Raul Mendoza Chavez: S/ 2952.89  (dictado S/ 2800.00 + bonificacion S/ 152.89)
+Pago de Carmen Rosa Vasquez Rojas: S/ 1832.47  (dictado S/ 1792.00 + bonificacion S/ 40.47)
+Planilla docente          : S/ 4785.36
+Ingreso neto              : S/ 1929.68
+
+===== REPORTE DE ASISTENCIA =====
+EST-002  Huaman Paredes, Diego Alonso  Asistencia: 33%  (1 de 3)   <-- RIESGO DE DESERCION
+EST-001  Quispe Tanta, Lucia Fernanda  Asistencia: 100%  (3 de 3)
+EST-004  Terrones Vigo, Bruno Cesar  Asistencia: 67%  (2 de 3)   <-- RIESGO DE DESERCION
+Presentes: 4 | Tardanzas: 1 | Ausentes: 3 | Justificados: 1
+
+----- GUARDAR LA INFORMACION -----
+Desea guardar la informacion en los archivos s/n
+
+Fin del programa
