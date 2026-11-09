@@ -757,7 +757,8 @@ Las capturas de cada requerimiento están en `evidencias/README.md`.
 | `docs/Historias_Usuario_Academia.xlsx` | La matriz de historias con la trazabilidad a las clases Java |
 | `docs/restricciones-y-alternativas.md` | Las restricciones del proyecto y las alternativas de solución |
 | `docs/objetivos-y-alcance.md` | Los objetivos del proyecto y el alcance de la solución |
-| `docs/diagrama_clases.png` | El diagrama de clases UML del sistema |
+| `docs/diagrama_clases.png` | El diagrama de clases UML del modelo de dominio |
+| `docs/diagrama_interfaz.png` | El diagrama de clases UML de la interfaz gráfica |
 | `docs/ishikawa.png` | El diagrama de Ishikawa del problema |
 | `evidencias/README.md` | Las capturas que prueban cada criterio de los requerimientos implementados |
 | `docs/manejo-archivos-java.md` | La investigación y la práctica de manejo de archivos en Java |

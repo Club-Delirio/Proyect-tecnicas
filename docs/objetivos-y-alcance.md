@@ -108,7 +108,7 @@ Las siguientes funciones están documentadas con sus criterios de aceptación, p
 | Matriz de 45 requerimientos con criterios de aceptación | `docs/requerimientos-funcionales.md` | 8 y 10 |
 | Historias de usuario en formato narrativo | `docs/historias-usuario.md` | 8 |
 | Matriz de historias de usuario en hoja de cálculo | `docs/Historias_Usuario_Academia.xlsx` | 8 y 10 |
-| Diagrama de clases UML | `docs/diagrama_clases.png`, `docs/diagrama_clases.svg`, `docs/diagrama_clases.drawio` | 9 y 12 |
+| Diagrama de clases UML del modelo de dominio y de la interfaz gráfica | `docs/diagrama_clases.png`, `docs/diagrama_interfaz.png`, sus versiones `.svg` y `docs/diagrama_clases.drawio` | 9 y 12 |
 | Investigación y práctica de manejo de archivos en Java | `docs/manejo-archivos-java.md` | 9 |
 | Código fuente del sistema | `src/academia/` (catorce clases en la semana 11; veinticinco con la interfaz gráfica) | 10 y 12 |
 | Evidencias de cumplimiento de los criterios | `evidencias/` | 13 |

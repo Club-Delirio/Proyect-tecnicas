@@ -19,11 +19,11 @@ Este archivo tiene dos partes. La **parte 1** es la entrega vigente, la T3 de la
 |---|---|---|---|
 | Al menos 10 requerimientos funcionales implementados | 6 | 22 de los 45 requerimientos de `requerimientos-funcionales.md` están implementados. Los 7 nuevos de estas semanas son RF-21, RF-27, RF-28, RF-37, RF-40, RF-41 y RF-43 | ✅ |
 | Criterios de aceptación con evidencias | 4 | 192 criterios de aceptación. Cada requerimiento implementado enlaza su evidencia en `evidencias/`: 38 capturas y 3 registros de ejecución, con el índice en `evidencias/README.md` | ✅ |
-| Interfaz Swing con al menos 3 vistas, navegación, eventos, validaciones y mensajes | 3 | `VentanaPrincipal` con menú y escritorio, y 7 ventanas internas: ciclos, estudiantes, docentes, matrícula, pagos, asistencia y tablero | ✅ |
+| Interfaz Swing con al menos 3 vistas, navegación, eventos, validaciones y mensajes | 3 | `VentanaPrincipal` con menú y escritorio, y 7 ventanas internas: ciclos, estudiantes, docentes, matrícula, pagos, asistencia y tablero. Su diagrama de clases está en `docs/diagrama_interfaz.png` | ✅ |
 | Calidad orientada a objetos: herencia, interfaz, composición y poca duplicación | 3 | Herencia en `Persona` y `Ciclo`; la interfaz `Registrable`; la composición `Matricula ◆— Cuota`; la agregación `Estudiante → Ciclo`; `FormularioBase` reúne lo común de las 7 ventanas | ✅ |
-| Informe de práctica de campo: bitácora y evidencias | 2 | — | ⬜ **Por hacer** |
+| Informe de práctica de campo: bitácora y evidencias | 2 | `Informe_Practica_Campo_Bitacora.docx`: bitácora semana por semana de las tres entregas, con sus *commits*, *pull requests*, capturas de GitHub y del programa, pruebas y aporte de cada integrante | ✅ |
 | Informe de responsabilidad social | 2 | `Informe_Responsabilidad_Social.docx`, de la semana 11 | ✅ En el repositorio. Confirmar con el profesor si la T3 pide uno nuevo |
-| Presentación de máximo 15 diapositivas, que sube cada integrante | — | — | ⬜ **Por hacer** |
+| Presentación de máximo 15 diapositivas, que sube cada integrante | — | `T3_Academia_San_Fernando.pptx`: 15 diapositivas interactivas con notas del orador. No va al repositorio: cada integrante la sube a la plataforma | ✅ Lista |
 | Sustentación individual | — | Lo que explica cada uno está en `reparto-de-tareas.md`, sección de las semanas 12 y 13 | ⬜ Preparar |
 
 ## B. Software en el repositorio
@@ -31,7 +31,7 @@ Este archivo tiene dos partes. La **parte 1** es la entrega vigente, la T3 de la
 | Qué | Dónde | Quién lo sube |
 |---|---|---|
 | `src/academia/` con las 25 clases | GitHub, rama `main` | Los cuatro, cada uno las de su parte |
-| `docs/` actualizados | GitHub, rama `main` | Chuquimango; Cachi el diagrama de clases |
+| `docs/` actualizados | GitHub, rama `main` | Chuquimango; Cachi el diagrama de clases, que Chuquimango completa al final con la página de la interfaz gráfica |
 | `evidencias/` con las 38 capturas y los 3 registros | GitHub, rama `main` | Los cuatro, cada uno las capturas de su parte |
 | `README.md` actualizado | GitHub, rama `main` | Chuquimango |
 
@@ -69,9 +69,9 @@ Lo recaudado son las cuotas que los datos de prueba dejan pagadas: MAT-1 al cont
 
 | Qué | Estado |
 |---|---|
-| Informe de práctica de campo, con la bitácora y las evidencias | ⬜ Por hacer |
-| Presentación de máximo 15 diapositivas, que sube cada integrante | ⬜ Por hacer |
-| Porcentajes de participación de la carátula del informe, pendiente de la parte 2 | ⬜ Por decidir en el grupo |
+| Informe de práctica de campo, con la bitácora y las evidencias | ✅ En `docs/` |
+| Presentación de máximo 15 diapositivas | ✅ Lista; falta que cada integrante la suba a la plataforma |
+| Porcentajes de participación de las carátulas (los informes ponen 100 % a cada integrante) | ⬜ Confirmar en el grupo |
 
 ---
 

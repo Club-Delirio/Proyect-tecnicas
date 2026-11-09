@@ -26,12 +26,14 @@ UPN Cajamarca, periodo 2026-2).
 | `docs/historias-usuario.md` | 22 historias de usuario con sus escenarios (semanas 8 y 12) |
 | `docs/Historias_Usuario_Academia.xlsx` | Matriz de historias de usuario en la plantilla del curso |
 | `docs/manejo-archivos-java.md` | Investigación y práctica de manejo de archivos en Java (semana 9) |
-| `docs/diagrama_clases.png` | Diagrama de clases UML del dominio, en imagen (semana 9) |
-| `docs/diagrama_clases.svg` | El mismo diagrama en vectorial, para imprimir o ampliar sin perder nitidez |
-| `docs/diagrama_clases.drawio` | El mismo diagrama en formato draw.io, para abrirlo y editarlo en app.diagrams.net. Muestra las clases de dominio, la clase `Cuota` (composición con `Matricula`) y la interfaz `Registrable`; la Figura 1 del informe de la semana 11 incluye además los controladores, `ArchivoUtil` y la clase principal |
+| `docs/diagrama_clases.png` | Diagrama de clases UML del modelo de dominio, en imagen: las clases de dominio, la clase `Cuota` (composición con `Matricula`) y la interfaz `Registrable` |
+| `docs/diagrama_interfaz.png` | Diagrama de clases UML de la interfaz gráfica: `VentanaPrincipal`, `FormularioBase` y las 7 ventanas, con sus relaciones con Swing |
+| `docs/diagrama_clases.svg`, `docs/diagrama_interfaz.svg` | Los mismos dos diagramas en vectorial, para imprimir o ampliar sin perder nitidez |
+| `docs/diagrama_clases.drawio` | Los dos diagramas en formato draw.io, en dos páginas (01 · Modelo de dominio y 02 · Interfaz gráfica), para abrirlos y editarlos en app.diagrams.net. Por convención del curso, los controladores no se modelan |
 | `docs/ishikawa.png`, `docs/ishikawa.svg` | Diagrama de Ishikawa del problema |
 | `docs/Informe_Academia_APA7.docx` | Informe del proyecto en formato APA 7 |
 | `docs/Informe_Responsabilidad_Social.docx` | Informe de la actividad de responsabilidad social (semana 11) |
+| `docs/Informe_Practica_Campo_Bitacora.docx` | Informe de práctica de campo: bitácora de las semanas 1 a 13 con sus evidencias (T3) |
 | `docs/reparto-de-tareas.md` | Qué hizo cada integrante |
 | `docs/GUIA_GIT_SEMANAS7-11.md` | Comandos de Git y GitHub que ejecuta cada integrante |
 | `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar: la T3 de las semanas 12 y 13, con la rúbrica y los valores que debe mostrar el programa, y la entrega de las semanas 7 a 11 |

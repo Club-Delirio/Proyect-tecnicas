@@ -1,5 +1,5 @@
 Datos de prueba cargados: 8 personas, 4 ciclos, 6 matriculas y 9 asistencias
-Carpeta creada: /tmp/claude-0/-home-claude/76413bf7-22d5-5c89-af4b-153e53303ce4/scratchpad/s12/ev/run1/datos
+Carpeta creada: .../datos
 Se guardaron 4 registro(s) en datos/ciclos.txt
 [Operacion de escritura finalizada]
 Se guardaron 8 registro(s) en datos/personas.txt
@@ -76,7 +76,7 @@ Se guardaron 10 registro(s) en datos/asistencias.txt
 Se guardaron 21 registro(s) en datos/cuotas.txt
 [Operacion de escritura finalizada]
 [Operacion de lectura finalizada]
-Carpeta creada: /tmp/claude-0/-home-claude/76413bf7-22d5-5c89-af4b-153e53303ce4/scratchpad/s12/ev/run1/datos/respaldo_2026-11-06_18-04-59
+Carpeta creada: .../datos/respaldo_2026-11-06_18-04-59
 Se guardaron 21 registro(s) en datos/respaldo_2026-11-06_18-04-59/cuotas.txt
 [Operacion de escritura finalizada]
 [Operacion de lectura finalizada]

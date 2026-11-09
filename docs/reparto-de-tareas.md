@@ -235,7 +235,7 @@ El turno 1 crea la rama, así que va primero. Los turnos 2 y 3 pueden ir en cual
 
 Las clases `CicloController`, `CicloRegular`, `CursoIntensivo` y `PersonaController` no cambiaron en estas semanas y no se vuelven a subir.
 
-Cuando el turno 4 confirme que la ventana abre, se crea el pull request de `feat/semanas-12-13` hacia `develop`, se fusiona, y `develop` se fusiona en `main`.
+Cuando el turno 4 confirme que la ventana abre, Chuquimango sube el último paso: el informe de práctica de campo, el diagrama de clases con su segunda página (la interfaz gráfica, sin controladores, por convención del curso) y la lista de comprobación actualizada. Va después del turno 3 porque reemplaza la exportación del diagrama que sube Cachi. Luego se crea el pull request de `feat/semanas-12-13` hacia `develop`, se fusiona, y `develop` se fusiona en `main`.
 
 ## Verificación final de las semanas 12 y 13
 
