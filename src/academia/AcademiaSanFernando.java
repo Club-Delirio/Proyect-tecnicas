@@ -58,6 +58,7 @@ public class AcademiaSanFernando {
             cargarCiclos(archivo, ciclos);
             cargarPersonas(archivo, personas);
             cargarMatriculas(archivo, personas, ciclos, matriculas);
+            cargarCuotas(archivo, matriculas);
             cargarAsistencias(archivo, personas, ciclos, asistencias);
             System.out.println("Se recuperaron " + personas.getCantidad() + " personas, " + ciclos.getCantidad()
                     + " ciclos, " + matriculas.getCantidad() + " matriculas y " + asistencias.getCantidad()
@@ -75,90 +76,7 @@ public class AcademiaSanFernando {
             rpta = "n";
         }
         if (rpta.equalsIgnoreCase("s")) {
-            Docente raul = new Docente("DNI", "41258963", "Raul", "Mendoza", "Chavez", "976543210",
-                    "DOC-001", "MATEMATICA", 35, 3);
-            Docente carmen = new Docente("DNI", "43698521", "Carmen Rosa", "Vasquez", "Rojas", "965321478",
-                    "DOC-002", "COMUNICACION", 28, 2.5);
-            raul.registrarHoras(80);
-            carmen.registrarHoras(64);
-            personas.agregarPersona(raul);
-            personas.agregarPersona(carmen);
-
-            Estudiante lucia = new Estudiante("DNI", "72581496", "Lucia Fernanda", "Quispe", "Tanta",
-                    "987654321", "EST-001", LocalDate.parse("2008-05-20"), "San Ramon",
-                    "Medicina", "Maria Tanta Lopez");
-            Estudiante diego = new Estudiante("DNI", "73695214", "Diego Alonso", "Huaman", "Paredes",
-                    "912345678", "EST-002", LocalDate.parse("2006-11-08"), "Juan XXIII",
-                    "Ingenieria de Sistemas", "Jose Huaman Diaz");
-            Estudiante ana = new Estudiante("CE", "001245789", "Ana Sofia", "Cruz", "Marin",
-                    "933221144", "EST-003", LocalDate.parse("2007-02-14"), "Santa Teresita",
-                    "Derecho", "Rosa Marin Flores");
-            Estudiante bruno = new Estudiante("DNI", "74125896", "Bruno Cesar", "Terrones", "Vigo",
-                    "956871234", "EST-004", LocalDate.parse("2009-07-30"), "Dos de Mayo",
-                    "Medicina", "Elena Vigo Alcantara");
-            Estudiante karla = new Estudiante("DNI", "75236914", "Karla Yamile", "Chilon", "Bautista",
-                    "941258963", "EST-005", LocalDate.parse("2008-01-12"), "Cristo Rey",
-                    "Contabilidad", "Pedro Chilon Mego");
-            Estudiante marco = new Estudiante("DNI", "76398521", "Marco Antonio", "Llanos", "Saldana",
-                    "932147856", "EST-006", LocalDate.parse("2005-09-25"), "San Marcelino",
-                    "Ingenieria Civil", "-");
-            personas.agregarPersona(lucia);
-            personas.agregarPersona(diego);
-            personas.agregarPersona(ana);
-            personas.agregarPersona(bruno);
-            personas.agregarPersona(karla);
-            personas.agregarPersona(marco);
-
-            Ciclo anual = new CicloRegular("CIC-001", "Ciclo Anual 2026-II",
-                    LocalDate.parse("2026-08-03"), LocalDate.parse("2026-12-18"),
-                    1450, "PRESENCIAL", 30, "MANANA", 5, 10);
-            Ciclo semestral = new CicloRegular("CIC-002", "Ciclo Semestral Virtual",
-                    LocalDate.parse("2026-09-01"), LocalDate.parse("2026-12-20"),
-                    850, "VIRTUAL", 120, "NOCHE", 4, 8);
-            Ciclo repaso = new CursoIntensivo("CUR-001", "Repaso Intensivo Ciencias",
-                    LocalDate.parse("2026-10-05"), LocalDate.parse("2026-11-28"),
-                    620, "PRESENCIAL", 25, "CIENCIAS", 8, 5);
-            Ciclo vacacional = new CursoIntensivo("CUR-002", "Vacacional Letras",
-                    LocalDate.parse("2026-12-28"), LocalDate.parse("2027-01-22"),
-                    380, "PRESENCIAL", 20, "LETRAS", 4, 4);
-            ciclos.agregarCiclo(anual);
-            ciclos.agregarCiclo(semestral);
-            ciclos.agregarCiclo(repaso);
-            ciclos.agregarCiclo(vacacional);
-
-            // Seis matriculas de prueba: tres al contado y tres fraccionadas
-            Estudiante[] quien = {lucia, bruno, karla, diego, ana, marco};
-            Docente[] quien_tutor = {raul, raul, raul, carmen, carmen, raul};
-            Ciclo[] en_que = {anual, anual, anual, semestral, semestral, repaso};
-            String[] pago = {"CONTADO", "FRACCIONADO", "CONTADO", "FRACCIONADO", "CONTADO", "FRACCIONADO"};
-            int[] cuotas = {0, 3, 0, 3, 0, 2};
-            for (int i = 0; i < quien.length; i++) {
-                Matricula m = new Matricula(quien[i], quien_tutor[i], en_que[i],
-                        nombre_campana, desc_campana);
-                m.setForma_pago(pago[i]);
-                if (cuotas[i] > 0) {
-                    m.setNro_cuotas(cuotas[i]);
-                }
-                m.calcularPrecioFinal();
-                matriculas.agregarMatricula(m);
-            }
-
-            // Nueve registros de asistencia de tres estudiantes
-            String[] estados = {"PRESENTE", "TARDANZA", "PRESENTE",
-                                "AUSENTE", "AUSENTE", "PRESENTE",
-                                "PRESENTE", "JUSTIFICADO", "AUSENTE"};
-            Estudiante[] quienes = {lucia, lucia, lucia, diego, diego, diego, bruno, bruno, bruno};
-            Ciclo[] donde = {anual, anual, anual, semestral, semestral, semestral, anual, anual, anual};
-            for (int i = 0; i < estados.length; i++) {
-                Asistencia a = new Asistencia(quienes[i], donde[i],
-                        LocalDate.now().minusDays(9 - i));
-                a.setEstado(estados[i]);
-                asistencias.agregarAsistencia(a);
-            }
-
-            System.out.println("Datos de prueba cargados: " + personas.getCantidad() + " personas, "
-                    + ciclos.getCantidad() + " ciclos, " + matriculas.getCantidad() + " matriculas y "
-                    + asistencias.getCantidad() + " asistencias");
+            cargarDatosDePrueba(personas, ciclos, matriculas, asistencias);
         }
 
         // ================== 1. REGISTRO DE CICLOS Y CURSOS ==================
@@ -356,12 +274,7 @@ public class AcademiaSanFernando {
                 e.setNro_doc(sc.nextLine());
             }
             // Si el estudiante ya existe no se vuelve a registrar, solo se actualiza su ultima visita
-            Persona encontrada = null;
-            for (Persona p : personas.getLista()) {
-                if (p.getNro_doc().equals(e.getNro_doc())) {
-                    encontrada = p;
-                }
-            }
+            Persona encontrada = personas.buscarPorDocumento(e.getNro_doc());
             if (encontrada != null) {
                 if (encontrada instanceof Estudiante) {
                     Estudiante existente = (Estudiante) encontrada; // downcasting
@@ -638,40 +551,22 @@ public class AcademiaSanFernando {
         if (asistencias.getCantidad() == 0) {
             System.out.println("Aun no hay asistencias registradas");
         } else {
-            int presentes = 0, tardanzas = 0, ausentes = 0, justificados = 0;
-            for (Asistencia a : asistencias.getLista()) {
-                if (a.getEstado().equals("PRESENTE")) {
-                    presentes++;
-                } else if (a.getEstado().equals("TARDANZA")) {
-                    tardanzas++;
-                } else if (a.getEstado().equals("AUSENTE")) {
-                    ausentes++;
-                } else {
-                    justificados++;
-                }
-            }
             for (Persona p : personas.getLista()) {
                 if (p instanceof Estudiante) {
                     Estudiante e = (Estudiante) p; // downcasting
-                    int registros = 0, asistio = 0;
-                    for (Asistencia a : asistencias.getLista()) {
-                        if (a.getEstudiante().getCodigo().equals(e.getCodigo())) {
-                            registros++;
-                            if (a.cuentaComoAsistio()) {
-                                asistio++;
-                            }
-                        }
-                    }
-                    if (registros > 0) {
-                        double porcentaje = (asistio * 100.0) / registros;
+                    int porcentaje = asistencias.calcularPorcentaje(e);
+                    if (porcentaje >= 0) {
                         System.out.println(e.getCodigo() + "  " + e.getNombreEnNomina()
-                                + "  Asistencia: " + Math.round(porcentaje) + "%  (" + asistio + " de " + registros + ")"
+                                + "  Asistencia: " + porcentaje + "%  (" + asistencias.contarAsistio(e)
+                                + " de " + asistencias.contarSesiones(e) + ")"
                                 + (porcentaje < 70 ? "   <-- RIESGO DE DESERCION" : ""));
                     }
                 }
             }
-            System.out.println("Presentes: " + presentes + " | Tardanzas: " + tardanzas
-                    + " | Ausentes: " + ausentes + " | Justificados: " + justificados);
+            System.out.println("Presentes: " + asistencias.contarPorEstado("PRESENTE")
+                    + " | Tardanzas: " + asistencias.contarPorEstado("TARDANZA")
+                    + " | Ausentes: " + asistencias.contarPorEstado("AUSENTE")
+                    + " | Justificados: " + asistencias.contarPorEstado("JUSTIFICADO"));
         }
 
         // ================== 8. GUARDAR LA INFORMACION EN ARCHIVOS ==================
@@ -729,39 +624,128 @@ public class AcademiaSanFernando {
         }
     }
 
+    // ================== DATOS DE PRUEBA ==================
+
+    /**
+     * Carga el juego de datos de prueba (R-07: datos ficticios). Lo usan la
+     * version de consola y la ventana principal de Swing, asi no se repite.
+     */
+    public static void cargarDatosDePrueba(PersonaController personas, CicloController ciclos,
+            MatriculaController matriculas, AsistenciaController asistencias) {
+        Docente raul = new Docente("DNI", "41258963", "Raul", "Mendoza", "Chavez", "976543210",
+                "DOC-001", "MATEMATICA", 35, 3);
+        Docente carmen = new Docente("DNI", "43698521", "Carmen Rosa", "Vasquez", "Rojas", "965321478",
+                "DOC-002", "COMUNICACION", 28, 2.5);
+        raul.registrarHoras(80);
+        carmen.registrarHoras(64);
+        personas.agregarPersona(raul);
+        personas.agregarPersona(carmen);
+
+        Estudiante lucia = new Estudiante("DNI", "72581496", "Lucia Fernanda", "Quispe", "Tanta",
+                "987654321", "EST-001", LocalDate.parse("2008-05-20"), "San Ramon",
+                "Medicina", "Maria Tanta Lopez");
+        Estudiante diego = new Estudiante("DNI", "73695214", "Diego Alonso", "Huaman", "Paredes",
+                "912345678", "EST-002", LocalDate.parse("2006-11-08"), "Juan XXIII",
+                "Ingenieria de Sistemas", "Jose Huaman Diaz");
+        Estudiante ana = new Estudiante("CE", "001245789", "Ana Sofia", "Cruz", "Marin",
+                "933221144", "EST-003", LocalDate.parse("2007-02-14"), "Santa Teresita",
+                "Derecho", "Rosa Marin Flores");
+        Estudiante bruno = new Estudiante("DNI", "74125896", "Bruno Cesar", "Terrones", "Vigo",
+                "956871234", "EST-004", LocalDate.parse("2009-07-30"), "Dos de Mayo",
+                "Medicina", "Elena Vigo Alcantara");
+        Estudiante karla = new Estudiante("DNI", "75236914", "Karla Yamile", "Chilon", "Bautista",
+                "941258963", "EST-005", LocalDate.parse("2008-01-12"), "Cristo Rey",
+                "Contabilidad", "Pedro Chilon Mego");
+        Estudiante marco = new Estudiante("DNI", "76398521", "Marco Antonio", "Llanos", "Saldana",
+                "932147856", "EST-006", LocalDate.parse("2005-09-25"), "San Marcelino",
+                "Ingenieria Civil", "-");
+        personas.agregarPersona(lucia);
+        personas.agregarPersona(diego);
+        personas.agregarPersona(ana);
+        personas.agregarPersona(bruno);
+        personas.agregarPersona(karla);
+        personas.agregarPersona(marco);
+
+        Ciclo anual = new CicloRegular("CIC-001", "Ciclo Anual 2026-II",
+                LocalDate.parse("2026-08-03"), LocalDate.parse("2026-12-18"),
+                1450, "PRESENCIAL", 30, "MANANA", 5, 10);
+        Ciclo semestral = new CicloRegular("CIC-002", "Ciclo Semestral Virtual",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-12-20"),
+                850, "VIRTUAL", 120, "NOCHE", 4, 8);
+        Ciclo repaso = new CursoIntensivo("CUR-001", "Repaso Intensivo Ciencias",
+                LocalDate.parse("2026-10-05"), LocalDate.parse("2026-11-28"),
+                620, "PRESENCIAL", 25, "CIENCIAS", 8, 5);
+        Ciclo vacacional = new CursoIntensivo("CUR-002", "Vacacional Letras",
+                LocalDate.parse("2026-12-28"), LocalDate.parse("2027-01-22"),
+                380, "PRESENCIAL", 20, "LETRAS", 4, 4);
+        ciclos.agregarCiclo(anual);
+        ciclos.agregarCiclo(semestral);
+        ciclos.agregarCiclo(repaso);
+        ciclos.agregarCiclo(vacacional);
+
+        // Seis matriculas de prueba: tres al contado y tres fraccionadas
+        Estudiante[] quien = {lucia, bruno, karla, diego, ana, marco};
+        Docente[] quien_tutor = {raul, raul, raul, carmen, carmen, raul};
+        Ciclo[] en_que = {anual, anual, anual, semestral, semestral, repaso};
+        String[] pago = {"CONTADO", "FRACCIONADO", "CONTADO", "FRACCIONADO", "CONTADO", "FRACCIONADO"};
+        int[] cuotas = {0, 3, 0, 3, 0, 2};
+        for (int i = 0; i < quien.length; i++) {
+            Matricula m = new Matricula(quien[i], quien_tutor[i], en_que[i],
+                    "SIN CAMPANA", 0);
+            m.setForma_pago(pago[i]);
+            if (cuotas[i] > 0) {
+                m.setNro_cuotas(cuotas[i]);
+            }
+            m.calcularPrecioFinal();
+            matriculas.agregarMatricula(m);
+        }
+
+        // Nueve registros de asistencia de tres estudiantes
+        String[] estados = {"PRESENTE", "TARDANZA", "PRESENTE",
+                            "AUSENTE", "AUSENTE", "PRESENTE",
+                            "PRESENTE", "JUSTIFICADO", "AUSENTE"};
+        Estudiante[] quienes = {lucia, lucia, lucia, diego, diego, diego, bruno, bruno, bruno};
+        Ciclo[] donde = {anual, anual, anual, semestral, semestral, semestral, anual, anual, anual};
+        for (int i = 0; i < estados.length; i++) {
+            Asistencia a = new Asistencia(quienes[i], donde[i],
+                    LocalDate.now().minusDays(9 - i));
+            a.setEstado(estados[i]);
+            asistencias.agregarAsistencia(a);
+        }
+
+        // Pagos de prueba (RF-27): Lucia pago al contado; Bruno y Diego, su primera cuota
+        matriculas.buscarMatricula("MAT-1").registrarPagoCuota(1);
+        matriculas.buscarMatricula("MAT-2").registrarPagoCuota(1);
+        matriculas.buscarMatricula("MAT-4").registrarPagoCuota(1);
+
+        System.out.println("Datos de prueba cargados: " + personas.getCantidad() + " personas, "
+                + ciclos.getCantidad() + " ciclos, " + matriculas.getCantidad() + " matriculas y "
+                + asistencias.getCantidad() + " asistencias");
+    }
+
     // ================== METODOS DE ARCHIVO ==================
 
     /**
-     * Guarda las cuatro listas en cuatro archivos de texto. Cada objeto se
-     * convierte en una linea con convertirALinea(): el metodo que se ejecuta
-     * depende del objeto real, por polimorfismo.
+     * Guarda las cuatro listas en cuatro archivos de texto y el estado de las
+     * cuotas en cuotas.txt. Cada objeto se convierte en una linea con
+     * convertirALinea(): ArchivoUtil solo sabe que son Registrable, y el
+     * metodo que se ejecuta depende del objeto real (polimorfismo).
      */
     public static void guardarTodo(ArchivoUtil archivo, PersonaController personas,
             CicloController ciclos, MatriculaController matriculas,
             AsistenciaController asistencias) {
+        // Las cuatro listas son de clases distintas, pero todas son Registrable
+        archivo.guardarRegistros("ciclos.txt", new ArrayList<Registrable>(ciclos.getLista()));
+        archivo.guardarRegistros("personas.txt", new ArrayList<Registrable>(personas.getLista()));
+        archivo.guardarRegistros("matriculas.txt", new ArrayList<Registrable>(matriculas.getLista()));
+        archivo.guardarRegistros("asistencias.txt", new ArrayList<Registrable>(asistencias.getLista()));
+
+        // Las cuotas se guardan a traves de su matricula, porque son parte de ella
         ArrayList<String> lineas = new ArrayList();
-        for (Ciclo c : ciclos.getLista()) {
-            lineas.add(c.convertirALinea());
-        }
-        archivo.guardarLineas("ciclos.txt", lineas);
-
-        lineas = new ArrayList();
-        for (Persona p : personas.getLista()) {
-            lineas.add(p.convertirALinea());
-        }
-        archivo.guardarLineas("personas.txt", lineas);
-
-        lineas = new ArrayList();
         for (Matricula m : matriculas.getLista()) {
-            lineas.add(m.convertirALinea());
+            lineas.addAll(m.convertirCuotasALineas());
         }
-        archivo.guardarLineas("matriculas.txt", lineas);
-
-        lineas = new ArrayList();
-        for (Asistencia a : asistencias.getLista()) {
-            lineas.add(a.convertirALinea());
-        }
-        archivo.guardarLineas("asistencias.txt", lineas);
+        archivo.guardarLineas("cuotas.txt", lineas);
     }
 
     /**
@@ -901,6 +885,35 @@ public class AcademiaSanFernando {
             }
         }
         System.out.println("Matriculas recuperadas: " + cargadas);
+    }
+
+    /**
+     * Recupera el estado de pago de las cuotas. Las cuotas no se crean aqui:
+     * ya las creo cada Matricula al recalcular su precio (composicion); este
+     * metodo solo marca como pagadas las que lo estaban.
+     */
+    public static void cargarCuotas(ArchivoUtil archivo, MatriculaController matriculas) {
+        ArrayList<String> lineas = archivo.leerLineas("cuotas.txt");
+        int pagadas = 0;
+        for (int i = 0; i < lineas.size(); i++) {
+            String[] campo = lineas.get(i).split(";");
+            if (campo.length < 6) {
+                System.out.println("Aviso: la linea " + (i + 1) + " de cuotas.txt esta incompleta y se omite");
+                continue;
+            }
+            try {
+                if (campo[4].equals("PAGADA")) {
+                    Matricula m = matriculas.buscarMatricula(campo[0]);
+                    if (m != null && m.registrarPagoCuota(Integer.parseInt(campo[1]),
+                            LocalDate.parse(campo[5]))) {
+                        pagadas = pagadas + 1;
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Aviso: no se pudo leer la linea " + (i + 1) + " de cuotas.txt");
+            }
+        }
+        System.out.println("Cuotas pagadas recuperadas: " + pagadas);
     }
 
     /**
