@@ -173,7 +173,49 @@ public class AsistenciaController {
         if (sesiones == 0) {
             return -1;
         }
-        return this.contarAsistio(estudiante, ciclo) * 100 / sesiones;
+        return (int) Math.round(this.contarAsistio(estudiante, ciclo) * 100.0 / sesiones);
+    }
+
+    /**
+     * Sobrecarga: cuenta las sesiones del estudiante en todos sus ciclos.
+     * La usa el reporte de asistencia de la clase principal.
+     */
+    public int contarSesiones(Estudiante estudiante) {
+        int contador = 0;
+        for (int i = 0; i < this.lista.size(); i++) {
+            if (this.lista.get(i).getEstudiante() == estudiante) {
+                contador = contador + 1;
+            }
+        }
+        return contador;
+    }
+
+    /**
+     * Sobrecarga: cuenta en cuantas sesiones asistio el estudiante, en todos
+     * sus ciclos. La tardanza y la falta justificada cuentan como asistencia.
+     */
+    public int contarAsistio(Estudiante estudiante) {
+        int contador = 0;
+        for (int i = 0; i < this.lista.size(); i++) {
+            Asistencia a = this.lista.get(i);
+            if (a.getEstudiante() == estudiante && a.cuentaComoAsistio()) {
+                contador = contador + 1;
+            }
+        }
+        return contador;
+    }
+
+    /**
+     * Sobrecarga: porcentaje de asistencia del estudiante en todos sus ciclos,
+     * redondeado con Math.round() (criterio 36.8). Devuelve -1 si no tiene
+     * sesiones registradas.
+     */
+    public int calcularPorcentaje(Estudiante estudiante) {
+        int sesiones = this.contarSesiones(estudiante);
+        if (sesiones == 0) {
+            return -1;
+        }
+        return (int) Math.round(this.contarAsistio(estudiante) * 100.0 / sesiones);
     }
 
     public int contarPorEstado(String estado) {
