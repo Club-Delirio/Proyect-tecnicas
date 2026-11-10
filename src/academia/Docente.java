@@ -117,6 +117,14 @@ public class Docente extends Persona {
         this.monto_gestionado = this.monto_gestionado + precio_final;
     }
 
+    // Resta una matricula anulada del acumulado del docente tutor (RF-28)
+    public void quitarMatricula(double precio_final) {
+        if (this.cant_matriculas > 0) {
+            this.cant_matriculas = this.cant_matriculas - 1;
+            this.monto_gestionado = Math.round((this.monto_gestionado - precio_final) * 100) / 100.0;
+        }
+    }
+
     // Pago por dictado = tarifa por hora x horas dictadas
     public double calcularPagoHoras() {
         return Math.round(this.tarifa_hora * this.horas_dictadas * 100) / 100.0;
