@@ -2,8 +2,9 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturi · Rojas Valdivia Jhann Frank
-**Repositorio:** `Club-Delirio/Proyect-tecnicas` · **Paquete:** `academia`
+**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturo · Rojas Valdivia Jhann Frank
+**Repositorio:** `Club-Delirio/Proyect-tecnicas` · **Paquete:** `academia`  
+**Última actualización:** semana 13 — 22 requerimientos implementados: los 15 de las semanas 7 a 11 (consola) y 7 nuevos de las semanas 12 y 13, con la interfaz gráfica en Swing.
 
 ---
 
@@ -17,6 +18,7 @@
 | **Prioridad Baja** | Mejora la experiencia o la presentación de la información. |
 | **Implementado** | Codificado en Java, compilado y verificado en esta entrega. |
 | **Pendiente** | Documentado y con criterios de aceptación definidos, previsto para las entregas siguientes. |
+| **Evidencia** | Captura de la carpeta `evidencias/` que muestra el criterio cumplido en la ejecución. |
 
 Los criterios de aceptación se redactan en el formato **Dado / Cuando / Entonces**. Cada criterio describe una condición verificable: o se cumple o no se cumple, sin interpretación intermedia.
 
@@ -28,13 +30,13 @@ Los criterios de aceptación se redactan en el formato **Dado / Cuando / Entonce
 |---|---|---|---|---|
 | M1. Oferta académica | RF-01 a RF-08 | 8 | 3 | 5 |
 | M2. Plana docente | RF-09 a RF-14 | 6 | 1 | 5 |
-| M3. Estudiantes | RF-15 a RF-21 | 7 | 3 | 4 |
-| M4. Matrícula y pagos | RF-22 a RF-30 | 9 | 4 | 5 |
+| M3. Estudiantes | RF-15 a RF-21 | 7 | 4 | 3 |
+| M4. Matrícula y pagos | RF-22 a RF-30 | 9 | 6 | 3 |
 | M5. Control de asistencia | RF-31 a RF-34 | 4 | 1 | 3 |
-| M6. Reportes y persistencia | RF-35 a RF-45 | 11 | 3 | 8 |
-| **Total** | **RF-01 a RF-45** | **45** | **15** | **30** |
+| M6. Reportes y persistencia | RF-35 a RF-45 | 11 | 7 | 4 |
+| **Total** | **RF-01 a RF-45** | **45** | **22** | **23** |
 
-Los 45 requerimientos tienen en total **179 criterios de aceptación** documentados en la sección 4.
+Los 45 requerimientos tienen en total **192 criterios de aceptación** documentados en la sección 4.
 
 ---
 
@@ -74,7 +76,7 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 | RF-18 | Registrar el resultado de los simulacros de cada estudiante y su puntaje acumulado. | Alta | Pendiente |
 | RF-19 | Emitir el carné del estudiante con su código y su fotografía. | Baja | Pendiente |
 | RF-20 | Registrar el resultado del examen de admisión al que postuló el estudiante. | Media | Pendiente |
-| RF-21 | Clasificar a los estudiantes en nuevos y recurrentes según su historial de matrículas. | Media | Pendiente |
+| RF-21 | Clasificar a los estudiantes en nuevos y recurrentes según su historial de matrículas. | Media | Implementado |
 
 ### M4. Matrícula y pagos
 
@@ -85,8 +87,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 | RF-24 | Registrar la matrícula indicando la forma de pago: al contado o fraccionada en 2, 3 o 4 cuotas. | Alta | Implementado |
 | RF-25 | Impedir matricular a un estudiante en un ciclo sin vacantes o en el que ya está matriculado. | Alta | Implementado |
 | RF-26 | Emitir el comprobante de la matrícula en formato PDF con el desglose del precio. | Media | Pendiente |
-| RF-27 | Registrar el cronograma de cuotas y el estado de pago de cada una. | Alta | Pendiente |
-| RF-28 | Anular una matrícula y devolver la vacante al ciclo. | Alta | Pendiente |
+| RF-27 | Registrar el cronograma de cuotas y el estado de pago de cada una. | Alta | Implementado |
+| RF-28 | Anular una matrícula y devolver la vacante al ciclo. | Alta | Implementado |
 | RF-29 | Trasladar a un estudiante de un ciclo a otro conservando lo pagado. | Media | Pendiente |
 | RF-30 | Aplicar descuento por hermanos matriculados en el mismo periodo. | Media | Pendiente |
 
@@ -105,13 +107,13 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 |---|---|---|---|
 | RF-35 | Mostrar la oferta académica agrupada por categoría, con el estado y las vacantes de cada ciclo. | Alta | Implementado |
 | RF-36 | Emitir el listado de estudiantes y docentes, el historial de matrículas, las estadísticas del periodo, el reporte financiero y el reporte de asistencia con alerta de riesgo. | Alta | Implementado |
-| RF-37 | Mostrar un tablero con los indicadores del periodo: matriculados, ingreso y ocupación. | Media | Pendiente |
+| RF-37 | Mostrar un tablero con los indicadores del periodo: matriculados, ingreso y ocupación. | Media | Implementado |
 | RF-38 | Comparar las matrículas del periodo contra las del periodo anterior. | Media | Pendiente |
 | RF-39 | Guardar la información en archivos de texto, recuperarla al iniciar y exportar el historial de matrículas a un archivo CSV. | Alta | Implementado |
-| RF-40 | Recuperar los archivos de forma automática al abrir el programa, sin que el usuario deba solicitarlo. | Alta | Pendiente |
-| RF-41 | Generar una copia de respaldo cuyo nombre incluya la fecha y la hora de creación. | Media | Pendiente |
+| RF-40 | Recuperar los archivos de forma automática al abrir el programa, sin que el usuario deba solicitarlo. | Alta | Implementado |
+| RF-41 | Generar una copia de respaldo cuyo nombre incluya la fecha y la hora de creación. | Media | Implementado |
 | RF-42 | Migrar el almacenamiento de archivos de texto a una base de datos relacional. | Alta | Pendiente |
-| RF-43 | Ofrecer una interfaz gráfica de escritorio para el personal de la academia. | Alta | Pendiente |
+| RF-43 | Ofrecer una interfaz gráfica de escritorio para el personal de la academia. | Alta | Implementado |
 | RF-44 | Controlar el acceso con usuario, contraseña y perfil diferenciado por cargo. | Alta | Pendiente |
 | RF-45 | Registrar en una bitácora quién hizo cada matrícula, anulación y cambio de costo. | Media | Pendiente |
 
@@ -139,6 +141,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `CicloRegular`, `CursoIntensivo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`04_registro_ciclo_categoria`](../evidencias/04_registro_ciclo_categoria.png), [`06_validaciones_set`](../evidencias/06_validaciones_set.png)
 ---
 
 ### RF-02 — Impedir el registro duplicado por código · **Implementado**
@@ -152,6 +156,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`05_codigo_duplicado`](../evidencias/05_codigo_duplicado.png)
 ---
 
 ### RF-03 — Clasificación automática por categoría · **Implementado**
@@ -167,6 +173,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `CicloRegular`, `CursoIntensivo`
 
+
+**Evidencia:** [`04_registro_ciclo_categoria`](../evidencias/04_registro_ciclo_categoria.png), [`03_oferta_por_categoria`](../evidencias/03_oferta_por_categoria.png)
 ---
 
 ### RF-04 — Modificar el costo base · Pendiente
@@ -232,6 +240,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Persona`, `Docente`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`10_registro_docente`](../evidencias/10_registro_docente.png), [`10b_plana_docente`](../evidencias/10b_plana_docente.png)
 ---
 
 ### RF-10 — Asignaturas por especialidad · Pendiente
@@ -296,6 +306,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Persona`, `Estudiante`
 
+
+**Evidencia:** [`08_apoderado_obligatorio`](../evidencias/08_apoderado_obligatorio.png), [`09_registro_estudiante`](../evidencias/09_registro_estudiante.png), [`09b_lista_estudiantes`](../evidencias/09b_lista_estudiantes.png)
 ---
 
 ### RF-16 — Reconocer al estudiante ya registrado · **Implementado**
@@ -309,6 +321,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Estudiante`, `Persona`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`07_estudiante_reconocido`](../evidencias/07_estudiante_reconocido.png)
 ---
 
 ### RF-17 — Historial de matrículas del estudiante · **Implementado**
@@ -322,6 +336,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Estudiante`, `Ciclo`
 
+
+**Evidencia:** [`17b_historial_estudiante`](../evidencias/17b_historial_estudiante.png)
 ---
 
 ### RF-18 — Resultados de los simulacros · Pendiente
@@ -351,13 +367,19 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 ---
 
-### RF-21 — Clasificación de estudiantes · Pendiente
+### RF-21 — Clasificación de estudiantes · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 21.1 | Estudiante recurrente | El estudiante tiene dos o más matrículas | Se consulta su clasificación | Se le identifica como recurrente |
-| 21.2 | Estudiante nuevo | El estudiante no tiene matrículas previas | Se consulta su clasificación | Se le identifica como nuevo |
+| 21.1 | Estudiante recurrente | El estudiante tiene dos o más ciclos en su historial | Se invoca `calcularTipoEstudiante()` | Devuelve `RECURRENTE` |
+| 21.2 | Estudiante nuevo | El estudiante tiene una sola matrícula o ninguna | Se invoca `calcularTipoEstudiante()` | Devuelve `NUEVO` |
+| 21.3 | Reclasificación al anular | Un estudiante recurrente pierde su segunda matrícula por anulación | Se vuelve a consultar su tipo | Vuelve a ser `NUEVO` |
+| 21.4 | Visible en pantalla | Hay estudiantes de los dos tipos | Se abre la ventana Estudiantes o el tablero | La columna Tipo muestra la clasificación y el tablero, el conteo de nuevos y recurrentes |
 
+**Clases involucradas:** `Estudiante`, `FrmEstudiantes`, `FrmTablero`
+
+
+**Evidencia:** [`09b_lista_estudiantes`](../evidencias/09b_lista_estudiantes.png), [`17_estudiante_recurrente`](../evidencias/17_estudiante_recurrente.png), [`17b_historial_estudiante`](../evidencias/17b_historial_estudiante.png), [`28_tablero`](../evidencias/28_tablero.png)
 ---
 
 ### RF-22 — Campaña de descuento y descuento del ciclo · **Implementado**
@@ -374,6 +396,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `CicloRegular`, `CursoIntensivo`, `Matricula`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`11_campana`](../evidencias/11_campana.png), [`12_cotizacion_desglose`](../evidencias/12_cotizacion_desglose.png)
 ---
 
 ### RF-23 — Cotizar sin registrar la matrícula · **Implementado**
@@ -389,6 +413,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Matricula`, `Ciclo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`12_cotizacion_desglose`](../evidencias/12_cotizacion_desglose.png)
 ---
 
 ### RF-24 — Registrar la matrícula · **Implementado**
@@ -406,6 +432,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Matricula`, `Estudiante`, `Docente`, `Ciclo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`13_confirmar_matricula`](../evidencias/13_confirmar_matricula.png), [`14_matricula_registrada`](../evidencias/14_matricula_registrada.png)
 ---
 
 ### RF-25 — Impedir la matrícula sin vacantes o duplicada · **Implementado**
@@ -419,6 +447,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `Estudiante`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`15_matricula_duplicada`](../evidencias/15_matricula_duplicada.png), [`16_sin_vacantes`](../evidencias/16_sin_vacantes.png)
 ---
 
 ### RF-26 — Comprobante en PDF · Pendiente
@@ -430,24 +460,39 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 ---
 
-### RF-27 — Cronograma de cuotas · Pendiente
+### RF-27 — Cronograma de cuotas · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 27.1 | Generación | La matrícula es fraccionada en 3 cuotas | Se registra | Se generan 3 cuotas con su monto y su fecha de vencimiento |
-| 27.2 | Suma exacta | Se suman todas las cuotas | Se compara con el precio final | Los montos coinciden sin diferencia de redondeo |
-| 27.3 | Cuota vencida | Una cuota pasó su fecha sin pago | Se consulta la matrícula | La cuota aparece marcada como vencida |
+| 27.1 | Generación | La matrícula es fraccionada en 3 cuotas | Se calcula su precio | La propia matrícula crea 3 cuotas con su monto y su vencimiento mensual (composición) |
+| 27.2 | Suma exacta | Se suman todas las cuotas | Se compara con el precio final | Coinciden al céntimo: la última cuota absorbe el redondeo |
+| 27.3 | Cuota vencida | Una cuota pasó su fecha sin pago | Se consulta su estado | Aparece como `VENCIDA` |
+| 27.4 | Pago | La cuota está pendiente o vencida | Se registra el pago | Pasa a `PAGADA` con la fecha de pago y el saldo se recalcula |
+| 27.5 | Pago duplicado | La cuota ya está pagada | Se intenta pagar otra vez | Se rechaza con `Error: la cuota n ya fue pagada el ...` |
+| 27.6 | Pago al contado | La matrícula es al contado | Se calcula su precio | Tiene una sola cuota por el precio final |
+| 27.7 | Persistencia del pago | Hay cuotas pagadas | Se guarda, se cierra y se vuelve a abrir el programa | Las cuotas pagadas se recuperan de `cuotas.txt` |
 
+**Clases involucradas:** `Matricula`, `Cuota`, `MatriculaController`, `FrmMatricula`, `FrmPagos`
+
+
+**Evidencia:** [`12_cotizacion_desglose`](../evidencias/12_cotizacion_desglose.png), [`14b_cronograma_creado`](../evidencias/14b_cronograma_creado.png), [`18_cronograma_vencidas`](../evidencias/18_cronograma_vencidas.png), [`19_pago_cuota`](../evidencias/19_pago_cuota.png), [`20_pago_duplicado`](../evidencias/20_pago_duplicado.png)
 ---
 
-### RF-28 — Anular una matrícula · Pendiente
+### RF-28 — Anular una matrícula · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 28.1 | Anulación válida | La matrícula existe y no fue anulada | Se anula | El ciclo recupera la vacante y vuelve a `ABIERTO` si estaba cerrado |
-| 28.2 | Reversión de acumulados | La matrícula se anula | Se recalculan los acumulados | El monto y la bonificación del tutor se descuentan |
-| 28.3 | Doble anulación | La matrícula ya está anulada | Se intenta anular otra vez | La operación se rechaza |
+| 28.1 | Anulación válida | La matrícula existe y no tiene cuotas pagadas | Se anula | Sale de la colección, el ciclo recupera la vacante y vuelve a `ABIERTO` si estaba cerrado |
+| 28.2 | Reversión de acumulados | La matrícula se anula | Se actualizan los acumulados | El tutor descuenta la matrícula y su monto, y el ciclo sale del historial del estudiante |
+| 28.3 | Doble anulación | La matrícula ya fue anulada | Se intenta anular otra vez | Se rechaza porque el código ya no existe |
+| 28.4 | Matrícula con pagos | La matrícula tiene al menos una cuota pagada | Se intenta anular | Se rechaza: correspondería una devolución, que está fuera del alcance |
+| 28.5 | Composición | La matrícula anulada tenía cuotas | Se anula | Sus cuotas desaparecen con ella |
+| 28.6 | Código único | Se anuló una matrícula | Se registra otra | El código nuevo no repite ninguno que esté en uso |
 
+**Clases involucradas:** `MatriculaController`, `Matricula`, `Cuota`, `Ciclo`, `Estudiante`, `Docente`, `FrmPagos`
+
+
+**Evidencia:** [`21_anular_con_pago`](../evidencias/21_anular_con_pago.png), [`22_confirmar_anulacion`](../evidencias/22_confirmar_anulacion.png), [`23_anulacion_vacante`](../evidencias/23_anulacion_vacante.png), [`24_ciclo_reabierto`](../evidencias/24_ciclo_reabierto.png)
 ---
 
 ### RF-29 — Traslado entre ciclos · Pendiente
@@ -483,6 +528,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Asistencia`, `Estudiante`, `Ciclo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`25_asistencia_registrada`](../evidencias/25_asistencia_registrada.png), [`26_asistencia_duplicada`](../evidencias/26_asistencia_duplicada.png)
 ---
 
 ### RF-32 — Registro masivo de asistencia · Pendiente
@@ -523,6 +570,8 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Ciclo`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`03_oferta_por_categoria`](../evidencias/03_oferta_por_categoria.png)
 ---
 
 ### RF-36 — Listados, estadísticas y reportes · **Implementado**
@@ -542,15 +591,22 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `Persona`, `Estudiante`, `Docente`, `Ciclo`, `Matricula`, `Asistencia`, `AcademiaSanFernando`
 
+
+**Evidencia:** [`27_reporte_riesgo`](../evidencias/27_reporte_riesgo.png), [`28_tablero`](../evidencias/28_tablero.png), [`09b_lista_estudiantes`](../evidencias/09b_lista_estudiantes.png), [`10b_plana_docente`](../evidencias/10b_plana_docente.png)
 ---
 
-### RF-37 — Tablero de indicadores · Pendiente
+### RF-37 — Tablero de indicadores · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 37.1 | Indicadores visibles | Hay matrículas en el periodo | Se abre el tablero | Se muestran matriculados, ingreso y ocupación de los ciclos |
-| 37.2 | Actualización | Se registra una matrícula nueva | Se vuelve a abrir el tablero | Los indicadores reflejan el cambio |
+| 37.1 | Indicadores visibles | Hay matrículas en el periodo | Se abre el tablero | Se muestran matrículas, ingreso total, recaudado, por cobrar, ocupación, planilla, resultado neto y estudiantes en riesgo |
+| 37.2 | Actualización | Se registra, paga o anula una matrícula | La ventana que hizo el cambio refresca las demás | Los indicadores reflejan el cambio sin cerrar el tablero |
+| 37.3 | Ocupación | Hay ciclos con vacantes | Se calcula la ocupación | Se muestra el porcentaje de matriculados sobre las vacantes de todos los ciclos |
 
+**Clases involucradas:** `FrmTablero`, `MatriculaController`, `PersonaController`, `AsistenciaController`
+
+
+**Evidencia:** [`28_tablero`](../evidencias/28_tablero.png), [`32_reinicio_recupera`](../evidencias/32_reinicio_recupera.png)
 ---
 
 ### RF-38 — Comparación entre periodos · Pendiente
@@ -586,24 +642,35 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 **Clases involucradas:** `ArchivoUtil`, `AcademiaSanFernando` y el método `convertirALinea()` de todas las entidades
 
+
+**Evidencia:** [`30_guardar`](../evidencias/30_guardar.png), [`31_salir`](../evidencias/31_salir.png), [`32_reinicio_recupera`](../evidencias/32_reinicio_recupera.png), [`log_interfaz.txt`](../evidencias/log_interfaz.txt)
 ---
 
-### RF-40 — Carga automática al iniciar · Pendiente
+### RF-40 — Carga automática al iniciar · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 40.1 | Carga silenciosa | Existen archivos de datos | Se inicia el programa | Los objetos se cargan sin preguntar y se informa el total |
-| 40.2 | Primera ejecución | No existe la carpeta de datos | Se inicia el programa | El programa arranca con las colecciones vacías, sin error |
+| 40.1 | Carga silenciosa | Existen archivos de datos | Se abre la ventana principal | Se recuperan ciclos, personas, matrículas, cuotas y asistencias sin preguntar, y la barra de estado muestra los totales |
+| 40.2 | Primera ejecución | No existen archivos de datos | Se abre la ventana principal | Arranca sin error y ofrece cargar los datos de prueba; si se responde que no, las colecciones quedan vacías |
 
+**Clases involucradas:** `VentanaPrincipal`, `AcademiaSanFernando`, `ArchivoUtil`
+
+
+**Evidencia:** [`00_primer_inicio`](../evidencias/00_primer_inicio.png), [`00b_primer_inicio_vacio`](../evidencias/00b_primer_inicio_vacio.png), [`01_inicio_carga_automatica`](../evidencias/01_inicio_carga_automatica.png), [`32_reinicio_recupera`](../evidencias/32_reinicio_recupera.png)
 ---
 
-### RF-41 — Copia de respaldo con fecha · Pendiente
+### RF-41 — Copia de respaldo con fecha · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 41.1 | Nombre con marca temporal | Se solicita el respaldo | Se genera el archivo | El nombre incluye la fecha y la hora, de modo que no sobrescribe respaldos anteriores |
-| 41.2 | Contenido íntegro | Hay datos en memoria | Se genera el respaldo | Contiene la misma cantidad de registros que los archivos de trabajo |
+| 41.1 | Nombre con marca temporal | Se solicita el respaldo | Se genera | Se crea `datos/respaldo_aaaa-mm-dd_hh-mm-ss`, que no sobrescribe respaldos anteriores |
+| 41.2 | Contenido íntegro | Hay datos en memoria | Se genera el respaldo | Primero se guardan los archivos y luego se copian los cinco `.txt` con la misma cantidad de registros |
+| 41.3 | Carpeta inexistente | No existe la carpeta de datos | Se solicita el respaldo | Se informa que no hay nada que respaldar, sin error |
 
+**Clases involucradas:** `ArchivoUtil`, `VentanaPrincipal`
+
+
+**Evidencia:** [`29_respaldo`](../evidencias/29_respaldo.png), [`log_pruebas_dominio.txt`](../evidencias/log_pruebas_dominio.txt)
 ---
 
 ### RF-42 — Migración a base de datos · Pendiente
@@ -615,13 +682,19 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 ---
 
-### RF-43 — Interfaz gráfica de escritorio · Pendiente
+### RF-43 — Interfaz gráfica de escritorio · **Implementado**
 
 | # | Criterio | Dado | Cuando | Entonces |
 |---|---|---|---|---|
-| 43.1 | Equivalencia funcional | La consola ofrece quince operaciones | Se usa la interfaz gráfica | Las mismas quince operaciones están disponibles en ventanas |
-| 43.2 | Validación en pantalla | Se ingresa un dato inválido | Se confirma el formulario | El error se muestra junto al campo, sin cerrar la ventana |
+| 43.1 | Equivalencia funcional | La consola ofrece quince operaciones | Se usa la interfaz gráfica | Las quince operaciones y las siete nuevas están en ventanas internas que se abren desde el menú |
+| 43.2 | Validación en pantalla | Se ingresa un dato inválido | Se confirma el formulario | Se muestran en un mensaje los mismos errores que imprimen los métodos `set`; la ventana no se cierra y conserva lo ingresado |
+| 43.3 | Navegación | El usuario elige una opción del menú | Se abre la ventana | Se agrega al escritorio (`JDesktopPane`); si ya estaba abierta, se trae al frente |
+| 43.4 | Confirmación | Se va a matricular, anular o salir | Se pulsa el botón | Se pide confirmación; al salir se pregunta si se guardan los cambios |
 
+**Clases involucradas:** `VentanaPrincipal`, `FormularioBase` y las siete ventanas `Frm*`
+
+
+**Evidencia:** [`01_inicio_carga_automatica`](../evidencias/01_inicio_carga_automatica.png), [`02_menu_navegacion`](../evidencias/02_menu_navegacion.png), [`06_validaciones_set`](../evidencias/06_validaciones_set.png), [`13_confirmar_matricula`](../evidencias/13_confirmar_matricula.png), [`31_salir`](../evidencias/31_salir.png)
 ---
 
 ### RF-44 — Control de acceso · Pendiente
@@ -643,25 +716,36 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 ---
 
-## 5. Trazabilidad de los quince requerimientos implementados
+## 5. Trazabilidad de los veintidós requerimientos implementados
 
-| Requerimiento | Historia | Sección del programa | Clases de dominio |
-|---|---|---|---|
-| RF-01 | HU-01 | 1. Registro de ciclos y cursos | `Ciclo`, `CicloRegular`, `CursoIntensivo` |
-| RF-02 | HU-02 | 1. Registro de ciclos y cursos | `Ciclo` |
-| RF-03 | HU-03 | 1. Registro de ciclos y cursos | `CicloRegular`, `CursoIntensivo` |
-| RF-09 | HU-04 | 2. Registro de docentes | `Persona`, `Docente` |
-| RF-15 | HU-05 | 3. Registro de estudiantes | `Persona`, `Estudiante` |
-| RF-16 | HU-06 | 3. Registro de estudiantes | `Estudiante` |
-| RF-17 | HU-07 | 5. Matrículas | `Estudiante`, `Ciclo` |
-| RF-22 | HU-08 | 4. Campaña de descuento | `CicloRegular`, `CursoIntensivo`, `Matricula` |
-| RF-23 | HU-09 | 5. Matrículas | `Matricula` |
-| RF-24 | HU-10 | 5. Matrículas | `Matricula`, `Estudiante`, `Docente` |
-| RF-25 | HU-11 | 5. Matrículas | `Ciclo`, `Estudiante` |
-| RF-31 | HU-12 | 6. Control de asistencia | `Asistencia`, `Estudiante`, `Ciclo` |
-| RF-35 | HU-13 | Catálogo por categoría | `Ciclo` |
-| RF-36 | HU-14 | 7. Listas y reportes | `Persona`, `Ciclo` y sus clases hijas, `Matricula`, `Asistencia` |
-| RF-39 | HU-15 | 0. Recuperar y 8. Guardar | `ArchivoUtil` y todas las entidades |
+La versión de consola (`AcademiaSanFernando`) sigue funcionando con las quince operaciones de las semanas 7 a 11. La interfaz gráfica (`VentanaPrincipal`) ofrece esas quince y las siete nuevas.
+
+| Requerimiento | Historia | Consola | Interfaz gráfica | Clases |
+|---|---|---|---|---|
+| RF-01 | HU-01 | 1. Registro de ciclos y cursos | Ciclos y cursos | `Ciclo`, `CicloRegular`, `CursoIntensivo` |
+| RF-02 | HU-02 | 1. Registro de ciclos y cursos | Ciclos y cursos | `Ciclo`, `CicloController` |
+| RF-03 | HU-03 | 1. Registro de ciclos y cursos | Ciclos y cursos | `CicloRegular`, `CursoIntensivo` |
+| RF-09 | HU-04 | 2. Registro de docentes | Docentes | `Persona`, `Docente` |
+| RF-15 | HU-05 | 3. Registro de estudiantes | Estudiantes | `Persona`, `Estudiante` |
+| RF-16 | HU-06 | 3. Registro de estudiantes | Estudiantes | `Estudiante`, `PersonaController` |
+| RF-17 | HU-07 | 5. Matrículas | Estudiantes (historial) | `Estudiante`, `Ciclo` |
+| RF-21 | HU-16 | — | Estudiantes, Tablero | `Estudiante` |
+| RF-22 | HU-08 | 4. Campaña de descuento | Matrícula y cotización | `CicloRegular`, `CursoIntensivo`, `Matricula` |
+| RF-23 | HU-09 | 5. Matrículas | Matrícula y cotización | `Matricula` |
+| RF-24 | HU-10 | 5. Matrículas | Matrícula y cotización | `Matricula`, `Estudiante`, `Docente` |
+| RF-25 | HU-11 | 5. Matrículas | Matrícula y cotización | `Ciclo`, `MatriculaController` |
+| RF-27 | HU-17 | — (las cuotas se guardan al salir) | Matrícula y cotización, Pagos y anulaciones | `Matricula`, `Cuota` |
+| RF-28 | HU-18 | — | Pagos y anulaciones | `MatriculaController`, `Ciclo`, `Estudiante`, `Docente` |
+| RF-31 | HU-12 | 6. Control de asistencia | Control de asistencia | `Asistencia`, `AsistenciaController` |
+| RF-35 | HU-13 | Catálogo por categoría | Ciclos y cursos | `Ciclo` |
+| RF-36 | HU-14 | 7. Listas y reportes | Estudiantes, Docentes, Control de asistencia, Tablero | `Persona`, `Ciclo` y sus clases hijas, `Matricula`, `Asistencia` |
+| RF-37 | HU-19 | — | Tablero del periodo | `MatriculaController`, `PersonaController`, `AsistenciaController` |
+| RF-39 | HU-15 | 0. Recuperar y 8. Guardar | Menú Archivo | `ArchivoUtil`, `Registrable` y todas las entidades |
+| RF-40 | HU-20 | 0. Recuperar (pregunta) | Ventana principal (sin preguntar) | `VentanaPrincipal`, `ArchivoUtil` |
+| RF-41 | HU-21 | — | Menú Archivo | `ArchivoUtil` |
+| RF-43 | HU-22 | — | Toda la interfaz | `VentanaPrincipal`, `FormularioBase`, `Frm*` |
+
+Las capturas de cada requerimiento están en `evidencias/README.md`.
 
 ---
 
@@ -669,9 +753,12 @@ Los 45 requerimientos tienen en total **179 criterios de aceptación** documenta
 
 | Documento | Contenido |
 |---|---|
-| `docs/historias-usuario.md` | Las quince historias de usuario en formato narrativo |
+| `docs/historias-usuario.md` | Las veintidós historias de usuario en formato narrativo |
 | `docs/Historias_Usuario_Academia.xlsx` | La matriz de historias con la trazabilidad a las clases Java |
 | `docs/restricciones-y-alternativas.md` | Las restricciones del proyecto y las alternativas de solución |
 | `docs/objetivos-y-alcance.md` | Los objetivos del proyecto y el alcance de la solución |
-| `docs/diagrama_clases.png` | El diagrama de clases UML del sistema |
+| `docs/diagrama_clases.png` | El diagrama de clases UML del modelo de dominio |
+| `docs/diagrama_interfaz.png` | El diagrama de clases UML de la interfaz gráfica |
+| `docs/ishikawa.png` | El diagrama de Ishikawa del problema |
+| `evidencias/README.md` | Las capturas que prueban cada criterio de los requerimientos implementados |
 | `docs/manejo-archivos-java.md` | La investigación y la práctica de manejo de archivos en Java |

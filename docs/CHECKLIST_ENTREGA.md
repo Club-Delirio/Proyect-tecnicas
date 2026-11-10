@@ -1,6 +1,81 @@
-# Checklist de entrega — Semanas 7 a 11
+# Checklist de entrega
 
 **Proyecto:** Academia Preuniversitaria San Fernando — sistema de matrícula y control de asistencia
+
+Este archivo tiene dos partes. La **parte 1** es la entrega vigente, la T3 de las semanas 12 y 13. La **parte 2** es la lista de las semanas 7 a 11, que se conserva como registro de esa entrega.
+
+---
+
+# Parte 1. T3 — Semanas 12 y 13
+
+**Lo que pide el curso:**
+
+- **Semana 12:** implementar en Java los requerimientos declarados y personalizados en las historias de usuario.
+- **Semana 13:** actualizar el estado de los requerimientos y de sus criterios de aceptación, implementar 10 requerimientos y evidenciar el cumplimiento de los criterios de aceptación.
+
+## A. Rúbrica de la T3 y qué la cubre
+
+| Criterio | Puntos | Qué lo cubre | Estado |
+|---|---|---|---|
+| Al menos 10 requerimientos funcionales implementados | 6 | 22 de los 45 requerimientos de `requerimientos-funcionales.md` están implementados. Los 7 nuevos de estas semanas son RF-21, RF-27, RF-28, RF-37, RF-40, RF-41 y RF-43 | ✅ |
+| Criterios de aceptación con evidencias | 4 | 192 criterios de aceptación. Cada requerimiento implementado enlaza su evidencia en `evidencias/`: 38 capturas y 3 registros de ejecución, con el índice en `evidencias/README.md` | ✅ |
+| Interfaz Swing con al menos 3 vistas, navegación, eventos, validaciones y mensajes | 3 | `VentanaPrincipal` con menú y escritorio, y 7 ventanas internas: ciclos, estudiantes, docentes, matrícula, pagos, asistencia y tablero. Su diagrama de clases está en `docs/diagrama_interfaz.png` | ✅ |
+| Calidad orientada a objetos: herencia, interfaz, composición y poca duplicación | 3 | Herencia en `Persona` y `Ciclo`; la interfaz `Registrable`; la composición `Matricula ◆— Cuota`; la agregación `Estudiante → Ciclo`; `FormularioBase` reúne lo común de las 7 ventanas | ✅ |
+| Informe de práctica de campo: bitácora y evidencias | 2 | `Informe_Practica_Campo_Bitacora.docx`: bitácora semana por semana de las tres entregas, con sus *commits*, *pull requests*, capturas de GitHub y del programa, pruebas y aporte de cada integrante | ✅ |
+| Informe de responsabilidad social | 2 | `Informe_Responsabilidad_Social.docx`, de la semana 11 | ✅ En el repositorio. Confirmar con el profesor si la T3 pide uno nuevo |
+| Presentación de máximo 15 diapositivas, que sube cada integrante | — | `T3_Academia_San_Fernando.pptx`: 15 diapositivas interactivas con notas del orador. No va al repositorio: cada integrante la sube a la plataforma | ✅ Lista |
+| Sustentación individual | — | Lo que explica cada uno está en `reparto-de-tareas.md`, sección de las semanas 12 y 13 | ⬜ Preparar |
+
+## B. Software en el repositorio
+
+| Qué | Dónde | Quién lo sube |
+|---|---|---|
+| `src/academia/` con las 25 clases | GitHub, rama `main` | Los cuatro, cada uno las de su parte |
+| `docs/` actualizados | GitHub, rama `main` | Chuquimango; Cachi el diagrama de clases, que Chuquimango completa al final con la página de la interfaz gráfica |
+| `evidencias/` con las 38 capturas y los 3 registros | GitHub, rama `main` | Los cuatro, cada uno las capturas de su parte |
+| `README.md` actualizado | GitHub, rama `main` | Chuquimango |
+
+El detalle archivo por archivo y el orden están en `reparto-de-tareas.md`, sección "Qué sube cada uno y en qué orden".
+
+## C. Comprobación final antes de presentar
+
+```bash
+git checkout main && git pull origin main
+ls src/academia/*.java | wc -l        # deben ser 25
+javac -encoding UTF-8 -d build $(find src -name "*.java")
+java -cp build academia.AcademiaSanFernando
+java -cp build academia.VentanaPrincipal
+```
+
+En NetBeans, la carpeta del repositorio se abre con `File > Open Project` (ya tiene `build.xml` y `nbproject/`) y la interfaz gráfica se abre con **F6** (Run Project) o con clic derecho sobre `VentanaPrincipal.java` → **Run File**.
+
+Para comprobar los valores de la interfaz gráfica hay que partir sin la carpeta `datos/`: si quedó de una corrida anterior, borrarla o cambiarle el nombre. Al abrir, el programa ofrece cargar los datos de prueba; aceptar y abrir **Reportes → Tablero del periodo**.
+
+| Comprobación | Valor esperado |
+|---|---|
+| Archivos en `src/academia/` | 25 |
+| Consola: ciclos, personas, matrículas y asistencias | 4, 8 (2 docentes y 6 estudiantes), 6 y 9 |
+| Consola: ingreso total, planilla docente e ingreso neto | S/ 6715.04, S/ 4785.36 y S/ 1929.68 |
+| Consola: estudiantes en riesgo de deserción | 2 (EST-002 con 33 % y EST-004 con 67 %) |
+| Interfaz: barra de estado al cargar los datos de prueba | Estudiantes: 6, Docentes: 2, Ciclos: 4, Matrículas: 6, Asistencias: 9 |
+| Tablero: matrículas, ingreso total, recaudado y por cobrar | 6, S/ 6715.04, S/ 2246.08 y S/ 4468.96 |
+| Tablero: planilla docente, resultado neto y riesgo de deserción | S/ 4785.36, S/ 1929.68 y 2 estudiantes |
+| Tablero: ocupación de vacantes | 3.1 % (6/195) |
+| **Archivo → Guardar datos** | Cinco archivos en `datos/`, entre ellos `cuotas.txt` con 11 cuotas |
+
+Lo recaudado son las cuotas que los datos de prueba dejan pagadas: MAT-1 al contado (S/ 1450.00) y la primera cuota de MAT-2 (S/ 517.17) y de MAT-4 (S/ 278.91).
+
+## D. Lo que falta para cerrar la T3
+
+| Qué | Estado |
+|---|---|
+| Informe de práctica de campo, con la bitácora y las evidencias | ✅ En `docs/` |
+| Presentación de máximo 15 diapositivas | ✅ Lista; falta que cada integrante la suba a la plataforma |
+| Porcentajes de participación de las carátulas (los informes ponen 100 % a cada integrante) | ✅ Confirmado por el grupo: 100 % cada uno |
+
+---
+
+# Parte 2. Semanas 7 a 11 (entregada)
 
 **Lo que pide el curso:** *Presentar informe y software que incluya los requerimientos y formatos de PC descritos + software en repositorio + Informe de responsabilidad social.*
 

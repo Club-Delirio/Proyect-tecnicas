@@ -2,8 +2,8 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturi · Rojas Valdivia Jhann Frank
-**Semana del sílabo:** 7
+**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturo · Rojas Valdivia Jhann Frank
+**Semana del sílabo:** 7 (actualizado en las semanas 12 y 13)
 
 ---
 
@@ -45,6 +45,8 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 **Decisión.** Alternativa A. El sistema se construye como aplicación de consola con catorce clases propias en el paquete `academia`: nueve de dominio organizadas en dos jerarquías de herencia que parten de las clases abstractas `Persona` y `Ciclo`. La interfaz gráfica queda documentada como RF-43 para una entrega posterior.
 
 **Consecuencia.** El esfuerzo se concentra en el modelo de clases, que es lo que el curso evalúa. La usabilidad se compensa con secciones guiadas, validación dato por dato dentro de los métodos `set` y un juego de datos de prueba cargable al iniciar.
+
+**Actualización (semana 12).** Cuando el sílabo llegó a la programación visual se agregó la interfaz gráfica Swing (RF-43) sobre las mismas clases. El modelo no tuvo que cambiar: las ventanas usan los mismos controladores y los mismos métodos `set`, lo que confirma que empezar por el modelo fue la decisión correcta. La versión de consola sigue funcionando.
 
 ---
 
@@ -101,6 +103,8 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 **Decisión.** Alternativa B. Se documentan 45 requerimientos funcionales con 179 criterios de aceptación y se implementan los 15 de prioridad alta que cubren el ciclo completo: oferta académica, plana docente, padrón de estudiantes, matrícula, asistencia, reportes y persistencia.
 
 **Consecuencia.** Lo entregado funciona de principio a fin para el caso de uso central. Los 30 requerimientos restantes quedan con criterios de aceptación escritos, de modo que quien continúe el proyecto no tenga que volver a analizarlos.
+
+**Actualización (semanas 12 y 13).** Se implementaron 7 requerimientos más (RF-21, RF-27, RF-28, RF-37, RF-40, RF-41 y RF-43), con lo que suman 22, y los criterios de aceptación pasaron de 179 a 192. Quedan 23 requerimientos pendientes.
 
 ---
 
@@ -180,6 +184,8 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 
 **Consecuencia.** La dirección puede llevar el historial de matrículas a Excel sin que el sistema tenga que generar ese formato. Es la solución de menor costo que cubre la necesidad real.
 
+**Actualización (semanas 12 y 13).** La interfaz gráfica (RF-43) se implementó en la semana 12, que es cuando el sílabo cubre Swing. El comprobante en PDF (RF-26) sigue pendiente.
+
 ---
 
 ## 7. Restricciones del negocio
@@ -236,17 +242,17 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 
 | Restricción | Decisión adoptada | Requerimiento pendiente que genera |
 |---|---|---|
-| R-01 Lenguaje y paradigma fijados | Aplicación de consola con catorce clases, dos jerarquías de herencia y cuatro controladores | RF-43 |
+| R-01 Lenguaje y paradigma fijados | Aplicación de consola con catorce clases, dos jerarquías de herencia y cuatro controladores; en la semana 12, interfaz Swing sobre el mismo modelo | RF-43 (implementado en la semana 12) |
 | R-02 Sin base de datos | Persistencia en archivos de texto mediante `ArchivoUtil` | RF-42 |
 | R-03 Equipo en formación | Dominio en clases abstractas, flujo en la clase principal | — |
-| R-04 Plazo del curso | 45 requerimientos documentados, 15 implementados | RF-04 a RF-45 según prioridad |
+| R-04 Plazo del curso | 45 requerimientos documentados; 15 implementados en la semana 11 y 22 en la semana 13 | Los 23 pendientes, según prioridad |
 | R-05 Trabajo asincrónico | Repositorio con ramas, pull requests y guía de Git documentada | — |
 | R-06 Cuatro integrantes sin dedicación exclusiva | Reparto por clase con convención de estilo escrita | — |
 | R-07 Sin datos reales | Juego de datos de prueba ficticio cargable al iniciar | — |
 | R-08 Aplicación autónoma | Proyecto de NetBeans sin dependencias externas | — |
-| R-09 Sin interfaz gráfica en esta entrega | Reportes por consola y exportación a CSV | RF-26, RF-43 |
+| R-09 Sin interfaz gráfica en la entrega de la semana 11 | Reportes por consola y exportación a CSV | RF-26 (RF-43 ya implementado) |
 | R-10 Usuario no informático | Validación en los `set` con bucle de reintento y captura de excepciones | — |
-| R-11 Precios y descuentos variables | Campaña ingresada en ejecución; descuentos resueltos por polimorfismo | RF-27, RF-30 |
+| R-11 Precios y descuentos variables | Campaña ingresada en ejecución; descuentos resueltos por polimorfismo | RF-30 (RF-27 ya implementado) |
 | R-12 Ley 29733 | Datos ficticios, apoderado obligatorio para menores y control de acceso documentado | RF-44, RF-45 |
 
 Ninguna de estas restricciones se resolvió ignorándola. Cada una produjo una decisión de diseño y, cuando correspondía, un requerimiento pendiente con sus criterios de aceptación ya escritos en `docs/requerimientos-funcionales.md`.

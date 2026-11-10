@@ -1,0 +1,43 @@
+[OK]    27.1 cronograma  ->  MAT-2 fraccionada en 3 tiene 3 cuotas
+[OK]    27.2 suma exacta  ->  suma de cuotas S/ 1551.50 = precio S/ 1551.5
+[OK]    27.3 vencimientos  ->  la cuota 2 vence un mes despues de la matricula
+[OK]    27.4 contado = 1 cuota  ->  MAT-3 al contado: 1 cuota de S/ 1450.0
+[OK]    27.5 pago  ->  cuota 2 de MAT-2 pagada; pagadas = 2
+[OK]    27.6 no se paga dos veces  ->  segundo pago de la misma cuota rechazado
+[OK]    27.7 cuota inexistente  ->  cuota 9 rechazada
+[OK]    27.8 saldo  ->  pagado S/ 1034.34, saldo S/ 517.16
+[OK]    28.1 anular  ->  MAT-3 anulada
+[OK]    28.2 vacante vuelve  ->  CIC-001 matriculados 3 -> 2
+[OK]    28.3 historial y tutor  ->  historial de Karla 1 -> 0, tutorias de Raul 4 -> 3
+[OK]    28.4 con cuota pagada no se anula  ->  MAT-1 tiene su cuota pagada: rechazada
+[OK]    28.5 codigo inexistente  ->  MAT-99 rechazada
+[OK]    28.6 codigo no se repite  ->  nueva matricula recibe MAT-7 (no repite MAT-6)
+[OK]    28.7 reabre ciclo lleno  ->  CERRADO con 10/10 -> ABIERTO con 1 vacante
+[OK]    21.1 nuevo/recurrente  ->  Lucia NUEVO -> RECURRENTE al llevar un segundo ciclo
+[OK]    21.3 vuelve a nuevo  ->  Lucia RECURRENTE -> NUEVO al anular su segunda matricula MAT-8
+Error: no existe la carpeta carpeta_que_no_existe; no hay nada que respaldar
+[OK]    41.3 sin carpeta  ->  crearRespaldo() sobre una carpeta inexistente devuelve null sin fallar
+[Operacion de escritura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de lectura finalizada]
+[OK]    39.x cuotas persisten  ->  tras recuperar: MAT-2 con 2 pagadas; recaudado S/ 2763.25 = S/ 2763.25
+[Operacion de lectura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+[Operacion de escritura finalizada]
+[OK]    41.1 respaldo  ->  respaldo_2026-11-06_18-02-32 con 5 archivos
+[OK]    Interfaz Registrable  ->  Estudiante, Docente, CicloRegular, Matricula y Asistencia responden convertirALinea()
+Resultado: 21 OK, 0 FALLA

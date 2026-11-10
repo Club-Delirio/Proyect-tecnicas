@@ -10,12 +10,15 @@ import java.time.LocalDate;
  * Estados: PRESENTE, TARDANZA, AUSENTE o JUSTIFICADO. Los tres primeros
  * menos AUSENTE cuentan como asistencia efectiva.
  *
+ * Es una clase de ASOCIACION entre Estudiante y Ciclo e implementa la
+ * interfaz Registrable.
+ *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
- * @author Rodrigo Ortiz, Sumil Arturi
+ * @author Rodrigo Ortiz, Sumil Arturo
  * @author Rojas Valdivia, Jhann Frank
  */
-public class Asistencia {
+public class Asistencia implements Registrable {
     private String codigo;
     private Estudiante estudiante;
     private Ciclo ciclo;
@@ -36,6 +39,7 @@ public class Asistencia {
                 || this.estado.equals("JUSTIFICADO");
     }
 
+    @Override
     public void verDatos() {
         System.out.println("ASISTENCIA " + this.codigo + "  " + this.fecha
                 + "  " + this.estudiante.getCodigo() + " " + this.estudiante.getNombreEnNomina()
@@ -45,6 +49,7 @@ public class Asistencia {
     }
 
     // Linea del archivo: codigo;cod_estudiante;cod_ciclo;fecha;estado;observacion
+    @Override
     public String convertirALinea() {
         return this.codigo + ";" + this.estudiante.getCodigo() + ";" + this.ciclo.getCodigo() + ";"
                 + this.fecha + ";" + this.estado + ";" + this.observacion;

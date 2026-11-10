@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
- * @author Rodrigo Ortiz, Sumil Arturi
+ * @author Rodrigo Ortiz, Sumil Arturo
  * @author Rojas Valdivia, Jhann Frank
  */
 public class MatriculaController {
@@ -46,7 +46,7 @@ public class MatriculaController {
                     + c.getEstado() + " y no admite mas matriculados");
             return false;
         }
-        nueva_matricula.setCodigo("MAT-" + (this.lista.size() + 1));
+        nueva_matricula.setCodigo(this.generarCodigo());
         this.lista.add(nueva_matricula);
         c.registrarMatriculado();
         e.agregarMatricula(c);
@@ -147,14 +147,72 @@ public class MatriculaController {
         }
     }
 
-    public void eliminarMatricula(String codigo) {
+    /**
+     * Genera el siguiente codigo MAT-n tomando el numero mas alto que ya
+     * existe. No se usa el tamanio de la lista porque, despues de anular una
+     * matricula, el tamanio baja y se repetiria un codigo que ya esta en uso.
+     */
+    public String generarCodigo() {
+        int mayor = 0;
+        for (int i = 0; i < this.lista.size(); i++) {
+            String codigo = this.lista.get(i).getCodigo();
+            try {
+                int numero = Integer.parseInt(codigo.substring(4));
+                if (numero > mayor) {
+                    mayor = numero;
+                }
+            } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
+                // un codigo con otro formato no cuenta para el correlativo
+            }
+        }
+        return "MAT-" + (mayor + 1);
+    }
+
+    /**
+     * Anula una matricula (RF-28). Solo se permite si todavia no se pago
+     * ninguna cuota. Al anularla:
+     * - la vacante vuelve al ciclo (y el ciclo se reabre si estaba lleno),
+     * - el ciclo sale del historial del estudiante,
+     * - el tutor deja de contar esa matricula,
+     * - y sus cuotas desaparecen con ella, porque son parte de la matricula
+     *   (composicion).
+     */
+    public boolean eliminarMatricula(String codigo) {
         Matricula m = this.buscarMatricula(codigo);
         if (m == null) {
             System.out.println("Error: no se encontro la matricula " + codigo);
-            return;
+            return false;
         }
+        if (m.contarCuotasPagadas() > 0) {
+            System.out.println("Error: la matricula " + m.getCodigo() + " ya tiene "
+                    + m.contarCuotasPagadas() + " cuota(s) pagada(s); no se puede anular");
+            return false;
+        }
+        m.getCiclo().liberarVacante();
+        m.getEstudiante().quitarMatricula(m.getCiclo());
+        m.getTutor().quitarMatricula(m.getPrecio_final());
         this.lista.remove(m);
-        System.out.println("Matricula eliminada. Quedan " + this.lista.size() + " matricula(s)");
+        System.out.println("Matricula " + m.getCodigo() + " anulada. El ciclo " + m.getCiclo().getCodigo()
+                + " tiene ahora " + m.getCiclo().vacantesDisponibles() + " vacante(s)");
+        return true;
+    }
+
+    // Suma de lo efectivamente cobrado en cuotas pagadas (RF-27, RF-37)
+    public double calcularMontoRecaudado() {
+        double total = 0;
+        for (int i = 0; i < this.lista.size(); i++) {
+            total = total + this.lista.get(i).calcularMontoPagado();
+        }
+        return Math.round(total * 100) / 100.0;
+    }
+
+    // Suma de lo que falta cobrar (RF-27, RF-37)
+    public double calcularSaldoPorCobrar() {
+        double total = 0;
+        for (int i = 0; i < this.lista.size(); i++) {
+            total = total + this.lista.get(i).calcularSaldoPendiente();
+        }
+        return Math.round(total * 100) / 100.0;
     }
 
     /**

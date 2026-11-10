@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Semana del sílabo:** 7
+**Semana del sílabo:** 7 (actualizado en las semanas 12 y 13)
 
 ---
 
@@ -42,9 +42,11 @@ Cada objetivo específico es verificable: se cumple o no se cumple, y su cumplim
 | OE-09 | Calcular la planilla docente a partir de las horas dictadas y la bonificación por tutoría. | Criterios 9.7 a 9.10 y 36.7. | Cumplido |
 | OE-10 | Conservar la información entre ejecuciones, con la entrada y la salida de archivos encapsuladas en una sola clase. | La clase `ArchivoUtil` y los criterios 39.1 a 39.17. | Cumplido |
 | OE-11 | Garantizar que ningún error de formato en la entrada termine la ejecución del programa. | `leerEntero()`, `leerDecimal()` y `leerFecha()` capturan `NumberFormatException` y `DateTimeParseException`; `ArchivoUtil` captura `IOException`. | Cumplido |
-| OE-12 | Documentar al menos cuarenta requerimientos funcionales con sus criterios de aceptación. | `docs/requerimientos-funcionales.md` documenta 45 requerimientos con 179 criterios de aceptación. | Cumplido |
+| OE-12 | Documentar al menos cuarenta requerimientos funcionales con sus criterios de aceptación. | `docs/requerimientos-funcionales.md` documenta 45 requerimientos con 192 criterios de aceptación. | Cumplido |
 | OE-13 | Separar el dominio de la colección, de modo que las reglas de alta se escriban una sola vez. | Cuatro controladores (`PersonaController`, `CicloController`, `MatriculaController`, `AsistenciaController`) son las únicas clases que tocan los `ArrayList`; cada uno ofrece tres sobrecargas de su método de listado. | Cumplido |
 | OE-14 | Dejar registro auditable de la participación de cada integrante. | Historial de commits y pull requests del repositorio `Club-Delirio/Proyect-tecnicas`. | Cumplido |
+| OE-15 | Ofrecer una interfaz gráfica de escritorio sobre el mismo modelo de clases, sin repetir las reglas de validación. | `VentanaPrincipal` con menú y escritorio (`JDesktopPane`) y siete ventanas internas que heredan de `FormularioBase`; cada ventana llama a los mismos controladores y a los mismos `set`. Criterios 43.1 a 43.4. | Cumplido (semana 12) |
+| OE-16 | Aplicar composición e interfaces donde el dominio lo pide. | `Matricula` crea y contiene sus `Cuota` (composición); `Persona`, `Ciclo`, `Matricula` y `Asistencia` implementan la interfaz `Registrable`. Criterios 27.1, 28.5 y 39.x. | Cumplido (semana 12) |
 
 ---
 
@@ -60,20 +62,22 @@ Cada objetivo específico es verificable: se cumple o no se cumple, y su cumplim
 | **Matrícula** | Configurar la campaña de descuento vigente. Calcular el precio final con el desglose completo: costo base, descuento de campaña, descuento del tipo de ciclo, subtotal, recargo por fraccionamiento y cuota mensual. Cotizar sin registrar. Registrar la matrícula asociándola al estudiante, al docente tutor y al ciclo. Descontar la vacante, cerrar el ciclo al llenarse e impedir la matrícula duplicada. |
 | **Control de asistencia** | Registrar la asistencia de un estudiante a una sesión de un ciclo en el que está matriculado, con cuatro estados y una observación opcional. Impedir el doble registro de la misma sesión y el registro de fechas futuras. |
 | **Reportes** | Oferta agrupada por categoría con vacantes y estado. Listado de estudiantes, docentes y ciclos aplicando polimorfismo. Historial de matrículas. Estadísticas por tipo, categoría y forma de pago. Reporte financiero con descuentos, recargos, ingreso total, planilla docente e ingreso neto. Reporte de asistencia con el porcentaje de cada estudiante y la alerta de riesgo de deserción. |
-| **Persistencia** | Guardar ciclos, personas, matrículas y asistencias en archivos de texto. Recuperarlos al iniciar, reconstruyendo las vacantes ocupadas, el historial del estudiante y el acumulado del docente. Exportar el historial de matrículas a CSV. Mostrar el contenido de un archivo. |
+| **Persistencia** | Guardar ciclos, personas, matrículas, asistencias y el estado de las cuotas en archivos de texto. Recuperarlos al iniciar, reconstruyendo las vacantes ocupadas, el historial del estudiante y el acumulado del docente. Exportar el historial de matrículas a CSV. Mostrar el contenido de un archivo. Crear una copia de respaldo con fecha y hora. |
+| **Pagos** *(semana 12)* | Generar el cronograma de cuotas de cada matrícula, registrar el pago de cada cuota y marcar las vencidas. Anular una matrícula sin pagos y devolver la vacante al ciclo. |
+| **Interfaz gráfica** *(semana 12)* | Ventana principal con menú (Archivo, Datos básicos, Procesos, Reportes) y ventanas internas para ciclos, estudiantes, docentes, matrícula, pagos, asistencia y tablero del periodo. Recuperación automática de los archivos al abrir. |
 
-### 4.2 Lo que el sistema no hace en esta entrega
+### 4.2 Lo que el sistema no hace
 
 Las siguientes funciones están documentadas con sus criterios de aceptación, pero no forman parte de lo entregado. Se declaran aquí para que el alcance quede sin ambigüedad.
 
+**Actualización de las semanas 12 y 13.** La interfaz gráfica (RF-43), el cronograma de cuotas (RF-27), la anulación de matrículas (RF-28), la clasificación de estudiantes (RF-21), el tablero (RF-37), la carga automática (RF-40) y la copia de respaldo (RF-41), que en la semana 11 figuraban como excluidos o pendientes, ya están implementados. La tabla muestra lo que sigue fuera.
+
 | Función excluida | Requerimiento | Motivo de la exclusión |
 |---|---|---|
-| Interfaz gráfica de escritorio | RF-43 | Restricción R-09: el tema no corresponde a este bloque del sílabo |
 | Almacenamiento en base de datos | RF-42 | Restricción R-02: no hay servidor disponible |
 | Control de acceso por usuario y perfil | RF-44 | Restricción R-04: queda fuera del plazo de esta entrega |
 | Comprobante de matrícula en PDF | RF-26 | Restricción R-09 |
-| Cronograma de cuotas y control de pagos | RF-27 | Restricción R-04: excede el plazo |
-| Anulación de matrículas y traslados | RF-28, RF-29 | Restricción R-04 |
+| Traslado de un estudiante entre ciclos | RF-29 | Restricción R-04 |
 | Horarios de clase y detección de cruces del docente | RF-07, RF-11 | Restricción R-04 |
 | Plan de estudios y asignación de aulas físicas | RF-06, RF-08 | Restricción R-04 |
 | Registro de simulacros y resultados de admisión | RF-18, RF-20 | Fuera del problema central: el proyecto atiende matrícula y asistencia |
@@ -85,13 +89,13 @@ Las siguientes funciones están documentadas con sus criterios de aceptación, p
 | Aspecto | Límite |
 |---|---|
 | Entorno de ejecución | JDK 17 o superior; se abre como proyecto de Apache NetBeans |
-| Interfaz | Consola, con el flujo de trabajo dividido en nueve secciones |
+| Interfaz | Interfaz gráfica Swing con menú y siete ventanas internas (clase `VentanaPrincipal`); la versión de consola, con nueve secciones, sigue disponible en `AcademiaSanFernando` |
 | Almacenamiento | Archivos de texto delimitados por punto y coma, en la carpeta `datos` del proyecto |
-| Recuperación | A solicitud del usuario al iniciar; la carga automática queda como RF-40 |
+| Recuperación | Automática al abrir la interfaz gráfica (RF-40); en la consola, a solicitud del usuario |
 | Concurrencia | Un solo usuario a la vez; no hay control de acceso simultáneo |
 | Volumen | Colecciones en memoria con `ArrayList`, adecuadas para el orden de magnitud de una academia (decenas de ciclos y centenares de estudiantes) |
 | Moneda | Soles |
-| Idioma | Español, sin tildes en las cadenas de código para evitar problemas de codificación entre equipos |
+| Idioma | Español. Las clases de dominio no usan tildes en sus mensajes; las ventanas sí, porque el proyecto se compila en UTF-8 |
 
 ---
 
@@ -104,9 +108,10 @@ Las siguientes funciones están documentadas con sus criterios de aceptación, p
 | Matriz de 45 requerimientos con criterios de aceptación | `docs/requerimientos-funcionales.md` | 8 y 10 |
 | Historias de usuario en formato narrativo | `docs/historias-usuario.md` | 8 |
 | Matriz de historias de usuario en hoja de cálculo | `docs/Historias_Usuario_Academia.xlsx` | 8 y 10 |
-| Diagrama de clases UML | `docs/diagrama_clases.png`, `docs/diagrama_clases.svg`, `docs/clases.dot`, `docs/diagrama_clases.drawio` | 9 |
+| Diagrama de clases UML del modelo de dominio y de la interfaz gráfica | `docs/diagrama_clases.png`, `docs/diagrama_interfaz.png`, sus versiones `.svg` y `docs/diagrama_clases.drawio` | 9 y 12 |
 | Investigación y práctica de manejo de archivos en Java | `docs/manejo-archivos-java.md` | 9 |
-| Código fuente del sistema | `src/academia/` (catorce clases) | 10 |
+| Código fuente del sistema | `src/academia/` (catorce clases en la semana 11; veinticinco con la interfaz gráfica) | 10 y 12 |
+| Evidencias de cumplimiento de los criterios | `evidencias/` | 13 |
 | Informe del proyecto en formato APA | `docs/Informe_Academia_APA7.docx` | 7 a 11 |
 | Guía documentada de Git y GitHub | `docs/GUIA_GIT_SEMANAS7-11.md` | 7 a 11 |
 | Reparto de tareas por integrante | `docs/reparto-de-tareas.md` | 7 a 11 |
@@ -125,3 +130,5 @@ El proyecto se considera exitoso si, al terminar la semana 11, se cumplen simult
 5. El historial del repositorio muestra la participación de los cuatro integrantes.
 
 Las cinco condiciones son objetivas y se verifican sin depender del juicio de quien revisa.
+
+**Actualización (semanas 12 y 13).** En la T3 las mismas condiciones se verifican con los 22 requerimientos implementados, en la consola y en la interfaz gráfica; los valores esperados están en `docs/CHECKLIST_ENTREGA.md`, sección C.

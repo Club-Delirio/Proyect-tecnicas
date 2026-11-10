@@ -2,9 +2,9 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Semanas del sílabo:** 8 y 10
+**Semanas del sílabo:** 8, 10, 12 y 13
 
-Cada historia corresponde a uno de los quince requerimientos funcionales implementados y tiene cuatro escenarios de aceptación verificables en la ejecución del programa. La versión en hoja de cálculo, con la trazabilidad completa hacia las clases Java y el integrante responsable, se encuentra en `docs/Historias_Usuario_Academia.xlsx`.
+Cada historia corresponde a uno de los veintidós requerimientos funcionales implementados y tiene cuatro escenarios de aceptación verificables en la ejecución del programa. HU-01 a HU-15 se implementaron en las semanas 7 a 11 (versión de consola); HU-16 a HU-22, en las semanas 12 y 13, junto con la interfaz gráfica en Swing. Las capturas que prueban cada criterio están en la carpeta `evidencias/`. La versión en hoja de cálculo, con la trazabilidad completa hacia las clases Java y el integrante responsable, se encuentra en `docs/Historias_Usuario_Academia.xlsx`.
 
 **Roles identificados:** directora académica, coordinador de admisión, asistente de admisión, auxiliar de aula y asistente de sistemas.
 
@@ -159,7 +159,7 @@ Cada historia corresponde a uno de los quince requerimientos funcionales impleme
 | 3 | Cuota mensual calculada | En caso que la matrícula sea fraccionada | cuando calcularPrecioFinal() divide el precio final entre el número de cuotas | el sistema muestra la cuota mensual junto con la cantidad de cuotas | `Matricula` |
 | 4 | Cotización que no se concreta | En caso que el apoderado no confirme la operación | cuando el operador responde que no al confirmar la matrícula | el sistema descarta la matrícula y la vacante sigue disponible | `AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -176,7 +176,7 @@ Cada historia corresponde a uno de los quince requerimientos funcionales impleme
 | 3 | Número de cuotas no permitido | En caso que la forma de pago sea FRACCIONADO y las cuotas no sean 2, 3 ni 4 | cuando se invoca setNro_cuotas() | el sistema rechaza el valor, explica las opciones y vuelve a pedirlo | `Matricula` |
 | 4 | Código correlativo de la matrícula | En caso que ya existan cinco matrículas registradas | cuando se confirma la sexta y se invoca setCodigo() con el tamaño de la colección más uno | el sistema asigna MAT-6, sin repetir códigos | `Matricula / AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -193,7 +193,7 @@ Cada historia corresponde a uno de los quince requerimientos funcionales impleme
 | 3 | Cierre automático del ciclo | En caso que se matricule al último cupo disponible | cuando se invoca registrarMatriculado() | el sistema cambia el estado de ABIERTO a CERRADO sin que el operador lo indique | `Ciclo` |
 | 4 | Matrícula duplicada | En caso que el estudiante ya figure en ese ciclo | cuando se recorre su historial de matrículas antes de matricular | el sistema rechaza la operación e informa el duplicado | `Estudiante / AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -265,6 +265,124 @@ Cada historia corresponde a uno de los quince requerimientos funcionales impleme
 
 ---
 
+## HU-16 — RF-21 · Ventana Estudiantes de la interfaz gráfica
+
+**Como asistente de admisión**  
+**Necesito saber si el estudiante es nuevo o ya llevó otros ciclos con nosotros**  
+**Con la finalidad de atender distinto a quien vuelve y medir cuántos estudiantes repiten con la academia.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Estudiante nuevo | En caso que el estudiante tenga una sola matrícula o ninguna | cuando se invoca calcularTipoEstudiante() | el sistema lo clasifica como NUEVO y así aparece en la columna Tipo de la tabla | `Estudiante` |
+| 2 | Estudiante recurrente | En caso que el estudiante se matricule en un segundo ciclo | cuando la matrícula agrega el ciclo a su historial y se vuelve a consultar su tipo | el sistema lo clasifica como RECURRENTE | `Estudiante / FrmMatricula` |
+| 3 | Conteo en el tablero | En caso que haya estudiantes de los dos tipos | cuando se abre el tablero del periodo | el sistema muestra cuántos son nuevos y cuántos recurrentes | `FrmTablero / Estudiante` |
+| 4 | Vuelve a ser nuevo al anular | En caso que se anule la única matrícula adicional del estudiante | cuando quitarMatricula() saca el ciclo de su historial | el sistema vuelve a clasificarlo según los ciclos que realmente le quedan | `Estudiante / MatriculaController` |
+
+**Integrante responsable:** Chuquimango Verástegui, Jhocep Jhanpier
+
+---
+
+## HU-17 — RF-27 · Ventanas Matrícula y Pagos de la interfaz gráfica
+
+**Como asistente de admisión**  
+**Necesito que cada matrícula tenga su cronograma de cuotas y registrar el pago de cada una**  
+**Con la finalidad de saber cuánto pagó cada estudiante, cuánto le falta y qué cuotas están vencidas.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Cronograma creado por la matrícula | En caso que la matrícula sea fraccionada en 3 cuotas | cuando calcularPrecioFinal() invoca generarCronograma(), que crea las cuotas con new dentro de la matrícula (composición) | el sistema genera 3 cuotas mensuales y la última absorbe el redondeo, de modo que suman exactamente el precio final | `Matricula / Cuota` |
+| 2 | Pago de una cuota | En caso que la cuota esté pendiente o vencida | cuando se elige en la tabla y se invoca registrarPagoCuota(numero) | el sistema la marca PAGADA con la fecha de hoy y recalcula el saldo | `Matricula / Cuota / FrmPagos` |
+| 3 | Pago duplicado | En caso que la cuota ya esté pagada | cuando registrarPago() encuentra pagada en verdadero | el sistema rechaza el segundo pago | `Cuota` |
+| 4 | Cuota vencida | En caso que una cuota pasó su fecha de vencimiento sin pagarse | cuando se consulta getEstado() | el sistema la muestra como VENCIDA | `Cuota` |
+
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
+
+---
+
+## HU-18 — RF-28 · Ventana Pagos y anulaciones de la interfaz gráfica
+
+**Como coordinador de admisión de la academia**  
+**Necesito anular una matrícula hecha por error y que la vacante vuelva al ciclo**  
+**Con la finalidad de no perder cupos ni dejar cuotas por cobrar de una matrícula que no va.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Anulación válida | En caso que la matrícula exista y no tenga ninguna cuota pagada | cuando se confirma la anulación y se invoca eliminarMatricula(codigo) | el sistema la retira, devuelve la vacante con liberarVacante() y reabre el ciclo si estaba CERRADO | `MatriculaController / Ciclo` |
+| 2 | Las cuotas desaparecen con la matrícula | En caso que la matrícula anulada tenga cuotas | cuando la matrícula sale de la colección | el sistema ya no muestra sus cuotas porque son parte de ella (composición) y el tutor descuenta esa matrícula | `Matricula / Cuota / Docente` |
+| 3 | Matrícula con pagos | En caso que la matrícula ya tenga una cuota pagada | cuando contarCuotasPagadas() es mayor que cero | el sistema rechaza la anulación | `MatriculaController` |
+| 4 | Código que no se repite | En caso que después de anular se registre otra matrícula | cuando generarCodigo() toma el número más alto que existe | el sistema asigna un código nuevo sin repetir uno que ya está en uso | `MatriculaController` |
+
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
+
+---
+
+## HU-19 — RF-37 · Ventana Tablero del periodo de la interfaz gráfica
+
+**Como directora académica**  
+**Necesito ver en una sola pantalla cuántos matriculados hay, cuánto se cobró y qué tan llenos están los ciclos**  
+**Con la finalidad de decidir a tiempo si abro otro ciclo o refuerzo la campaña.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Indicadores del periodo | En caso que haya matrículas registradas | cuando se abre el tablero | el sistema muestra matrículas, ingreso total, recaudado, por cobrar, ocupación, planilla, resultado neto y estudiantes en riesgo | `FrmTablero / MatriculaController / PersonaController` |
+| 2 | Actualización | En caso que se registre o anule una matrícula | cuando la ventana que hizo el cambio invoca refrescarTodo() | el sistema vuelve a calcular los indicadores sin cerrar el tablero | `VentanaPrincipal / FrmTablero` |
+| 3 | Recaudado y por cobrar | En caso que haya cuotas pagadas y pendientes | cuando se suman los montos de las cuotas de cada matrícula | el sistema separa lo cobrado de lo que falta cobrar | `MatriculaController / Matricula` |
+| 4 | Estudiantes en riesgo | En caso que algún estudiante tenga menos de 70% de asistencia | cuando calcularPorcentaje(estudiante) devuelve menos de 70 | el sistema los cuenta en el indicador de riesgo de deserción | `AsistenciaController` |
+
+**Integrante responsable:** Cachi Tantaleán, Anderson Alexis
+
+---
+
+## HU-20 — RF-40 · Ventana principal de la interfaz gráfica
+
+**Como asistente de sistemas de la academia**  
+**Necesito que al abrir el programa se recuperen solos los datos guardados**  
+**Con la finalidad de que nadie empiece el día con el sistema vacío por olvidarse de cargar los archivos.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Carga sin preguntar | En caso que existan los archivos de datos | cuando el constructor de VentanaPrincipal invoca cargarAlIniciar() | el sistema recupera ciclos, personas, matrículas, cuotas y asistencias sin pedirlo, y lo muestra en la barra de estado | `VentanaPrincipal / AcademiaSanFernando` |
+| 2 | Primera ejecución | En caso que no exista ningún archivo de datos | cuando cargarAlIniciar() no encuentra ciclos.txt ni personas.txt | el sistema arranca sin error y ofrece cargar los datos de prueba | `VentanaPrincipal` |
+| 3 | Colecciones vacías | En caso que se responda que no a los datos de prueba | cuando el sistema termina de iniciar | el sistema queda listo con las colecciones vacías | `VentanaPrincipal` |
+| 4 | Los cambios persisten | En caso que se guarde, se cierre y se vuelva a abrir | cuando se recuperan los archivos, incluido cuotas.txt | el sistema muestra las mismas matrículas y los mismos pagos que antes de cerrar | `VentanaPrincipal / AcademiaSanFernando` |
+
+**Integrante responsable:** Rojas Valdivia, Jhann Frank
+
+---
+
+## HU-21 — RF-41 · Menú Archivo de la interfaz gráfica
+
+**Como asistente de sistemas de la academia**  
+**Necesito sacar una copia de respaldo de los datos con la fecha y la hora en el nombre**  
+**Con la finalidad de recuperar la información si un archivo se daña o se borra por error.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Nombre con fecha y hora | En caso que se solicite el respaldo | cuando crearRespaldo() arma el nombre con LocalDateTime y DateTimeFormatter | el sistema crea la carpeta datos/respaldo_aaaa-mm-dd_hh-mm-ss, que no pisa respaldos anteriores | `ArchivoUtil / VentanaPrincipal` |
+| 2 | Contenido íntegro | En caso que haya datos en memoria | cuando se guardan los archivos y luego se copian con leerLineas() y guardarLineas() | el sistema copia los cinco archivos .txt con la misma cantidad de registros | `ArchivoUtil` |
+| 3 | Sin nada que respaldar | En caso que la carpeta de datos no exista | cuando listFiles() devuelve null | el sistema avisa que no hay nada que respaldar y no falla | `ArchivoUtil` |
+| 4 | Guardar con interfaz | En caso que se guarden listas de clases distintas | cuando guardarRegistros() recibe una lista de Registrable | el sistema le pide convertirALinea() a cada objeto sin saber de qué clase es (polimorfismo por interfaz) | `ArchivoUtil / Registrable` |
+
+**Integrante responsable:** Chuquimango Verástegui, Jhocep Jhanpier
+
+---
+
+## HU-22 — RF-43 · Interfaz gráfica (Swing)
+
+**Como asistente de admisión**  
+**Necesito trabajar con ventanas, menús y botones en lugar de responder preguntas en la consola**  
+**Con la finalidad de atender más rápido, con el apoderado delante, y equivocarme menos.**
+
+| # | Criterio | Contexto | Evento | Resultado esperado | Clase |
+|---|---|---|---|---|---|
+| 1 | Navegación por menú | En caso que se abra el programa | cuando se elige una opción de la barra de menú | el sistema abre la ventana interna dentro del escritorio, como en la clase 12 (escritorio.add y show) | `VentanaPrincipal` |
+| 2 | Mismas operaciones que la consola | En caso que se recorran las ventanas | cuando se usan Ciclos, Estudiantes, Docentes, Matrícula, Pagos, Asistencia y Tablero | el sistema ofrece las quince operaciones de la consola más las siete nuevas | `Frm* / FormularioBase` |
+| 3 | Validación en pantalla | En caso que se ingresen datos inválidos | cuando la ventana llama a los set y recoge los mensajes que imprimen | el sistema muestra todos los errores en un solo mensaje, la ventana no se cierra y los datos ingresados se conservan | `FormularioBase / Ciclo` |
+| 4 | Confirmación antes de operaciones importantes | En caso que se vaya a matricular, anular o salir | cuando se pulsa el botón | el sistema pide confirmación y, al salir, pregunta si se guardan los cambios | `FrmMatricula / FrmPagos / VentanaPrincipal` |
+
+**Integrante responsable:** Rojas Valdivia, Jhann Frank
+
+---
 ## Trazabilidad
 
 | Historia | Requerimiento | Sección del programa | Rol | Integrante responsable |
@@ -277,12 +395,19 @@ Cada historia corresponde a uno de los quince requerimientos funcionales impleme
 | HU-06 | RF-16 | 3. Registro de estudiantes | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
 | HU-07 | RF-17 | 5. Matriculas | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
 | HU-08 | RF-22 | 4. Campana de descuento | Directora académica | Cachi Tantaleán, Anderson Alexis |
-| HU-09 | RF-23 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturi |
-| HU-10 | RF-24 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturi |
-| HU-11 | RF-25 | 5. Matriculas | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturi |
+| HU-09 | RF-23 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-10 | RF-24 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-11 | RF-25 | 5. Matriculas | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturo |
 | HU-12 | RF-31 | 6. Control de asistencia | Auxiliar de aula | Cachi Tantaleán, Anderson Alexis |
 | HU-13 | RF-35 | Catalogo por categoria | Coordinador de admisión de la academia | Rojas Valdivia, Jhann Frank |
 | HU-14 | RF-36 | 7. Listas y reportes | Directora académica | Cachi Tantaleán, Anderson Alexis |
 | HU-15 | RF-39 | 0. Recuperar / 8. Guardar | Asistente de sistemas de la academia | Chuquimango Verástegui, Jhocep Jhanpier |
+| HU-16 | RF-21 | Ventana Estudiantes | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
+| HU-17 | RF-27 | Ventanas Matrícula y Pagos | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-18 | RF-28 | Ventana Pagos y anulaciones | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturo |
+| HU-19 | RF-37 | Ventana Tablero del periodo | Directora académica | Cachi Tantaleán, Anderson Alexis |
+| HU-20 | RF-40 | Ventana principal | Asistente de sistemas de la academia | Rojas Valdivia, Jhann Frank |
+| HU-21 | RF-41 | Menú Archivo | Asistente de sistemas de la academia | Chuquimango Verástegui, Jhocep Jhanpier |
+| HU-22 | RF-43 | Interfaz gráfica (Swing) | Asistente de admisión | Rojas Valdivia, Jhann Frank |
 
-Los treinta requerimientos restantes, con sus criterios de aceptación, se encuentran en `docs/requerimientos-funcionales.md`.
+Los veintitrés requerimientos restantes, con sus criterios de aceptación, se encuentran en `docs/requerimientos-funcionales.md`.
