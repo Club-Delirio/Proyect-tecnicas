@@ -71,7 +71,7 @@ Lo recaudado son las cuotas que los datos de prueba dejan pagadas: MAT-1 al cont
 |---|---|
 | Informe de práctica de campo, con la bitácora y las evidencias | ✅ En `docs/` |
 | Presentación de máximo 15 diapositivas | ✅ Lista; falta que cada integrante la suba a la plataforma |
-| Porcentajes de participación de las carátulas (los informes ponen 100 % a cada integrante) | ⬜ Confirmar en el grupo |
+| Porcentajes de participación de las carátulas (los informes ponen 100 % a cada integrante) | ✅ Confirmado por el grupo: 100 % cada uno |
 
 ---
 

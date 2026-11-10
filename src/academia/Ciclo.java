@@ -11,12 +11,14 @@ import java.time.LocalDate;
  * verDatos(), calcularCategoria(), calcularDescuento(), getTipo() y
  * convertirALinea().
  *
+ * Implementa la interfaz Registrable: CicloRegular y CursoIntensivo la heredan.
+ *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
- * @author Rodrigo Ortiz, Sumil Arturi
+ * @author Rodrigo Ortiz, Sumil Arturo
  * @author Rojas Valdivia, Jhann Frank
  */
-public abstract class Ciclo {
+public abstract class Ciclo implements Registrable {
     protected String codigo;
     protected String nombre;
     protected LocalDate fec_inicio;
@@ -74,6 +76,16 @@ public abstract class Ciclo {
         this.matriculados = this.matriculados + 1;
         if (this.matriculados >= this.vacantes) {
             this.estado = "CERRADO";
+        }
+    }
+
+    // Devuelve una vacante cuando se anula una matricula (RF-28) y reabre el ciclo si estaba lleno
+    public void liberarVacante() {
+        if (this.matriculados > 0) {
+            this.matriculados = this.matriculados - 1;
+        }
+        if (this.estado.equals("CERRADO") && this.matriculados < this.vacantes) {
+            this.estado = "ABIERTO";
         }
     }
 

@@ -1,4 +1,6 @@
-# Reparto de tareas — Semanas 7 a 11
+# Reparto de tareas — Semanas 7 a 13
+
+Este archivo tiene dos partes: el reparto de las semanas 7 a 11 y, al final, el de las semanas 12 y 13 (T3).
 
 **Proyecto:** Academia Preuniversitaria San Fernando — sistema de matrícula y control de asistencia
 **Repositorio:** `Club-Delirio/Proyect-tecnicas`
@@ -215,7 +217,7 @@ En la sustentación de la T3 cada integrante explica, además de lo suyo de las 
 |---|---|---|---|
 | Cachi Tantaleán, Anderson Alexis | HU-19 | RF-37 | `FrmAsistencia`, `FrmTablero` y los métodos de conteo de `AsistenciaController` y `MatriculaController` |
 | Chuquimango Verástegui, Jhocep Jhanpier | HU-16, HU-21 | RF-21, RF-41 | `FrmEstudiantes`, `Estudiante.calcularTipoEstudiante()`, `ArchivoUtil.crearRespaldo()` y `guardarRegistros()` |
-| Rodrigo Ortiz, Sumil Arturi | HU-17, HU-18 | RF-27, RF-28 | `Cuota`, la composición dentro de `Matricula`, `FrmMatricula`, `FrmPagos` y `MatriculaController.eliminarMatricula()` |
+| Rodrigo Ortiz, Sumil Arturo | HU-17, HU-18 | RF-27, RF-28 | `Cuota`, la composición dentro de `Matricula`, `FrmMatricula`, `FrmPagos` y `MatriculaController.eliminarMatricula()` |
 | Rojas Valdivia, Jhann Frank | HU-20, HU-22 | RF-40, RF-43 | `VentanaPrincipal` (menú, escritorio y carga automática), `FormularioBase`, `FrmCiclos` y `FrmDocentes` |
 
 La interfaz `Registrable` y la relación de agregación entre `Estudiante` y `Ciclo` las explican los cuatro: son las preguntas de relaciones entre clases que la rúbrica de la T3 evalúa a todos.
@@ -227,15 +229,15 @@ Cada integrante sube su parte desde su propia cuenta, en la rama `feat/semanas-1
 | Turno | Integrante | Archivos que sube |
 |---|---|---|
 | 1 | Chuquimango Verástegui, Jhocep Jhanpier | `Registrable.java`, `Persona.java`, `Estudiante.java`, `ArchivoUtil.java`, `FrmEstudiantes.java`; `docs/requerimientos-funcionales.md`, `docs/historias-usuario.md`, `docs/Historias_Usuario_Academia.xlsx`, `docs/reparto-de-tareas.md`, `docs/objetivos-y-alcance.md`, `docs/restricciones-y-alternativas.md`, `docs/ishikawa.png`, `docs/ishikawa.svg`, `README.md`, `evidencias/README.md`, `evidencias/log_consola.txt`, `evidencias/log_interfaz.txt`, `evidencias/log_pruebas_dominio.txt`; 7 capturas (07, 08, 09, 09b, 17, 17b, 29) |
-| 2 | Rodrigo Ortiz, Sumil Arturi | `Cuota.java`, `Matricula.java`, `MatriculaController.java`, `Ciclo.java`, `Docente.java`, `FrmMatricula.java`, `FrmPagos.java`; 14 capturas (11, 12, 13, 14, 14b, 15, 16, 18, 19, 20, 21, 22, 23, 24) |
+| 2 | Rodrigo Ortiz, Sumil Arturo | `Cuota.java`, `Matricula.java`, `MatriculaController.java`, `Ciclo.java`, `Docente.java`, `FrmMatricula.java`, `FrmPagos.java`; 14 capturas (11, 12, 13, 14, 14b, 15, 16, 18, 19, 20, 21, 22, 23, 24) |
 | 3 | Cachi Tantaleán, Anderson Alexis | `Asistencia.java`, `AsistenciaController.java`, `FrmAsistencia.java`, `FrmTablero.java`; `docs/diagrama_clases.drawio`, `docs/diagrama_clases.png`, `docs/diagrama_clases.svg`; 4 capturas (25, 26, 27, 28) |
 | 4 | Rojas Valdivia, Jhann Frank | `FormularioBase.java`, `VentanaPrincipal.java`, `FrmCiclos.java`, `FrmDocentes.java`, `AcademiaSanFernando.java`; 13 capturas (00, 00b, 01, 02, 03, 04, 05, 06, 10, 10b, 30, 31, 32) |
 
-El turno 1 crea la rama, así que va primero. Los turnos 2 y 3 pueden ir en cualquier orden. El turno 4 va al final porque `VentanaPrincipal` abre todas las ventanas: hasta que esté, la rama no compila, y por eso se trabaja en una rama aparte y no directamente en `develop`.
+El turno 1 crea la rama, así que va primero; los otros tres pueden subir en cualquier orden. La rama solo compila cuando están las cuatro partes, porque `VentanaPrincipal` abre todas las ventanas y estas usan las clases de los demás; por eso se trabaja en una rama aparte y no directamente en `develop`. El orden real en que subió cada uno queda en el historial de la rama (`git log feat/semanas-12-13`).
 
 Las clases `CicloController`, `CicloRegular`, `CursoIntensivo` y `PersonaController` no cambiaron en estas semanas y no se vuelven a subir.
 
-Cuando el turno 4 confirme que la ventana abre, Chuquimango sube el último paso: el informe de práctica de campo, el diagrama de clases con su segunda página (la interfaz gráfica, sin controladores, por convención del curso) y la lista de comprobación actualizada. Va después del turno 3 porque reemplaza la exportación del diagrama que sube Cachi. Luego se crea el pull request de `feat/semanas-12-13` hacia `develop`, se fusiona, y `develop` se fusiona en `main`.
+Chuquimango sube además el cierre de la entrega: el informe de práctica de campo, el diagrama de clases con su segunda página (la interfaz gráfica, sin controladores, por convención del curso), la lista de comprobación actualizada y los archivos del proyecto de NetBeans (`build.xml` y `nbproject/`), para que el repositorio se abra directamente con `File > Open Project`. El diagrama va después del turno 3 porque reemplaza la exportación que sube Cachi. La rama se fusionó en `main` con el pull request #81 (09/11) cuando todavía faltaba la parte de Rodrigo; con las cuatro partes y el cierre, se integra en `develop` y luego en `main` con dos pull requests más, de modo que ambas ramas terminan con el mismo contenido.
 
 ## Verificación final de las semanas 12 y 13
 

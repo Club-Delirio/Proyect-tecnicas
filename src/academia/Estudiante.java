@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
- * @author Rodrigo Ortiz, Sumil Arturi
+ * @author Rodrigo Ortiz, Sumil Arturo
  * @author Rojas Valdivia, Jhann Frank
  */
 public class Estudiante extends Persona {

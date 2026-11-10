@@ -130,3 +130,5 @@ El proyecto se considera exitoso si, al terminar la semana 11, se cumplen simult
 5. El historial del repositorio muestra la participación de los cuatro integrantes.
 
 Las cinco condiciones son objetivas y se verifican sin depender del juicio de quien revisa.
+
+**Actualización (semanas 12 y 13).** En la T3 las mismas condiciones se verifican con los 22 requerimientos implementados, en la consola y en la interfaz gráfica; los valores esperados están en `docs/CHECKLIST_ENTREGA.md`, sección C.

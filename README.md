@@ -31,13 +31,13 @@ UPN Cajamarca, periodo 2026-2).
 | `docs/diagrama_clases.svg`, `docs/diagrama_interfaz.svg` | Los mismos dos diagramas en vectorial, para imprimir o ampliar sin perder nitidez |
 | `docs/diagrama_clases.drawio` | Los dos diagramas en formato draw.io, en dos páginas (01 · Modelo de dominio y 02 · Interfaz gráfica), para abrirlos y editarlos en app.diagrams.net. Por convención del curso, los controladores no se modelan |
 | `docs/ishikawa.png`, `docs/ishikawa.svg` | Diagrama de Ishikawa del problema |
-| `docs/Informe_Academia_APA7.docx` | Informe del proyecto en formato APA 7 |
+| `docs/Informe_Academia_APA7.docx` | Informe del proyecto en formato APA 7 de la entrega de las semanas 7 a 11 (sistema de consola, 14 clases y 15 requerimientos implementados). Lo de las semanas 12 y 13 está en el informe de práctica de campo y en `docs/requerimientos-funcionales.md` |
 | `docs/Informe_Responsabilidad_Social.docx` | Informe de la actividad de responsabilidad social (semana 11) |
 | `docs/Informe_Practica_Campo_Bitacora.docx` | Informe de práctica de campo: bitácora de las semanas 1 a 13 con sus evidencias (T3) |
 | `docs/reparto-de-tareas.md` | Qué hizo cada integrante |
 | `docs/GUIA_GIT_SEMANAS7-11.md` | Comandos de Git y GitHub que ejecuta cada integrante |
 | `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar: la T3 de las semanas 12 y 13, con la rúbrica y los valores que debe mostrar el programa, y la entrega de las semanas 7 a 11 |
-| `docs/` de las semanas 1 a 6 | `objetivos.md`, `restricciones-alternativas.md`, `diccionario-clases.md`, `manual-usuario.md`, `Historias_Usuario_Semana5.xlsx`, `Informe_Secciones_1y2_APA7.docx`, `GUIA_GIT_GITHUB.md` y `evidencias.zip`: los documentos de la primera versión del sistema (paquete `semana5`) y las primeras versiones de los objetivos y las restricciones, que se conservan como registro |
+| `docs/semanas-1-6/` | Entrega 1 (semanas 1 a 6), que se conserva como registro: `objetivos.md`, `restricciones-alternativas.md`, `diccionario-clases.md`, `manual-usuario.md`, `Historias_Usuario_Semana5.xlsx`, `Informe_Secciones_1y2_APA7.docx`, `GUIA_GIT_GITHUB.md` y `evidencias.zip`. Son los documentos de la primera versión del sistema (paquete `semana5`) y las primeras versiones de los objetivos y las restricciones, que hoy reemplazan `objetivos-y-alcance.md` y `restricciones-y-alternativas.md` |
 | `evidencias/` | Capturas que prueban cada criterio de aceptación y registros de ejecución (semana 13). El índice está en `evidencias/README.md` |
 | `build.xml`, `nbproject/` | Archivos del proyecto de Apache NetBeans (Ant): permiten abrir la carpeta directamente con `File > Open Project` |
 | `.gitignore` | Excluye los compilados, los archivos que NetBeans genera en cada computadora y la carpeta de datos generada en ejecución |

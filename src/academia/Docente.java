@@ -7,7 +7,7 @@ package academia;
  *
  * @author Cachi Tantalean, Anderson Alexis
  * @author Chuquimango Verastegui, Jhocep Jhanpier
- * @author Rodrigo Ortiz, Sumil Arturi
+ * @author Rodrigo Ortiz, Sumil Arturo
  * @author Rojas Valdivia, Jhann Frank
  */
 public class Docente extends Persona {
@@ -115,6 +115,14 @@ public class Docente extends Persona {
     public void registrarMatricula(double precio_final) {
         this.cant_matriculas = this.cant_matriculas + 1;
         this.monto_gestionado = this.monto_gestionado + precio_final;
+    }
+
+    // Resta una matricula anulada del acumulado del docente tutor (RF-28)
+    public void quitarMatricula(double precio_final) {
+        if (this.cant_matriculas > 0) {
+            this.cant_matriculas = this.cant_matriculas - 1;
+            this.monto_gestionado = Math.round((this.monto_gestionado - precio_final) * 100) / 100.0;
+        }
     }
 
     // Pago por dictado = tarifa por hora x horas dictadas
