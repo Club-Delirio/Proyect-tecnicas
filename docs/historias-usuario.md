@@ -159,7 +159,7 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | 3 | Cuota mensual calculada | En caso que la matrícula sea fraccionada | cuando calcularPrecioFinal() divide el precio final entre el número de cuotas | el sistema muestra la cuota mensual junto con la cantidad de cuotas | `Matricula` |
 | 4 | Cotización que no se concreta | En caso que el apoderado no confirme la operación | cuando el operador responde que no al confirmar la matrícula | el sistema descarta la matrícula y la vacante sigue disponible | `AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -176,7 +176,7 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | 3 | Número de cuotas no permitido | En caso que la forma de pago sea FRACCIONADO y las cuotas no sean 2, 3 ni 4 | cuando se invoca setNro_cuotas() | el sistema rechaza el valor, explica las opciones y vuelve a pedirlo | `Matricula` |
 | 4 | Código correlativo de la matrícula | En caso que ya existan cinco matrículas registradas | cuando se confirma la sexta y se invoca setCodigo() con el tamaño de la colección más uno | el sistema asigna MAT-6, sin repetir códigos | `Matricula / AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -193,7 +193,7 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | 3 | Cierre automático del ciclo | En caso que se matricule al último cupo disponible | cuando se invoca registrarMatriculado() | el sistema cambia el estado de ABIERTO a CERRADO sin que el operador lo indique | `Ciclo` |
 | 4 | Matrícula duplicada | En caso que el estudiante ya figure en ese ciclo | cuando se recorre su historial de matrículas antes de matricular | el sistema rechaza la operación e informa el duplicado | `Estudiante / AcademiaSanFernando` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -295,7 +295,7 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | 3 | Pago duplicado | En caso que la cuota ya esté pagada | cuando registrarPago() encuentra pagada en verdadero | el sistema rechaza el segundo pago | `Cuota` |
 | 4 | Cuota vencida | En caso que una cuota pasó su fecha de vencimiento sin pagarse | cuando se consulta getEstado() | el sistema la muestra como VENCIDA | `Cuota` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -312,7 +312,7 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | 3 | Matrícula con pagos | En caso que la matrícula ya tenga una cuota pagada | cuando contarCuotasPagadas() es mayor que cero | el sistema rechaza la anulación | `MatriculaController` |
 | 4 | Código que no se repite | En caso que después de anular se registre otra matrícula | cuando generarCodigo() toma el número más alto que existe | el sistema asigna un código nuevo sin repetir uno que ya está en uso | `MatriculaController` |
 
-**Integrante responsable:** Rodrigo Ortiz, Sumil Arturi
+**Integrante responsable:** Rodrigo Ortiz, Sumil Arturo
 
 ---
 
@@ -395,16 +395,16 @@ Cada historia corresponde a uno de los veintidós requerimientos funcionales imp
 | HU-06 | RF-16 | 3. Registro de estudiantes | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
 | HU-07 | RF-17 | 5. Matriculas | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
 | HU-08 | RF-22 | 4. Campana de descuento | Directora académica | Cachi Tantaleán, Anderson Alexis |
-| HU-09 | RF-23 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturi |
-| HU-10 | RF-24 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturi |
-| HU-11 | RF-25 | 5. Matriculas | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturi |
+| HU-09 | RF-23 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-10 | RF-24 | 5. Matriculas | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-11 | RF-25 | 5. Matriculas | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturo |
 | HU-12 | RF-31 | 6. Control de asistencia | Auxiliar de aula | Cachi Tantaleán, Anderson Alexis |
 | HU-13 | RF-35 | Catalogo por categoria | Coordinador de admisión de la academia | Rojas Valdivia, Jhann Frank |
 | HU-14 | RF-36 | 7. Listas y reportes | Directora académica | Cachi Tantaleán, Anderson Alexis |
 | HU-15 | RF-39 | 0. Recuperar / 8. Guardar | Asistente de sistemas de la academia | Chuquimango Verástegui, Jhocep Jhanpier |
 | HU-16 | RF-21 | Ventana Estudiantes | Asistente de admisión | Chuquimango Verástegui, Jhocep Jhanpier |
-| HU-17 | RF-27 | Ventanas Matrícula y Pagos | Asistente de admisión | Rodrigo Ortiz, Sumil Arturi |
-| HU-18 | RF-28 | Ventana Pagos y anulaciones | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturi |
+| HU-17 | RF-27 | Ventanas Matrícula y Pagos | Asistente de admisión | Rodrigo Ortiz, Sumil Arturo |
+| HU-18 | RF-28 | Ventana Pagos y anulaciones | Coordinador de admisión de la academia | Rodrigo Ortiz, Sumil Arturo |
 | HU-19 | RF-37 | Ventana Tablero del periodo | Directora académica | Cachi Tantaleán, Anderson Alexis |
 | HU-20 | RF-40 | Ventana principal | Asistente de sistemas de la academia | Rojas Valdivia, Jhann Frank |
 | HU-21 | RF-41 | Menú Archivo | Asistente de sistemas de la academia | Chuquimango Verástegui, Jhocep Jhanpier |

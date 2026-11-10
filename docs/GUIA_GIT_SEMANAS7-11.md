@@ -3,7 +3,7 @@
 **Proyecto:** Academia Preuniversitaria San Fernando — sistema de matrícula y control de asistencia
 **Repositorio:** `https://github.com/Club-Delirio/Proyect-tecnicas`
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturi · Rojas Valdivia Jhann Frank
+**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturo · Rojas Valdivia Jhann Frank
 
 Esta guía sirve a la vez como instructivo del equipo y como la **guía documentada de Git y GitHub** que el curso pide como evidencia. Está dividida en ocho partes. Las partes 1 y 2 las hace cada integrante una sola vez; de la 3 en adelante son el trabajo del día a día.
 
@@ -51,7 +51,7 @@ fatal: unable to access '...': The requested URL returned error: 403
 | `JhocepGab` | Chuquimango Verástegui Jhocep Jhanpier | Write |
 | `Anderson-Cachi` | Cachi Tantaleán Anderson Alexis | Write |
 | `Jhann-999` | Rojas Valdivia Jhann Frank | Write |
-| `init57` | Rodrigo Ortiz Sumil Arturi | Write |
+| `init57` | Rodrigo Ortiz Sumil Arturo | Write |
 
 📸 **Capturar** la pantalla de *Collaborators* con los cuatro en **Write**.
 
@@ -233,7 +233,7 @@ Cada uno con lo suyo:
 | Chuquimango Verástegui Jhocep Jhanpier | `Chuquimango Verastegui Jhocep Jhanpier` | `snkje123@gmail.com` |
 | Cachi Tantaleán Anderson Alexis | `Cachi Tantalean Anderson Alexis` | `n00461903@upn.pe` |
 | Rojas Valdivia Jhann Frank | `Rojas Valdivia Jhann Frank` | `rojasjhann7@gmail.com` |
-| Rodrigo Ortiz Sumil Arturi | `Rodrigo Ortiz Sumil Arturi` | `rubick042@gmail.com` |
+| Rodrigo Ortiz Sumil Arturo | `Rodrigo Ortiz Sumil Arturo` | `rubick042@gmail.com` |
 
 📸 **Capturar** la salida de `git config --list | grep user`.
 
@@ -931,7 +931,7 @@ git push -u origin docs/bitacora-jhann
 # SUMIL (sin hacer pull de lo de Jhann)
 git checkout develop && git pull origin develop
 git checkout -b docs/bitacora-sumil
-sed -i 's/- Responsable de la integración: PENDIENTE/- Responsable de la integración: Rodrigo Ortiz Sumil Arturi/' docs/BITACORA.md
+sed -i 's/- Responsable de la integración: PENDIENTE/- Responsable de la integración: Rodrigo Ortiz Sumil Arturo/' docs/BITACORA.md
 cat docs/BITACORA.md
 git add docs/BITACORA.md
 git commit -m "docs: asigna el responsable de la integracion"
@@ -971,7 +971,7 @@ El archivo muestra los marcadores:
 
 ```
 <<<<<<< HEAD
-- Responsable de la integración: Rodrigo Ortiz Sumil Arturi
+- Responsable de la integración: Rodrigo Ortiz Sumil Arturo
 =======
 - Responsable de la integración: Rojas Valdivia Jhann Frank
 >>>>>>> develop

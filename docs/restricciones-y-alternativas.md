@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturi · Rojas Valdivia Jhann Frank
+**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturo · Rojas Valdivia Jhann Frank
 **Semana del sílabo:** 7 (actualizado en las semanas 12 y 13)
 
 ---
@@ -103,6 +103,8 @@ Este documento identifica las restricciones reales del proyecto, evalúa las alt
 **Decisión.** Alternativa B. Se documentan 45 requerimientos funcionales con 179 criterios de aceptación y se implementan los 15 de prioridad alta que cubren el ciclo completo: oferta académica, plana docente, padrón de estudiantes, matrícula, asistencia, reportes y persistencia.
 
 **Consecuencia.** Lo entregado funciona de principio a fin para el caso de uso central. Los 30 requerimientos restantes quedan con criterios de aceptación escritos, de modo que quien continúe el proyecto no tenga que volver a analizarlos.
+
+**Actualización (semanas 12 y 13).** Se implementaron 7 requerimientos más (RF-21, RF-27, RF-28, RF-37, RF-40, RF-41 y RF-43), con lo que suman 22, y los criterios de aceptación pasaron de 179 a 192. Quedan 23 requerimientos pendientes.
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema de gestión de matrícula y control de asistencia — Academia Preuniversitaria San Fernando
 **Curso:** Técnicas de Programación Orientada a Objetos (SIST1202A) — UPN Cajamarca, 2026-2
-**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturi · Rojas Valdivia Jhann Frank
+**Equipo:** Cachi Tantaleán Anderson Alexis · Chuquimango Verástegui Jhocep Jhanpier · Rodrigo Ortiz Sumil Arturo · Rojas Valdivia Jhann Frank
 **Repositorio:** `Club-Delirio/Proyect-tecnicas` · **Paquete:** `academia`  
 **Última actualización:** semana 13 — 22 requerimientos implementados: los 15 de las semanas 7 a 11 (consola) y 7 nuevos de las semanas 12 y 13, con la interfaz gráfica en Swing.
 
