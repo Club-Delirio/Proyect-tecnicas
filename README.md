@@ -39,7 +39,8 @@ UPN Cajamarca, periodo 2026-2).
 | `docs/CHECKLIST_ENTREGA.md` | Lista de comprobación antes de presentar: la T3 de las semanas 12 y 13, con la rúbrica y los valores que debe mostrar el programa, y la entrega de las semanas 7 a 11 |
 | `docs/` de las semanas 1 a 6 | `objetivos.md`, `restricciones-alternativas.md`, `diccionario-clases.md`, `manual-usuario.md`, `Historias_Usuario_Semana5.xlsx`, `Informe_Secciones_1y2_APA7.docx`, `GUIA_GIT_GITHUB.md` y `evidencias.zip`: los documentos de la primera versión del sistema (paquete `semana5`) y las primeras versiones de los objetivos y las restricciones, que se conservan como registro |
 | `evidencias/` | Capturas que prueban cada criterio de aceptación y registros de ejecución (semana 13). El índice está en `evidencias/README.md` |
-| `.gitignore` | Excluye los compilados y la carpeta de datos generada en ejecución |
+| `build.xml`, `nbproject/` | Archivos del proyecto de Apache NetBeans (Ant): permiten abrir la carpeta directamente con `File > Open Project` |
+| `.gitignore` | Excluye los compilados, los archivos que NetBeans genera en cada computadora y la carpeta de datos generada en ejecución |
 
 ## Requisitos
 
@@ -57,9 +58,11 @@ El sistema tiene dos clases principales:
 
 ### Desde Apache NetBeans
 
-1. `File > Open Project...` y seleccionar la carpeta del proyecto.
-2. Clic derecho sobre `VentanaPrincipal.java` > **Run File** (o **Shift + F6**).
-3. Para que **F6** abra siempre la interfaz gráfica: clic derecho sobre el proyecto > **Properties** > **Run** > **Main Class** > `academia.VentanaPrincipal`.
+1. `File > Open Project...` y seleccionar la carpeta `Proyect-tecnicas`. NetBeans la reconoce como proyecto (aparece con el nombre `AcademiaSanFernando`) gracias a `build.xml` y la carpeta `nbproject/`.
+2. **Run Project** (**F6**) abre la interfaz gráfica: la clase principal del proyecto ya es `academia.VentanaPrincipal`.
+3. Para la versión de consola: clic derecho sobre `AcademiaSanFernando.java` > **Run File** (o **Shift + F6**).
+
+Al abrir el proyecto, NetBeans genera `nbproject/build-impl.xml`, `nbproject/genfiles.properties` y `nbproject/private/`; el `.gitignore` los excluye porque cada computadora los crea por su cuenta.
 
 ### Desde la consola
 

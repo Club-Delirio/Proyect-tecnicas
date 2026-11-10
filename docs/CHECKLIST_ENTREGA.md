@@ -47,7 +47,7 @@ java -cp build academia.AcademiaSanFernando
 java -cp build academia.VentanaPrincipal
 ```
 
-En NetBeans, la interfaz gráfica se abre con clic derecho sobre `VentanaPrincipal.java` → **Run File**.
+En NetBeans, la carpeta del repositorio se abre con `File > Open Project` (ya tiene `build.xml` y `nbproject/`) y la interfaz gráfica se abre con **F6** (Run Project) o con clic derecho sobre `VentanaPrincipal.java` → **Run File**.
 
 Para comprobar los valores de la interfaz gráfica hay que partir sin la carpeta `datos/`: si quedó de una corrida anterior, borrarla o cambiarle el nombre. Al abrir, el programa ofrece cargar los datos de prueba; aceptar y abrir **Reportes → Tablero del periodo**.
 
