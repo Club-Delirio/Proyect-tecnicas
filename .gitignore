@@ -8,6 +8,7 @@
 /dist/
 /nbproject/private/
 /nbproject/build-impl.xml
+/nbproject/genfiles.properties
 manifest.mf
 
 # Carpetas de Maven / Gradle (por si se migra el proyecto)

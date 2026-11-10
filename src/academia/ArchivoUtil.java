@@ -188,6 +188,51 @@ public class ArchivoUtil {
         return this.leerLineas(nombre_archivo).size();
     }
 
+    /**
+     * Guarda cualquier lista de objetos Registrable. ArchivoUtil no necesita
+     * saber si son personas, ciclos, matriculas o asistencias: a cada objeto
+     * le pide convertirALinea() y cada clase responde con su propia version
+     * (polimorfismo por interfaz).
+     */
+    public boolean guardarRegistros(String nombre_archivo, ArrayList<Registrable> registros) {
+        ArrayList<String> lineas = new ArrayList();
+        for (int i = 0; i < registros.size(); i++) {
+            lineas.add(registros.get(i).convertirALinea());
+        }
+        return this.guardarLineas(nombre_archivo, lineas);
+    }
+
+    /**
+     * RF-41: copia todos los archivos .txt de la carpeta de datos a una
+     * subcarpeta cuyo nombre lleva la fecha y la hora, por ejemplo
+     * datos/respaldo_2026-11-06_17-45-12. Devuelve la carpeta creada, o null
+     * si no habia nada que respaldar.
+     */
+    public String crearRespaldo() {
+        File directorio = new File(this.carpeta);
+        File[] archivos = directorio.listFiles();
+        if (archivos == null) {
+            System.out.println("Error: no existe la carpeta " + this.carpeta + "; no hay nada que respaldar");
+            return null;
+        }
+        String marca = java.time.LocalDateTime.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        ArchivoUtil respaldo = new ArchivoUtil(this.carpeta + File.separator + "respaldo_" + marca);
+        int copiados = 0;
+        for (int i = 0; i < archivos.length; i++) {
+            if (archivos[i].isFile() && archivos[i].getName().endsWith(".txt")) {
+                respaldo.guardarLineas(archivos[i].getName(), this.leerLineas(archivos[i].getName()));
+                copiados = copiados + 1;
+            }
+        }
+        if (copiados == 0) {
+            System.out.println("Error: no hay archivos .txt que respaldar");
+            return null;
+        }
+        System.out.println("Respaldo creado con " + copiados + " archivo(s) en " + respaldo.getCarpeta());
+        return respaldo.getCarpeta();
+    }
+
     // Muestra el contenido del archivo numerado, para la evidencia de la practica
     public void mostrarArchivo(String nombre_archivo) {
         ArrayList<String> lineas = this.leerLineas(nombre_archivo);

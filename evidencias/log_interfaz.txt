@@ -1,0 +1,107 @@
+Datos de prueba cargados: 8 personas, 4 ciclos, 6 matriculas y 9 asistencias
+Carpeta creada: .../datos
+Se guardaron 4 registro(s) en datos/ciclos.txt
+[Operacion de escritura finalizada]
+Se guardaron 8 registro(s) en datos/personas.txt
+[Operacion de escritura finalizada]
+Se guardaron 6 registro(s) en datos/matriculas.txt
+[Operacion de escritura finalizada]
+Se guardaron 9 registro(s) en datos/asistencias.txt
+[Operacion de escritura finalizada]
+Se guardaron 11 registro(s) en datos/cuotas.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Ciclos recuperados: 4
+[Operacion de lectura finalizada]
+Personas recuperadas: 8
+[Operacion de lectura finalizada]
+Matriculas recuperadas: 6
+[Operacion de lectura finalizada]
+Cuotas pagadas recuperadas: 3
+[Operacion de lectura finalizada]
+Asistencias recuperadas: 9
+[CAPTURA] 01_inicio_carga_automatica
+[CAPTURA] 02_menu_navegacion
+[CAPTURA] 03_oferta_por_categoria
+[CAPTURA] 04_registro_ciclo_categoria
+[CAPTURA] 05_codigo_duplicado
+Error: el codigo debe tener el formato CIC-000 para un ciclo regular o CUR-000 para un curso intensivo
+Error: el nombre debe tener al menos 3 caracteres
+Error: la fecha de fin debe ser posterior a la de inicio
+Error: el costo base debe estar entre S/ 150 y S/ 5000
+Error: el ciclo debe tener al menos 10 vacantes
+Error: la duracion del ciclo regular debe estar entre 2 y 10 meses
+Error: el campo Simulacros debe ser un numero entero
+Error: primero debe ingresar la duracion en meses
+[CAPTURA] 06_validaciones_set
+[CAPTURA] 07_estudiante_reconocido
+Error: el postulante es menor de edad, el apoderado es obligatorio
+[CAPTURA] 08_apoderado_obligatorio
+[CAPTURA] 09_registro_estudiante
+[CAPTURA] 09b_lista_estudiantes
+[CAPTURA] 10_registro_docente
+[CAPTURA] 10b_plana_docente
+[CAPTURA] 11_campana
+[CAPTURA] 12_cotizacion_desglose
+[CAPTURA] 13_confirmar_matricula
+[CAPTURA] 14_matricula_registrada
+[CAPTURA] 14b_cronograma_creado
+[CAPTURA] 15_matricula_duplicada
+[CAPTURA] 16_sin_vacantes
+[CAPTURA] 17_estudiante_recurrente
+[CAPTURA] 17b_historial_estudiante
+[CAPTURA] 18_cronograma_vencidas
+[CAPTURA] 19_pago_cuota
+Error: la cuota 2 ya fue pagada el 2026-11-06
+[CAPTURA] 20_pago_duplicado
+Error: la matricula MAT-1 ya tiene 1 cuota(s) pagada(s); no se puede anular
+[CAPTURA] 21_anular_con_pago
+[CAPTURA] 22_confirmar_anulacion
+Matricula MAT-7 anulada. El ciclo CUR-003 tiene ahora 1 vacante(s)
+[CAPTURA] 23_anulacion_vacante
+[CAPTURA] 24_ciclo_reabierto
+[CAPTURA] 25_asistencia_registrada
+Error: ya se registro la asistencia de EST-001 en CIC-001 el 2026-11-06
+[CAPTURA] 26_asistencia_duplicada
+[CAPTURA] 27_reporte_riesgo
+[CAPTURA] 28_tablero
+Se guardaron 5 registro(s) en datos/ciclos.txt
+[Operacion de escritura finalizada]
+Se guardaron 19 registro(s) en datos/personas.txt
+[Operacion de escritura finalizada]
+Se guardaron 16 registro(s) en datos/matriculas.txt
+[Operacion de escritura finalizada]
+Se guardaron 10 registro(s) en datos/asistencias.txt
+[Operacion de escritura finalizada]
+Se guardaron 21 registro(s) en datos/cuotas.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Carpeta creada: .../datos/respaldo_2026-11-06_18-04-59
+Se guardaron 21 registro(s) en datos/respaldo_2026-11-06_18-04-59/cuotas.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Se guardaron 10 registro(s) en datos/respaldo_2026-11-06_18-04-59/asistencias.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Se guardaron 16 registro(s) en datos/respaldo_2026-11-06_18-04-59/matriculas.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Se guardaron 5 registro(s) en datos/respaldo_2026-11-06_18-04-59/ciclos.txt
+[Operacion de escritura finalizada]
+[Operacion de lectura finalizada]
+Se guardaron 19 registro(s) en datos/respaldo_2026-11-06_18-04-59/personas.txt
+[Operacion de escritura finalizada]
+Respaldo creado con 5 archivo(s) en datos/respaldo_2026-11-06_18-04-59
+[CAPTURA] 29_respaldo
+Se guardaron 5 registro(s) en datos/ciclos.txt
+[Operacion de escritura finalizada]
+Se guardaron 19 registro(s) en datos/personas.txt
+[Operacion de escritura finalizada]
+Se guardaron 16 registro(s) en datos/matriculas.txt
+[Operacion de escritura finalizada]
+Se guardaron 10 registro(s) en datos/asistencias.txt
+[Operacion de escritura finalizada]
+Se guardaron 21 registro(s) en datos/cuotas.txt
+[Operacion de escritura finalizada]
+[CAPTURA] 30_guardar
+[CAPTURA] 31_salir
